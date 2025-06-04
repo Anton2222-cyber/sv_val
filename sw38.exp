@@ -1,0 +1,47 @@
+﻿	(******************************)
+	(*                            *)
+	(*     EXPORTED VARIABLES     *)
+	(*                            *)
+	(******************************)
+
+        VAR_GLOBAL
+	{G:"EEPROM_Parameters"}
+epprom_kw_cnt AT %MW101.0 : DWORD;
+epprom_q_cnt AT %MW101.2 : DWORD;
+	{G:"Status_variables"}
+Pressure AT %MW110.0 : INT;
+kw_counter AT %MW110.2 : DWORD;
+q_counter AT %MW110.4 : DWORD;
+kw_value AT %MW110.6 : INT;
+q_value AT %MW110.7 : INT;
+ATS_State_bits AT %MW110.8 : WORD;
+ATS_Current_prsnt AT %MW110.9 : INT;
+ATS_Current_L1 AT %MW110.10 : INT;
+ATS_Current_L2 AT %MW110.11 : INT;
+ATS_Current_L3 AT %MW110.12 : INT;
+ATS_Last_FaultCode AT %MW110.13 : INT;
+ATS_RunTime_Hors AT %MW110.14 : WORD;
+ATS_OnTimes_Cnt AT %MW110.15 : WORD;
+Alarms AT %MW110.16 : WORD;
+CMD AT %MW110.17 : WORD := 0;
+ATS_Voltage AT %MW110.18 : INT := 0;
+	{G:"IO_Mapping"}
+i_adc_pressure AT %IW1.0 : INT;	{ DE:"AIL1 analogue input" }
+i_sns_dry AT %IW1.5 : INT;	{ DE:"AIL6 analogue input" }
+i_pb_loc AT %IW1.6 : INT;	{ DE:"AIL7 analogue input" }
+i_pb_rem AT %IW1.7 : INT;	{ DE:"AIL8 analogue input" }
+i_sns_pressure AT %IX0.2 : BOOL;	{ DE:"DIL3 digital input" }
+i_sns_door AT %IX0.3 : BOOL;	{ DE:"DIL4 digital input" }
+i_rnpp AT %IX0.4 : BOOL;	{ DE:"DIL5 digital input" }
+i_qf_ats AT %IX0.5 : BOOL;	{ DE:"DIL6 digital input" }
+i_no_alm_ats AT %IX0.6 : BOOL;	{ DE:"DIL7 digital input" }
+i_run_ats AT %IX0.7 : BOOL;	{ DE:"DIL8 digital input" }
+q_start_ats AT %QX1.7 : BOOL;	{ DE:"DOL8 digital output" }
+fdi_kw_cnt AT %MB5.0 : UDINT;	{ DE:"FDI1 Input counter" }
+fdi_kw_freq AT %MB5.1 : UDINT;	{ DE:"FDI1 Input frequency" }
+fdi_q_cnt AT %MB500.0 : UDINT;	{ DE:"FDI2 Input counter" }
+fdi_q_freq AT %MB500.1 : UDINT;	{ DE:"FDI2 Input frequency" }
+fdi_kw_reset AT %MX50.0 : BOOL;	{ DE:"FDI1 reset input counter value" }
+fdi_q_reset AT %MX550.0 : BOOL;	{ DE:"FDI2 reset input counter value" }
+	END_VAR
+
