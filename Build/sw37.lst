@@ -2484,7 +2484,7 @@ END_PROGRAM
 #9		Not Alarms.7 *)
 #10			LD		Alarms.7	{LNXT:2|-1|-1}
 (*) UNDEF
-A1805174  F8DF 71D0		ldr r7, [pc, #+464] ; 0xA0003F20
+A1805174  F8DF 720C		ldr r7, [pc, #+524] ; 0xA0003F20
 A1805178  8838     		ldrh r0, [r7]
 A180517A  F3C0 10C0		ubfx r0, r0, #7, #1
 
@@ -2498,7 +2498,7 @@ A1805184  BF18 2000		nemov r0, #0
 (*) BOOL
 A1805188  B082     		sub sp, sp, #8
 A180518A  F8CD 0000		str r0, [sp]
-A180518E  F8DF 71B8		ldr r7, [pc, #+440] ; 0xA0003F20
+A180518E  F8DF 71F4		ldr r7, [pc, #+500] ; 0xA0003F20
 A1805192  8838     		ldrh r0, [r7]
 A1805194  F3C0 1040		ubfx r0, r0, #5, #1
 
@@ -2512,7 +2512,7 @@ A180519E  BF18 2000		nemov r0, #0
 (*) BOOL
 A18051A2  B082     		sub sp, sp, #8
 A18051A4  F8CD 0000		str r0, [sp]
-A18051A8  F8DF 719C		ldr r7, [pc, #+412] ; 0xA0003F20
+A18051A8  F8DF 71D8		ldr r7, [pc, #+472] ; 0xA0003F20
 A18051AC  8838     		ldrh r0, [r7]
 A18051AE  F3C0 1000		ubfx r0, r0, #4, #1
 
@@ -2526,7 +2526,7 @@ A18051B8  BF18 2000		nemov r0, #0
 (*) BOOL
 A18051BC  B082     		sub sp, sp, #8
 A18051BE  F8CD 0000		str r0, [sp]
-A18051C2  F8DF 7184		ldr r7, [pc, #+388] ; 0xA0003F20
+A18051C2  F8DF 71C0		ldr r7, [pc, #+448] ; 0xA0003F20
 A18051C6  8838     		ldrh r0, [r7]
 A18051C8  F3C0 00C0		ubfx r0, r0, #3, #1
 
@@ -2540,7 +2540,7 @@ A18051D2  BF18 2000		nemov r0, #0
 (*) BOOL
 A18051D6  B082     		sub sp, sp, #8
 A18051D8  F8CD 0000		str r0, [sp]
-A18051DC  F8DF 7168		ldr r7, [pc, #+360] ; 0xA0003F20
+A18051DC  F8DF 71A4		ldr r7, [pc, #+420] ; 0xA0003F20
 A18051E0  8838     		ldrh r0, [r7]
 A18051E2  F3C0 0000		ubfx r0, r0, #0, #1
 
@@ -2554,7 +2554,7 @@ A18051EC  BF18 2000		nemov r0, #0
 (*) BOOL
 A18051F0  B082     		sub sp, sp, #8
 A18051F2  F8CD 0000		str r0, [sp]
-A18051F6  F8DF 7164		ldr r7, [pc, #+356] ; 0xA1A00042
+A18051F6  F8DF 71A0		ldr r7, [pc, #+416] ; 0xA1A00042
 A18051FA  F9B7 0000		ldrsh r0, [r7]
 
 #21			EQ		1	{LNXT:2|-1|-1}
@@ -2598,224 +2598,286 @@ A1805232  F8DD 0000		ldr r0, [sp]
 A1805236  B002     		add sp, sp, #8
 A1805238  4038     		and r0, r0, r7
 
-#27			JMPCN	$label0	{LNXT:2|9|69}
+#27			JMPCN	$label0	{LNXT:2|9|25}
 (-) BOOL
 A180523A  2800     		cmp r0, #0
-A180523C  D033     		beq #102 ; 0xA18052A6
+A180523C  D043     		beq #134 ; 0xA18052C6
 
 
 #28		
 #29			(* THEN *)
 #30		
-#31				(* checkWashAndStart *)
-#32				MOVE		o_val_close_fall,checkWashAndStart.o_val_close_fall_FB	{LNXT:9|-1|-1}
-(*) BOOL
-A1805240  F8DF 0158		ldr r0, [pc, #+344] ; 0x100004AD
-A1805244  F8DF 712C		ldr r7, [pc, #+300] ; 0xA1A0006C
-A1805248  6038     		str r0, [r7]
-
-#33				MOVE		o_val_close_R,checkWashAndStart.o_val_close_R_FB	{LNXT:10|-1|-1}
-(*) BOOL^
-A180524A  F8DF 0158		ldr r0, [pc, #+344] ; 0x100004AF
-A180524E  F8DF 711C		ldr r7, [pc, #+284] ; 0xA1A00064
-A1805252  6038     		str r0, [r7]
-
-#34				MOVE		o_val_open_fall,checkWashAndStart.o_val_open_fall_FB	{LNXT:11|-1|-1}
-(*) BOOL^
-A1805254  F8DF 0140		ldr r0, [pc, #+320] ; 0x100004AC
-A1805258  F8DF 7114		ldr r7, [pc, #+276] ; 0xA1A00068
-A180525C  6038     		str r0, [r7]
-
-#35				MOVE		o_val_open_R,checkWashAndStart.o_val_open_R_FB	{LNXT:12|-1|-1}
-(*) BOOL^
-A180525E  F8DF 0140		ldr r0, [pc, #+320] ; 0x100004AE
-A1805262  F8DF 7104		ldr r7, [pc, #+260] ; 0xA1A00060
-A1805266  6038     		str r0, [r7]
-
-#36				MOVE		sv_washing,checkWashAndStart.sv_washing_FB	{LNXT:13|-1|-1}
-(*) BOOL^
-A1805268  F8DF 00E4		ldr r0, [pc, #+228] ; 0xA0003F26
-A180526C  F8DF 70F4		ldr r7, [pc, #+244] ; 0xA1A0005C
-A1805270  6038     		str r0, [r7]
-
-#37				MOVE		q_start_ats,checkWashAndStart.q_start_ats_FB	{LNXT:14|-1|-1}
-(*) BOOL^
-A1805272  F8DF 0134		ldr r0, [pc, #+308] ; 0x100004B3
-A1805276  F8DF 7100		ldr r7, [pc, #+256] ; 0xA1A00070
-A180527A  6038     		str r0, [r7]
-
-#38				MOVE		time_sec,checkWashAndStart.ep_time_wash_FB	{LNXT:15|-1|-1}
-(*) BOOL^
-A180527C  F8DF 0104		ldr r0, [pc, #+260] ; 0xA1A0007C
-A1805280  F8DF 70F8		ldr r7, [pc, #+248] ; 0xA1A00074
-A1805284  6038     		str r0, [r7]
-
-#39				MOVE		i_val_state,checkWashAndStart.i_val_state_FB	{LNXT:16|-1|-1}
-(*) INT^
-A1805286  F8DF 0100		ldr r0, [pc, #+256] ; 0xA1A0007E
-A180528A  F8DF 70F4		ldr r7, [pc, #+244] ; 0xA1A00078
-A180528E  6038     		str r0, [r7]
-
-#40				CAL		checkWashAndStart	{LNXT:9|69|-1}
-(*) INT^
-A1805290  E92D 0021		stmdb sp!, { r0, r5 }
-A1805294  F8DF 50C8		ldr r5, [pc, #+200] ; 0xA1A00044
-A1805298  F8DF 40B8		ldr r4, [pc, #+184] ; 0xA1804510
-A180529C  F044 0401		orr r4, r4, #1
-A18052A0  47A0     		blx r4
-A18052A2  E8BD 0021		ldmia sp!, { r0, r5 }
-
-#41		
-#42		$label0:
-#43			(* END_IF *)
-#44		
-#45		
-#46			(* IF q_start_ats *)
-#47			LD		q_start_ats	{LNXT:69|-1|-1}
+#31		
+#32				(* IF CMD.0 *)
+#33				LD		CMD.0	{LNXT:9|-1|-1}
 (*) UNDEF
-A18052A6  F8DF 7100		ldr r7, [pc, #+256] ; 0x100004B3
-A18052AA  7838     		ldrb r0, [r7]
+A1805240  F8DF 7144		ldr r7, [pc, #+324] ; 0xA0003F22
+A1805244  8838     		ldrh r0, [r7]
+A1805246  F3C0 0000		ubfx r0, r0, #0, #1
 
-#48			NOT	{LNXT:69|-1|-1}
-(*) BOOL
-A18052AC  2800     		cmp r0, #0
-A18052AE  BF08 2001		eqmov r0, #1
-A18052B2  BF18 2000		nemov r0, #0
-
-#49			JMPCN	$label1	{LNXT:69|70|72}
+#34				JMPCN	$label2	{LNXT:9|10|21}
 (-) BOOL
-A18052B6  2800     		cmp r0, #0
-A18052B8  D006     		beq #12 ; 0xA18052C8
+A180524A  2800     		cmp r0, #0
+A180524C  D035     		beq #106 ; 0xA18052BA
 
 
+#35		
+#36				(* THEN *)
+#37		
+#38					(* checkWashAndStart *)
+#39					MOVE		o_val_close_fall,checkWashAndStart.o_val_close_fall_FB	{LNXT:10|-1|-1}
+(*) BOOL
+A1805250  F8DF 0184		ldr r0, [pc, #+388] ; 0x100004AD
+A1805254  F8DF 7158		ldr r7, [pc, #+344] ; 0xA1A0006C
+A1805258  6038     		str r0, [r7]
+
+#40					MOVE		o_val_close_R,checkWashAndStart.o_val_close_R_FB	{LNXT:11|-1|-1}
+(*) BOOL^
+A180525A  F8DF 0184		ldr r0, [pc, #+388] ; 0x100004AF
+A180525E  F8DF 7148		ldr r7, [pc, #+328] ; 0xA1A00064
+A1805262  6038     		str r0, [r7]
+
+#41					MOVE		o_val_open_fall,checkWashAndStart.o_val_open_fall_FB	{LNXT:12|-1|-1}
+(*) BOOL^
+A1805264  F8DF 016C		ldr r0, [pc, #+364] ; 0x100004AC
+A1805268  F8DF 7140		ldr r7, [pc, #+320] ; 0xA1A00068
+A180526C  6038     		str r0, [r7]
+
+#42					MOVE		o_val_open_R,checkWashAndStart.o_val_open_R_FB	{LNXT:13|-1|-1}
+(*) BOOL^
+A180526E  F8DF 016C		ldr r0, [pc, #+364] ; 0x100004AE
+A1805272  F8DF 7130		ldr r7, [pc, #+304] ; 0xA1A00060
+A1805276  6038     		str r0, [r7]
+
+#43					MOVE		sv_washing,checkWashAndStart.sv_washing_FB	{LNXT:14|-1|-1}
+(*) BOOL^
+A1805278  F8DF 0110		ldr r0, [pc, #+272] ; 0xA0003F26
+A180527C  F8DF 7120		ldr r7, [pc, #+288] ; 0xA1A0005C
+A1805280  6038     		str r0, [r7]
+
+#44					MOVE		q_start_ats,checkWashAndStart.q_start_ats_FB	{LNXT:15|-1|-1}
+(*) BOOL^
+A1805282  F8DF 0160		ldr r0, [pc, #+352] ; 0x100004B3
+A1805286  F8DF 712C		ldr r7, [pc, #+300] ; 0xA1A00070
+A180528A  6038     		str r0, [r7]
+
+#45					MOVE		time_sec,checkWashAndStart.ep_time_wash_FB	{LNXT:16|-1|-1}
+(*) BOOL^
+A180528C  F8DF 0130		ldr r0, [pc, #+304] ; 0xA1A0007C
+A1805290  F8DF 7124		ldr r7, [pc, #+292] ; 0xA1A00074
+A1805294  6038     		str r0, [r7]
+
+#46					MOVE		i_val_state,checkWashAndStart.i_val_state_FB	{LNXT:17|-1|-1}
+(*) INT^
+A1805296  F8DF 012C		ldr r0, [pc, #+300] ; 0xA1A0007E
+A180529A  F8DF 7120		ldr r7, [pc, #+288] ; 0xA1A00078
+A180529E  6038     		str r0, [r7]
+
+#47					CAL		checkWashAndStart	{LNXT:10|77|-1}
+(*) INT^
+A18052A0  E92D 0021		stmdb sp!, { r0, r5 }
+A18052A4  F8DF 50F4		ldr r5, [pc, #+244] ; 0xA1A00044
+A18052A8  F8DF 40E4		ldr r4, [pc, #+228] ; 0xA1804510
+A18052AC  F044 0401		orr r4, r4, #1
+A18052B0  47A0     		blx r4
+A18052B2  E8BD 0021		ldmia sp!, { r0, r5 }
+
+#48					JMP		$label3	{LNXT:9|10|21}
+(-) INT^
+A18052B6  E004     		b #8 ; 0xA18052C2
+
+
+#49		$label2:
 #50		
-#51			(* THEN *)
+#51				(* ELSE *)
 #52		
-#53				(* downtimeIN:=true; *)
-#54				MOVE		true,downtimeIN	{LNXT:70|82|-1}
-(*) BOOL
-A18052BC  2001     		mov r0, #1 ; 1
-A18052BE  F8DF 7098		ldr r7, [pc, #+152] ; 0xA1A00041
-A18052C2  7038     		strb r0, [r7]
+#53					(* q_start_ats := False; *)
+#54					MOVE		False,q_start_ats	{LNXT:21|77|-1}
+(*) INT^
+A18052BA  2000     		mov r0, #0 ; 0
+A18052BC  F8DF 7124		ldr r7, [pc, #+292] ; 0x100004B3
+A18052C0  7038     		strb r0, [r7]
 
-#55				JMP		$label2	{LNXT:69|70|72}
+#55		
+#56		$label3:
+#57				(* END_IF *)
+#58				JMP		$label1	{LNXT:2|9|25}
 (-) BOOL
-A18052C4  E004     		b #8 ; 0xA18052D0
+A18052C2  E00D     		b #26 ; 0xA18052E0
 
 
-#56		$label1:
-#57		
-#58			(* ELSE *)
-#59		
-#60				(* downtimeIN:=false; *)
-#61				MOVE		false,downtimeIN	{LNXT:72|82|-1}
-(*) BOOL
-A18052C8  2000     		mov r0, #0 ; 0
-A18052CA  F8DF 708C		ldr r7, [pc, #+140] ; 0xA1A00041
-A18052CE  7038     		strb r0, [r7]
-
+#59		$label0:
+#60		
+#61			(* ELSE *)
 #62		
-#63		$label2:
-#64			(* END_IF *)
-#65		
-#66			(* Alarms.2 := i_sns_door; *)
-#67			MOVE		i_sns_door,Alarms.2	{LNXT:82|85|-1}
+#63				(* CMD.0 := False; *)
+#64				MOVE		False,CMD.0	{LNXT:25|26|-1}
 (*) BOOL
-A18052D0  F8DF 70B8		ldr r7, [pc, #+184] ; 0xA1A00080
-A18052D4  7838     		ldrb r0, [r7]
-A18052D6  F8DF 7070		ldr r7, [pc, #+112] ; 0xA0003F20
-A18052DA  F8B7 8000		ldrh r8, [r7]
-A18052DE  F360 0882		bfi r8, r0, #2, #1
-A18052E2  F8A7 8000		strh r8, [r7]
+A18052C6  2000     		mov r0, #0 ; 0
+A18052C8  F8DF 70BC		ldr r7, [pc, #+188] ; 0xA0003F22
+A18052CC  F8B7 8000		ldrh r8, [r7]
+A18052D0  F360 0800		bfi r8, r0, #0, #1
+A18052D4  F8A7 8000		strh r8, [r7]
+
+#65		
+#66				(* q_start_ats := False; *)
+#67				MOVE		False,q_start_ats	{LNXT:26|77|-1}
+(*) WORD
+A18052D8  2000     		mov r0, #0 ; 0
+A18052DA  F8DF 7108		ldr r7, [pc, #+264] ; 0x100004B3
+A18052DE  7038     		strb r0, [r7]
 
 #68		
-#69			(* Alarms.3 := i_rnpp; *)
-#70			MOVE		i_rnpp,Alarms.3	{LNXT:85|91|-1}
-(*) BOOL
-A18052E6  F8DF 70A8		ldr r7, [pc, #+168] ; 0xA1A00081
-A18052EA  7838     		ldrb r0, [r7]
-A18052EC  F8DF 7058		ldr r7, [pc, #+88] ; 0xA0003F20
-A18052F0  F8B7 8000		ldrh r8, [r7]
-A18052F4  F360 08C3		bfi r8, r0, #3, #1
-A18052F8  F8A7 8000		strh r8, [r7]
-
+#69		$label1:
+#70			(* END_IF *)
 #71		
-#72			(* Alarms.5 := i_no_alm_ats; *)
-#73			MOVE		i_no_alm_ats,Alarms.5	{LNXT:91|132|-1}
-(*) BOOL
-A18052FC  F8DF 7094		ldr r7, [pc, #+148] ; 0xA1A00082
-A1805300  7838     		ldrb r0, [r7]
-A1805302  F8DF 7044		ldr r7, [pc, #+68] ; 0xA0003F20
-A1805306  F8B7 8000		ldrh r8, [r7]
-A180530A  F360 1845		bfi r8, r0, #5, #1
-A180530E  F8A7 8000		strh r8, [r7]
-
-#74		
-#75		
-#76			(* IF CMD.1 *)
-#77			LD		CMD.1	{LNXT:132|-1|-1}
+#72		
+#73			(* IF q_start_ats *)
+#74			LD		q_start_ats	{LNXT:77|-1|-1}
 (*) UNDEF
-A1805312  F8DF 7038		ldr r7, [pc, #+56] ; 0xA0003F22
-A1805316  8838     		ldrh r0, [r7]
-A1805318  F3C0 0040		ubfx r0, r0, #1, #1
+A18052E0  F8DF 7100		ldr r7, [pc, #+256] ; 0x100004B3
+A18052E4  7838     		ldrb r0, [r7]
 
-#78			JMPCN	$label3	{LNXT:132|133|2}
-(-) BOOL
-A180531C  2800     		cmp r0, #0
-A180531E  D00D     		beq #26 ; 0xA180533C
-
-
-#79		
-#80			(* THEN *)
-#81		
-#82				(* Alarms := 0; *)
-#83				MOVE		0,Alarms	{LNXT:133|134|-1}
+#75			NOT	{LNXT:77|-1|-1}
 (*) BOOL
-A1805322  2000     		mov r0, #0 ; 0
-A1805324  F8DF 7020		ldr r7, [pc, #+32] ; 0xA0003F20
-A1805328  8038     		strh r0, [r7]
+A18052E6  2800     		cmp r0, #0
+A18052E8  BF08 2001		eqmov r0, #1
+A18052EC  BF18 2000		nemov r0, #0
 
+#76			JMPCN	$label4	{LNXT:77|78|80}
+(-) BOOL
+A18052F0  2800     		cmp r0, #0
+A18052F2  D006     		beq #12 ; 0xA1805302
+
+
+#77		
+#78			(* THEN *)
+#79		
+#80				(* downtimeIN:=true; *)
+#81				MOVE		true,downtimeIN	{LNXT:78|90|-1}
+(*) BOOL
+A18052F6  2001     		mov r0, #1 ; 1
+A18052F8  F8DF 7098		ldr r7, [pc, #+152] ; 0xA1A00041
+A18052FC  7038     		strb r0, [r7]
+
+#82				JMP		$label5	{LNXT:77|78|80}
+(-) BOOL
+A18052FE  E004     		b #8 ; 0xA180530A
+
+
+#83		$label4:
 #84		
-#85				(* CMD.1 := False; *)
-#86				MOVE		False,CMD.1	{LNXT:134|2|-1}
+#85			(* ELSE *)
+#86		
+#87				(* downtimeIN:=false; *)
+#88				MOVE		false,downtimeIN	{LNXT:80|90|-1}
+(*) BOOL
+A1805302  2000     		mov r0, #0 ; 0
+A1805304  F8DF 708C		ldr r7, [pc, #+140] ; 0xA1A00041
+A1805308  7038     		strb r0, [r7]
+
+#89		
+#90		$label5:
+#91			(* END_IF *)
+#92		
+#93			(* Alarms.2 := i_sns_door; *)
+#94			MOVE		i_sns_door,Alarms.2	{LNXT:90|93|-1}
+(*) BOOL
+A180530A  F8DF 70BC		ldr r7, [pc, #+188] ; 0xA1A00080
+A180530E  7838     		ldrb r0, [r7]
+A1805310  F8DF 7070		ldr r7, [pc, #+112] ; 0xA0003F20
+A1805314  F8B7 8000		ldrh r8, [r7]
+A1805318  F360 0882		bfi r8, r0, #2, #1
+A180531C  F8A7 8000		strh r8, [r7]
+
+#95		
+#96			(* Alarms.3 := i_rnpp; *)
+#97			MOVE		i_rnpp,Alarms.3	{LNXT:93|99|-1}
+(*) BOOL
+A1805320  F8DF 70A8		ldr r7, [pc, #+168] ; 0xA1A00081
+A1805324  7838     		ldrb r0, [r7]
+A1805326  F8DF 705C		ldr r7, [pc, #+92] ; 0xA0003F20
+A180532A  F8B7 8000		ldrh r8, [r7]
+A180532E  F360 08C3		bfi r8, r0, #3, #1
+A1805332  F8A7 8000		strh r8, [r7]
+
+#98		
+#99			(* Alarms.5 := i_no_alm_ats; *)
+#100			MOVE		i_no_alm_ats,Alarms.5	{LNXT:99|140|-1}
+(*) BOOL
+A1805336  F8DF 7098		ldr r7, [pc, #+152] ; 0xA1A00082
+A180533A  7838     		ldrb r0, [r7]
+A180533C  F8DF 7044		ldr r7, [pc, #+68] ; 0xA0003F20
+A1805340  F8B7 8000		ldrh r8, [r7]
+A1805344  F360 1845		bfi r8, r0, #5, #1
+A1805348  F8A7 8000		strh r8, [r7]
+
+#101		
+#102		
+#103			(* IF CMD.1 *)
+#104			LD		CMD.1	{LNXT:140|-1|-1}
+(*) UNDEF
+A180534C  F8DF 7038		ldr r7, [pc, #+56] ; 0xA0003F22
+A1805350  8838     		ldrh r0, [r7]
+A1805352  F3C0 0040		ubfx r0, r0, #1, #1
+
+#105			JMPCN	$label6	{LNXT:140|141|2}
+(-) BOOL
+A1805356  2800     		cmp r0, #0
+A1805358  D00D     		beq #26 ; 0xA1805376
+
+
+#106		
+#107			(* THEN *)
+#108		
+#109				(* Alarms := 0; *)
+#110				MOVE		0,Alarms	{LNXT:141|142|-1}
+(*) BOOL
+A180535C  2000     		mov r0, #0 ; 0
+A180535E  F8DF 7024		ldr r7, [pc, #+36] ; 0xA0003F20
+A1805362  8038     		strh r0, [r7]
+
+#111		
+#112				(* CMD.1 := False; *)
+#113				MOVE		False,CMD.1	{LNXT:142|2|-1}
 (*) WORD
-A180532A  2000     		mov r0, #0 ; 0
-A180532C  F8DF 701C		ldr r7, [pc, #+28] ; 0xA0003F22
-A1805330  F8B7 8000		ldrh r8, [r7]
-A1805334  F360 0841		bfi r8, r0, #1, #1
-A1805338  F8A7 8000		strh r8, [r7]
+A1805364  2000     		mov r0, #0 ; 0
+A1805366  F8DF 7020		ldr r7, [pc, #+32] ; 0xA0003F22
+A180536A  F8B7 8000		ldrh r8, [r7]
+A180536E  F360 0841		bfi r8, r0, #1, #1
+A1805372  F8A7 8000		strh r8, [r7]
 
-A180533C  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
-A1805340  F8DD E000		ldr lr, [sp]
-A1805344  B002     		add sp, sp, #8
+A1805376  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+A180537A  F8DD E000		ldr lr, [sp]
+A180537E  B002     		add sp, sp, #8
 
-A1805346  4770     		bx lr
+A1805380  4770     		bx lr
 
-A1805348  FFFFFFFF		; 0xA0003F20
-A180534C  FFFFFFFF		; 0xA0003F22
-A1805350  FFFFFFFF		; 0xA0003F26
-A1805354  A1804510		; 0xA1804510
-A1805358  A1A00041		; 0xA1A00041
-A180535C  A1A00042		; 0xA1A00042
-A1805360  A1A00044		; 0xA1A00044
-A1805364  A1A0005C		; 0xA1A0005C
-A1805368  A1A00060		; 0xA1A00060
-A180536C  A1A00064		; 0xA1A00064
-A1805370  A1A00068		; 0xA1A00068
-A1805374  A1A0006C		; 0xA1A0006C
-A1805378  A1A00070		; 0xA1A00070
-A180537C  A1A00074		; 0xA1A00074
-A1805380  A1A00078		; 0xA1A00078
-A1805384  A1A0007C		; 0xA1A0007C
-A1805388  A1A0007E		; 0xA1A0007E
-A180538C  A1A00080		; 0xA1A00080
-A1805390  A1A00081		; 0xA1A00081
-A1805394  A1A00082		; 0xA1A00082
-A1805398  FFFFFFFF		; 0x100004AC
-A180539C  FFFFFFFF		; 0x100004AD
-A18053A0  FFFFFFFF		; 0x100004AE
-A18053A4  FFFFFFFF		; 0x100004AF
-A18053A8  FFFFFFFF		; 0x100004B3
+A1805384  FFFFFFFF		; 0xA0003F20
+A1805388  FFFFFFFF		; 0xA0003F22
+A180538C  FFFFFFFF		; 0xA0003F26
+A1805390  A1804510		; 0xA1804510
+A1805394  A1A00041		; 0xA1A00041
+A1805398  A1A00042		; 0xA1A00042
+A180539C  A1A00044		; 0xA1A00044
+A18053A0  A1A0005C		; 0xA1A0005C
+A18053A4  A1A00060		; 0xA1A00060
+A18053A8  A1A00064		; 0xA1A00064
+A18053AC  A1A00068		; 0xA1A00068
+A18053B0  A1A0006C		; 0xA1A0006C
+A18053B4  A1A00070		; 0xA1A00070
+A18053B8  A1A00074		; 0xA1A00074
+A18053BC  A1A00078		; 0xA1A00078
+A18053C0  A1A0007C		; 0xA1A0007C
+A18053C4  A1A0007E		; 0xA1A0007E
+A18053C8  A1A00080		; 0xA1A00080
+A18053CC  A1A00081		; 0xA1A00081
+A18053D0  A1A00082		; 0xA1A00082
+A18053D4  FFFFFFFF		; 0x100004AC
+A18053D8  FFFFFFFF		; 0x100004AD
+A18053DC  FFFFFFFF		; 0x100004AE
+A18053E0  FFFFFFFF		; 0x100004AF
+A18053E4  FFFFFFFF		; 0x100004B3
 
 END_PROGRAM
 
@@ -2826,70 +2888,70 @@ END_PROGRAM
 
 
 *** INPUT:
-A18053AC  B082     		sub sp, sp, #8
-A18053AE  F8CD E000		str lr, [sp]
-A18053B2  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+A18053E8  B082     		sub sp, sp, #8
+A18053EA  F8CD E000		str lr, [sp]
+A18053EE  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
 
-A18053B6  F8DF 7080		ldr r7, [pc, #+128] ; 0x10000450
-A18053BA  8838     		ldrh r0, [r7]
-A18053BC  F8DF 704C		ldr r7, [pc, #+76] ; 0xA1A00042
-A18053C0  8038     		strh r0, [r7]
-
-A18053C2  F8DF 7070		ldr r7, [pc, #+112] ; 0x10000446
-A18053C6  8838     		ldrh r0, [r7]
-A18053C8  F8DF 7044		ldr r7, [pc, #+68] ; 0xA1A0007E
-A18053CC  8038     		strh r0, [r7]
-
-A18053CE  F8DF 7054		ldr r7, [pc, #+84] ; 0x10000423
-A18053D2  7838     		ldrb r0, [r7]
-A18053D4  F8DF 703C		ldr r7, [pc, #+60] ; 0xA1A00080
-A18053D8  7038     		strb r0, [r7]
-
-A18053DA  F8DF 704C		ldr r7, [pc, #+76] ; 0x10000424
-A18053DE  7838     		ldrb r0, [r7]
-A18053E0  F8DF 7034		ldr r7, [pc, #+52] ; 0xA1A00081
-A18053E4  7038     		strb r0, [r7]
-
-A18053E6  F8DF 7044		ldr r7, [pc, #+68] ; 0x10000426
-A18053EA  7838     		ldrb r0, [r7]
-A18053EC  F8DF 702C		ldr r7, [pc, #+44] ; 0xA1A00082
-A18053F0  7038     		strb r0, [r7]
-
-A18053F2  F8DF 703C		ldr r7, [pc, #+60] ; 0x10000442
+A18053F2  F8DF 7080		ldr r7, [pc, #+128] ; 0x10000450
 A18053F6  8838     		ldrh r0, [r7]
-A18053F8  F8DF 7024		ldr r7, [pc, #+36] ; 0xA1A00088
+A18053F8  F8DF 704C		ldr r7, [pc, #+76] ; 0xA1A00042
 A18053FC  8038     		strh r0, [r7]
 
-A18053FE  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
-A1805402  F8DD E000		ldr lr, [sp]
-A1805406  B002     		add sp, sp, #8
+A18053FE  F8DF 7070		ldr r7, [pc, #+112] ; 0x10000446
+A1805402  8838     		ldrh r0, [r7]
+A1805404  F8DF 7044		ldr r7, [pc, #+68] ; 0xA1A0007E
+A1805408  8038     		strh r0, [r7]
 
-A1805408  4770     		bx lr
+A180540A  F8DF 7054		ldr r7, [pc, #+84] ; 0x10000423
+A180540E  7838     		ldrb r0, [r7]
+A1805410  F8DF 703C		ldr r7, [pc, #+60] ; 0xA1A00080
+A1805414  7038     		strb r0, [r7]
 
-A180540C  A1A00042		; 0xA1A00042
-A1805410  A1A0007E		; 0xA1A0007E
-A1805414  A1A00080		; 0xA1A00080
-A1805418  A1A00081		; 0xA1A00081
-A180541C  A1A00082		; 0xA1A00082
-A1805420  A1A00088		; 0xA1A00088
-A1805424  FFFFFFFF		; 0x10000423
-A1805428  FFFFFFFF		; 0x10000424
-A180542C  FFFFFFFF		; 0x10000426
-A1805430  FFFFFFFF		; 0x10000442
-A1805434  FFFFFFFF		; 0x10000446
-A1805438  FFFFFFFF		; 0x10000450
+A1805416  F8DF 704C		ldr r7, [pc, #+76] ; 0x10000424
+A180541A  7838     		ldrb r0, [r7]
+A180541C  F8DF 7034		ldr r7, [pc, #+52] ; 0xA1A00081
+A1805420  7038     		strb r0, [r7]
+
+A1805422  F8DF 7044		ldr r7, [pc, #+68] ; 0x10000426
+A1805426  7838     		ldrb r0, [r7]
+A1805428  F8DF 702C		ldr r7, [pc, #+44] ; 0xA1A00082
+A180542C  7038     		strb r0, [r7]
+
+A180542E  F8DF 703C		ldr r7, [pc, #+60] ; 0x10000442
+A1805432  8838     		ldrh r0, [r7]
+A1805434  F8DF 7024		ldr r7, [pc, #+36] ; 0xA1A00088
+A1805438  8038     		strh r0, [r7]
+
+A180543A  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+A180543E  F8DD E000		ldr lr, [sp]
+A1805442  B002     		add sp, sp, #8
+
+A1805444  4770     		bx lr
+
+A1805448  A1A00042		; 0xA1A00042
+A180544C  A1A0007E		; 0xA1A0007E
+A1805450  A1A00080		; 0xA1A00080
+A1805454  A1A00081		; 0xA1A00081
+A1805458  A1A00082		; 0xA1A00082
+A180545C  A1A00088		; 0xA1A00088
+A1805460  FFFFFFFF		; 0x10000423
+A1805464  FFFFFFFF		; 0x10000424
+A1805468  FFFFFFFF		; 0x10000426
+A180546C  FFFFFFFF		; 0x10000442
+A1805470  FFFFFFFF		; 0x10000446
+A1805474  FFFFFFFF		; 0x10000450
 
 
 *** OUTPUT:
-A180543C  B082     		sub sp, sp, #8
-A180543E  F8CD E000		str lr, [sp]
-A1805442  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+A1805478  B082     		sub sp, sp, #8
+A180547A  F8CD E000		str lr, [sp]
+A180547E  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
 
-A1805446  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
-A180544A  F8DD E000		ldr lr, [sp]
-A180544E  B002     		add sp, sp, #8
+A1805482  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+A1805486  F8DD E000		ldr lr, [sp]
+A180548A  B002     		add sp, sp, #8
 
-A1805450  4770     		bx lr
+A180548C  4770     		bx lr
 
 
 
@@ -2897,23 +2959,23 @@ A1805450  4770     		bx lr
 	Task Timed init code
 **************************************************
 
-A1805452  B082     		sub sp, sp, #8
-A1805454  F8CD E000		str lr, [sp]
-A1805458  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+A180548E  B082     		sub sp, sp, #8
+A1805490  F8CD E000		str lr, [sp]
+A1805494  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
 
 Var init: V::SR_ATS_CTRL.TIME_SEC = 4000
-A180545C  F8DF 0018		ldr r0, [pc, #+24] ; 0xFA0
-A1805460  F8DF 7010		ldr r7, [pc, #+16] ; 0xA1A0007C
-A1805464  8038     		strh r0, [r7]
+A1805498  F8DF 0018		ldr r0, [pc, #+24] ; 0xFA0
+A180549C  F8DF 7010		ldr r7, [pc, #+16] ; 0xA1A0007C
+A18054A0  8038     		strh r0, [r7]
 
-A1805466  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
-A180546A  F8DD E000		ldr lr, [sp]
-A180546E  B002     		add sp, sp, #8
+A18054A2  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+A18054A6  F8DD E000		ldr lr, [sp]
+A18054AA  B002     		add sp, sp, #8
 
-A1805470  4770     		bx lr
+A18054AC  4770     		bx lr
 
-A1805474  A1A0007C		; 0xA1A0007C
-A1805478  00000FA0		; 0x00000FA0
+A18054B0  A1A0007C		; 0xA1A0007C
+A18054B4  00000FA0		; 0x00000FA0
 
 
 
@@ -2921,15 +2983,15 @@ A1805478  00000FA0		; 0x00000FA0
 	Global init code
 **************************************************
 
-A1805490  B082     		sub sp, sp, #8
-A1805492  F8CD E000		str lr, [sp]
-A1805496  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+A18054D0  B082     		sub sp, sp, #8
+A18054D2  F8CD E000		str lr, [sp]
+A18054D6  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
 
-A180549A  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
-A180549E  F8DD E000		ldr lr, [sp]
-A18054A2  B002     		add sp, sp, #8
+A18054DA  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+A18054DE  F8DD E000		ldr lr, [sp]
+A18054E2  B002     		add sp, sp, #8
 
-A18054A4  4770     		bx lr
+A18054E4  4770     		bx lr
 
 
 
@@ -2937,15 +2999,15 @@ A18054A4  4770     		bx lr
 	Global RETAIN init code
 **************************************************
 
-A18054A6  B082     		sub sp, sp, #8
-A18054A8  F8CD E000		str lr, [sp]
-A18054AC  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+A18054E6  B082     		sub sp, sp, #8
+A18054E8  F8CD E000		str lr, [sp]
+A18054EC  E92D 0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
 
-A18054B0  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
-A18054B4  F8DD E000		ldr lr, [sp]
-A18054B8  B002     		add sp, sp, #8
+A18054F0  E8BD 0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, r11 }
+A18054F4  F8DD E000		ldr lr, [sp]
+A18054F8  B002     		add sp, sp, #8
 
-A18054BA  4770     		bx lr
+A18054FA  4770     		bx lr
 
 
 
@@ -2955,8 +3017,8 @@ MEMORY MAP
 
 Code area type:          		       main code
 Start code area:          		00000000A1800000h
-End code area:            		00000000A1805924h
-Code size:                		00005924h
+End code area:            		00000000A1805964h
+Code size:                		00005964h
 
 Start local data area:    		00000000A1A00000h
 End local data area:      		00000000A1A000A4h
@@ -2973,7 +3035,7 @@ Bit data size:            		00000000h
 
 
 ********************************************
-CODE ID:                                65A2F9EC
+CODE ID:                                54D592B3
 DEBUG MEMO ID:                          A180B976
 FULL MEMO ID:                           0000FF2D
 ********************************************

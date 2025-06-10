@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?xml-stylesheet type ="text/xsl" href="file://C:/Users/Anton/AppData/Local/Temp/LLSymTab.xsl" version="1.0"?>
-<LLSymbolTable Version="1.4" Name="sw37" TargetID="M172P_596p15" CodeId="0x65A2F9EC" DebugMemoId="0xA180B976" MemoId="0x0000FF2D" DataRelocation="none" DbRelocation="patch" FunctRelocation="patch" dataAddrMode="byte" codeAddrMode="byte" NoIncrAlloc="false" is64bit="false" isBigEndian="false" dataSignature="0x28C14906">
+<LLSymbolTable Version="1.4" Name="sw37" TargetID="M172P_596p15" CodeId="0x54D592B3" DebugMemoId="0xA180B976" MemoId="0x0000FF2D" DataRelocation="none" DbRelocation="patch" FunctRelocation="patch" dataAddrMode="byte" codeAddrMode="byte" NoIncrAlloc="false" is64bit="false" isBigEndian="false" dataSignature="0xDBC18B8A">
 	<Resource Name="EWAD" Proc="ARMv7M"/>
 	<CaseSensitive>false</CaseSensitive>
 	<CompilerOptions FBExtCheck="true"/>
@@ -61,6 +61,7 @@
 		<Var Name="O_VAL_OPEN_FALL" OrigName="o_val_open_fall" Type="BOOL" OrigType="BOOL" Addr="0x100004AC" Descr="DOL1 digital output" Group="IO_Mapping" RelocationRecord="%Q1+0" OnDataBlock="true" DataBlockType="Q" DBDataType="X" DataBlockNumber="1" DataBlockIndex="0" Access="3"/>
 		<Var Name="PAR_POLI" OrigName="Par_POLI" Type="UINT" OrigType="UINT" Addr="0x10000182" Descr="Polycarbonate code" Group="System_Parameters_EEPROM_RAM_image" RelocationRecord="%M100+386" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="100" DataBlockIndex="193" Access="1"/>
 		<Var Name="I_PB_REM" OrigName="i_pb_rem" Type="INT" OrigType="INT" Addr="0xA1A00042" Descr="AIL8 analogue input" Task="Timed"/>
+		<Var Name="CMD" OrigName="CMD" Type="WORD" OrigType="WORD" Addr="0xA0003F22" Group="Status_variables" RelocationRecord="%M110+34" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="17" Access="3"/>
 		<Var Name="SYSTIMER" OrigName="sysTimer" Type="UDINT" OrigType="UDINT" Addr="0x1000052C" Descr="System timer [ms]" Group="System_Timers" RelocationRecord="%M0+0" OnDataBlock="true" DataBlockType="M" DBDataType="D" DataBlockNumber="0" DataBlockIndex="0" Access="1"/>
 		<Var Name="SV_WASHING" OrigName="sv_washing" Type="BOOL" OrigType="BOOL" Addr="0xA0003F26" Group="Status_variables" RelocationRecord="%M110+38" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="19" Access="3"/>
 		<Var Name="Q_START_ATS" OrigName="q_start_ats" Type="BOOL" OrigType="BOOL" Addr="0x100004B3" Descr="DOL8 digital output" Group="IO_Mapping" RelocationRecord="%Q1+7" OnDataBlock="true" DataBlockType="Q" DBDataType="X" DataBlockNumber="1" DataBlockIndex="7" Access="3"/>
@@ -71,7 +72,6 @@
 		<Var Name="I_RNPP" OrigName="i_rnpp" Type="BOOL" OrigType="BOOL" Addr="0x10000424" Descr="DIL5 digital input" Group="IO_Mapping" RelocationRecord="%I0+4" OnDataBlock="true" DataBlockType="I" DBDataType="X" DataBlockNumber="0" DataBlockIndex="4" Access="3"/>
 		<Var Name="I_RNPP" OrigName="i_rnpp" Type="BOOL" OrigType="BOOL" Addr="0xA1A00081" Descr="DIL5 digital input" Task="Timed"/>
 		<Var Name="I_NO_ALM_ATS" OrigName="i_no_alm_ats" Type="BOOL" OrigType="BOOL" Addr="0xA1A00082" Descr="DIL7 digital input" Task="Timed"/>
-		<Var Name="CMD" OrigName="CMD" Type="WORD" OrigType="WORD" Addr="0xA0003F22" Group="Status_variables" RelocationRecord="%M110+34" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="17" Access="3"/>
 		<Var Name="FDI_Q_CNT" OrigName="fdi_q_cnt" Type="UDINT" OrigType="UDINT" Addr="0x100004F8" Descr="FDI2 Input counter" Group="IO_Mapping" RelocationRecord="%M500+0" OnDataBlock="true" DataBlockType="M" DBDataType="B" DataBlockNumber="500" DataBlockIndex="0" Access="1"/>
 		<Var Name="Q_COUNTER" OrigName="q_counter" Type="DWORD" OrigType="DWORD" Addr="0xA0003F08" Group="Status_variables" RelocationRecord="%M110+8" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="4" Access="3"/>
 		<Var Name="FDI_Q_RESET" OrigName="fdi_q_reset" Type="BOOL" OrigType="BOOL" Addr="0x100007DD" Descr="FDI2 reset input counter value" Group="IO_Mapping" RelocationRecord="%M550+0" OnDataBlock="true" DataBlockType="M" DBDataType="X" DataBlockNumber="550" DataBlockIndex="0" Access="3"/>
@@ -489,7 +489,7 @@
 		<Var Name="SYSMODBUS_MSG_RECEIVED_RS485_PLUGIN" OrigName="sysMODBUS_msg_received_RS485_Plugin" Type="UDINT" OrigType="UDINT" Addr="0xA04866B4" Descr="Counter for modbus message received on RS485/232 Plugin" Group="System_Modbus_messages" RelocationRecord="%M5000+12" OnDataBlock="true" DataBlockType="M" DBDataType="D" DataBlockNumber="5000" DataBlockIndex="3" Access="3"/>
 		<Var Name="$$CODEBASE$$" OrigName="$$CODEBASE$$" Type="UDINT" OrigType="UDINT" Addr="0xA1800000"/>
 		<Var Name="$$CODESTART$$" OrigName="$$CODESTART$$" Type="UDINT" OrigType="UDINT" Addr="0xA18003F4"/>
-		<Var Name="$$CODESIZE$$" OrigName="$$CODESIZE$$" Type="UDINT" OrigType="UDINT" Addr="0xA1805924"/>
+		<Var Name="$$CODESIZE$$" OrigName="$$CODESIZE$$" Type="UDINT" OrigType="UDINT" Addr="0xA1805964"/>
 		<Var Name="$$CODEEND$$" OrigName="$$CODEEND$$" Type="UDINT" OrigType="UDINT" Addr="0xA1900000"/>
 		<Var Name="$$DATASIZE$$" OrigName="$$DATASIZE$$" Type="UDINT" OrigType="UDINT" Addr="0xA1A000A4"/>
 		<Var Name="$$AUXDATASIZE$$" OrigName="$$AUXDATASIZE$$" Type="UDINT" OrigType="UDINT" Addr="0x0"/>
@@ -508,7 +508,7 @@
 		</Prog>
 		<Prog Name="INIT_VAL" OrigName="init_val" SrcType="3" CodeAddr="0xA1804D40" HashCode="C31FDCCE"/>
 		<Prog Name="PARCHECK" OrigName="ParCheck" SrcType="3" CodeAddr="0xA1804DB4" HashCode="A281779A"/>
-		<Prog Name="SR_ATS_CTRL" OrigName="sr_ATS_Ctrl" SrcType="3" CodeAddr="0xA1805174" HashCode="E36EF98F">
+		<Prog Name="SR_ATS_CTRL" OrigName="sr_ATS_Ctrl" SrcType="3" CodeAddr="0xA1805174" HashCode="D4B80384">
 			<Var Name="DOWNTIMEIN" OrigName="downtimeIN" Type="BOOL" OrigType="BOOL" Addr="0xA1A00041"/>
 			<Var Name="CHECKWASHANDSTART" OrigName="checkWashAndStart" Type="CHECKWASHANDSTART" OrigType="CheckWashAndStart" Addr="0xA1A00044"/>
 			<Var Name="TIME_SEC" OrigName="time_sec" Type="INT" OrigType="INT" Addr="0xA1A0007C"/>
