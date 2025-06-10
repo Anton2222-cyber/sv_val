@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?xml-stylesheet type ="text/xsl" href="file://C:/Users/Anton/AppData/Local/Temp/LLSymTab.xsl" version="1.0"?>
-<LLSymbolTable Version="1.4" Name="sw38" TargetID="M172P_596p15" CodeId="0xC5F6E1AD" DebugMemoId="0x00007A51" MemoId="0x00006FB0" DataRelocation="patch" DbRelocation="patch" FunctRelocation="patch" dataAddrMode="byte" codeAddrMode="byte" NoIncrAlloc="false" is64bit="false" isBigEndian="false" dataSignature="0xF9BBB05C">
+<LLSymbolTable Version="1.4" Name="sw38" TargetID="M172P_596p15" CodeId="0xC5F6E1AD" DebugMemoId="0x00007A51" MemoId="0x0000CE29" DataRelocation="patch" DbRelocation="patch" FunctRelocation="patch" dataAddrMode="byte" codeAddrMode="byte" NoIncrAlloc="false" is64bit="false" isBigEndian="false" dataSignature="0xF9BBB05C">
 	<Resource Name="EWAD_HMI" Proc="ARMv7M"/>
 	<CaseSensitive>false</CaseSensitive>
 	<CompilerOptions FBExtCheck="true"/>
@@ -13,9 +13,9 @@
 		</Task>
 	</Tasks>
 	<GlobalVars>
-		<Var Name="$$STKLIMIT$$" OrigName="$$STKLIMIT$$" Type="DWORD" OrigType="DWORD" Addr="0x7EF0000" Group="$$COMPILER_INTERNAL_VARS$$" RelocationRecord="$$DATA$$+0"/>
-		<Var Name="$$STKPOINTER$$" OrigName="$$STKPOINTER$$" Type="DWORD" OrigType="DWORD" Addr="0x7EF0004" Group="$$COMPILER_INTERNAL_VARS$$" RelocationRecord="$$DATA$$+4"/>
-		<Var Name="$$DEBUGID$$" OrigName="$$DEBUGID$$" Type="DWORD" OrigType="DWORD" Addr="0x7EF0008" Group="$$COMPILER_INTERNAL_VARS$$" RelocationRecord="$$DATA$$+8"/>
+		<Var Name="$$STKLIMIT$$" OrigName="$$STKLIMIT$$" Type="DWORD" OrigType="DWORD" Addr="0x8680000" Group="$$COMPILER_INTERNAL_VARS$$" RelocationRecord="$$DATA$$+0"/>
+		<Var Name="$$STKPOINTER$$" OrigName="$$STKPOINTER$$" Type="DWORD" OrigType="DWORD" Addr="0x8680004" Group="$$COMPILER_INTERNAL_VARS$$" RelocationRecord="$$DATA$$+4"/>
+		<Var Name="$$DEBUGID$$" OrigName="$$DEBUGID$$" Type="DWORD" OrigType="DWORD" Addr="0x8680008" Group="$$COMPILER_INTERNAL_VARS$$" RelocationRecord="$$DATA$$+8"/>
 		<Const Name="KACS_MODIFY" OrigName="kACS_MODIFY" Type="USINT" OrigType="USINT">4</Const>
 		<Const Name="KACS_INIT" OrigName="kACS_INIT" Type="USINT" OrigType="USINT">1</Const>
 		<Const Name="KACS_PRINT" OrigName="kACS_PRINT" Type="USINT" OrigType="USINT">2</Const>
@@ -23,10 +23,10 @@
 		<Const Name="KWM_KEY" OrigName="kWM_KEY" Type="UINT" OrigType="UINT">1</Const>
 		<Const Name="KKEY_UP" OrigName="kKEY_Up" Type="USINT" OrigType="USINT">11</Const>
 		<Const Name="KKEY_DOWN" OrigName="kKEY_Down" Type="USINT" OrigType="USINT">10</Const>
-		<Var Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x7EF000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
-		<Var Name="$GIBACKBUFFERCURR" OrigName="$giBackBufferCurr" Type="INT" OrigType="INT" Addr="0x7EF0010" Group="Back_buffer" RelocationRecord="$$DATA$$+16"/>
-		<Var Name="$GIBACKBUFFERFIRST" OrigName="$giBackBufferFirst" Type="INT" OrigType="INT" Addr="0x7EF0012" Group="Back_buffer" RelocationRecord="$$DATA$$+18"/>
-		<Var Name="$GIBACKBUFFERLAST" OrigName="$giBackBufferLast" Type="INT" OrigType="INT" Addr="0x7EF0014" Group="Back_buffer" RelocationRecord="$$DATA$$+20"/>
+		<Var Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x868000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
+		<Var Name="$GIBACKBUFFERCURR" OrigName="$giBackBufferCurr" Type="INT" OrigType="INT" Addr="0x8680010" Group="Back_buffer" RelocationRecord="$$DATA$$+16"/>
+		<Var Name="$GIBACKBUFFERFIRST" OrigName="$giBackBufferFirst" Type="INT" OrigType="INT" Addr="0x8680012" Group="Back_buffer" RelocationRecord="$$DATA$$+18"/>
+		<Var Name="$GIBACKBUFFERLAST" OrigName="$giBackBufferLast" Type="INT" OrigType="INT" Addr="0x8680014" Group="Back_buffer" RelocationRecord="$$DATA$$+20"/>
 		<Const Name="KKEY_ENTER" OrigName="kKEY_Enter" Type="USINT" OrigType="USINT">13</Const>
 		<Const Name="KKEY_LONGLEFT" OrigName="kKEY_LongLeft" Type="USINT" OrigType="USINT">15</Const>
 		<Const Name="KKEY_LEFT" OrigName="kKEY_Left" Type="USINT" OrigType="USINT">8</Const>
@@ -35,75 +35,75 @@
 		<Const Name="KKEY_LONGDOWN" OrigName="kKEY_LongDown" Type="USINT" OrigType="USINT">18</Const>
 		<Const Name="EWP2_6X8_LEN" OrigName="EWP2_6x8_len" Type="USINT" OrigType="USINT">6</Const>
 		<Const Name="EWP2_6X8_HEI" OrigName="EWP2_6x8_hei" Type="USINT" OrigType="USINT">8</Const>
-		<Var Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x7EF0018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
-		<Var Name="$GUIBACKBUFFER" OrigName="$guiBackBuffer" Type="UINT" OrigType="UINT" Addr="0x7EF0070" Group="Back_buffer" RelocationRecord="$$DATA$$+112" Dims="10"/>
-		<Var Name="FBBACKPAGE" OrigName="fbBackPage" Type="DRAWBACKPAGE" OrigType="DrawBackPage" Addr="0x7EF0060" Group="Back_page_manager" RelocationRecord="$$DATA$$+96"/>
-		<Var Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x7EF000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
-		<Var Name="FBFIRSTBUTTON_1" OrigName="fbfirstButton_1" Type="BUTTON02" OrigType="Button02" Addr="0x7EF0084" Group="first_vars" RelocationRecord="$$DATA$$+132"/>
-		<Var Name="FBFIRSTBUTTON_2" OrigName="fbfirstButton_2" Type="BUTTON02" OrigType="Button02" Addr="0x7EF00C5" Group="first_vars" RelocationRecord="$$DATA$$+197"/>
-		<Var Name="FBFIRSTBUTTON_3" OrigName="fbfirstButton_3" Type="BUTTON02" OrigType="Button02" Addr="0x7EF0106" Group="first_vars" RelocationRecord="$$DATA$$+262"/>
-		<Var Name="FBFIRSTBUTTON_4" OrigName="fbfirstButton_4" Type="BUTTON02" OrigType="Button02" Addr="0x7EF0147" Group="first_vars" RelocationRecord="$$DATA$$+327"/>
-		<Var Name="FBFIRST" OrigName="fbfirst" Type="DRAWFIRST" OrigType="Drawfirst" Addr="0x7EF002C" Group="first_vars" RelocationRecord="$$DATA$$+44"/>
-		<Var Name="FBMAINEDIT_1" OrigName="fbmainEdit_1" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF01BC" Group="main_vars" RelocationRecord="$$DATA$$+444"/>
-		<Var Name="FBMAINSTRING_2" OrigName="fbmainString_2" Type="STATIC01" OrigType="Static01" Addr="0x7EF0201" Group="main_vars" RelocationRecord="$$DATA$$+513"/>
-		<Var Name="FBMAINSTRING_3" OrigName="fbmainString_3" Type="STATIC01" OrigType="Static01" Addr="0x7EF0238" Group="main_vars" RelocationRecord="$$DATA$$+568"/>
-		<Var Name="FBMAINSTRING_4" OrigName="fbmainString_4" Type="STATIC01" OrigType="Static01" Addr="0x7EF026F" Group="main_vars" RelocationRecord="$$DATA$$+623"/>
-		<Var Name="FBMAINEDIT_5" OrigName="fbmainEdit_5" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF02A6" Group="main_vars" RelocationRecord="$$DATA$$+678"/>
-		<Var Name="FBMAINSTRING_6" OrigName="fbmainString_6" Type="STATIC01" OrigType="Static01" Addr="0x7EF02EB" Group="main_vars" RelocationRecord="$$DATA$$+747"/>
-		<Var Name="FBMAINSTRING_8" OrigName="fbmainString_8" Type="STATIC01" OrigType="Static01" Addr="0x7EF0322" Group="main_vars" RelocationRecord="$$DATA$$+802"/>
-		<Var Name="FBMAINEDIT_9" OrigName="fbmainEdit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0359" Group="main_vars" RelocationRecord="$$DATA$$+857"/>
-		<Var Name="FBMAINSTRING_10" OrigName="fbmainString_10" Type="STATIC01" OrigType="Static01" Addr="0x7EF039E" Group="main_vars" RelocationRecord="$$DATA$$+926"/>
-		<Var Name="FBMAINEDIT_11" OrigName="fbmainEdit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF03D5" Group="main_vars" RelocationRecord="$$DATA$$+981"/>
-		<Var Name="FBMAINSTRING_12" OrigName="fbmainString_12" Type="STATIC01" OrigType="Static01" Addr="0x7EF041A" Group="main_vars" RelocationRecord="$$DATA$$+1050"/>
-		<Var Name="FBMAINEDIT_13" OrigName="fbmainEdit_13" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0451" Group="main_vars" RelocationRecord="$$DATA$$+1105"/>
-		<Var Name="FBMAINSTRING_14" OrigName="fbmainString_14" Type="STATIC01" OrigType="Static01" Addr="0x7EF0496" Group="main_vars" RelocationRecord="$$DATA$$+1174"/>
-		<Var Name="FBMAINEDIT_15" OrigName="fbmainEdit_15" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF04CD" Group="main_vars" RelocationRecord="$$DATA$$+1229"/>
-		<Var Name="FBMAIN" OrigName="fbmain" Type="DRAWMAIN" OrigType="Drawmain" Addr="0x7EF0188" Group="main_vars" RelocationRecord="$$DATA$$+392"/>
-		<Var Name="FBSETUPRS2STRING_1" OrigName="fbSetupRS2String_1" Type="STATIC01" OrigType="Static01" Addr="0x7EF0548" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1352"/>
-		<Var Name="FBSETUPRS2STRING_2" OrigName="fbSetupRS2String_2" Type="STATIC01" OrigType="Static01" Addr="0x7EF057F" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1407"/>
-		<Var Name="FBSETUPRS2STRING_3" OrigName="fbSetupRS2String_3" Type="STATIC01" OrigType="Static01" Addr="0x7EF05B6" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1462"/>
-		<Var Name="FBSETUPRS2STRING_4" OrigName="fbSetupRS2String_4" Type="STATIC01" OrigType="Static01" Addr="0x7EF05ED" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1517"/>
-		<Var Name="FBSETUPRS2STRING_5" OrigName="fbSetupRS2String_5" Type="STATIC01" OrigType="Static01" Addr="0x7EF0624" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1572"/>
-		<Var Name="FBSETUPRS2STRING_6" OrigName="fbSetupRS2String_6" Type="STATIC01" OrigType="Static01" Addr="0x7EF065B" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1627"/>
-		<Var Name="FBSETUPRS2EDIT_7" OrigName="fbSetupRS2Edit_7" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0692" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1682"/>
-		<Var Name="FBSETUPRS2EDIT_8" OrigName="fbSetupRS2Edit_8" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF06D7" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1751"/>
-		<Var Name="FBSETUPRS2EDIT_9" OrigName="fbSetupRS2Edit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF071C" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1820"/>
-		<Var Name="FBSETUPRS2EDIT_10" OrigName="fbSetupRS2Edit_10" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0761" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1889"/>
-		<Var Name="FBSETUPRS2EDIT_11" OrigName="fbSetupRS2Edit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF07A6" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1958"/>
-		<Var Name="FBSETUPRS2EDIT_12" OrigName="fbSetupRS2Edit_12" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF07EB" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+2027"/>
-		<Var Name="FBSETUPRS2" OrigName="fbSetupRS2" Type="DRAWSETUPRS2" OrigType="DrawSetupRS2" Addr="0x7EF0514" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1300"/>
-		<Var Name="FBSETUPIPSTRING_1" OrigName="fbSetupIPString_1" Type="STATIC01" OrigType="Static01" Addr="0x7EF0864" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2148"/>
-		<Var Name="FBSETUPIPSTRING_2" OrigName="fbSetupIPString_2" Type="STATIC01" OrigType="Static01" Addr="0x7EF089B" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2203"/>
-		<Var Name="FBSETUPIPSTRING_3" OrigName="fbSetupIPString_3" Type="STATIC01" OrigType="Static01" Addr="0x7EF08D2" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2258"/>
-		<Var Name="FBSETUPIPSTRING_4" OrigName="fbSetupIPString_4" Type="STATIC01" OrigType="Static01" Addr="0x7EF0909" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2313"/>
-		<Var Name="FBSETUPIPEDIT_5" OrigName="fbSetupIPEdit_5" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0940" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2368"/>
-		<Var Name="FBSETUPIPEDIT_6" OrigName="fbSetupIPEdit_6" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0985" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2437"/>
-		<Var Name="FBSETUPIPEDIT_7" OrigName="fbSetupIPEdit_7" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF09CA" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2506"/>
-		<Var Name="FBSETUPIPEDIT_8" OrigName="fbSetupIPEdit_8" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0A0F" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2575"/>
-		<Var Name="FBSETUPIPEDIT_9" OrigName="fbSetupIPEdit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0A54" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2644"/>
-		<Var Name="FBSETUPIPEDIT_10" OrigName="fbSetupIPEdit_10" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0A99" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2713"/>
-		<Var Name="FBSETUPIPEDIT_11" OrigName="fbSetupIPEdit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0ADE" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2782"/>
-		<Var Name="FBSETUPIPEDIT_12" OrigName="fbSetupIPEdit_12" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0B23" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2851"/>
-		<Var Name="FBSETUPIPEDIT_13" OrigName="fbSetupIPEdit_13" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0B68" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2920"/>
-		<Var Name="FBSETUPIPEDIT_14" OrigName="fbSetupIPEdit_14" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0BAD" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2989"/>
-		<Var Name="FBSETUPIPEDIT_15" OrigName="fbSetupIPEdit_15" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0BF2" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3058"/>
-		<Var Name="FBSETUPIPEDIT_16" OrigName="fbSetupIPEdit_16" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0C37" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3127"/>
-		<Var Name="FBSETUPIPEDIT_17" OrigName="fbSetupIPEdit_17" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0C7C" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3196"/>
-		<Var Name="FBSETUPIPEDIT_18" OrigName="fbSetupIPEdit_18" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0CC1" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3265"/>
-		<Var Name="FBSETUPIPEDIT_19" OrigName="fbSetupIPEdit_19" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0D06" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3334"/>
-		<Var Name="FBSETUPIPEDIT_20" OrigName="fbSetupIPEdit_20" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0D4B" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3403"/>
-		<Var Name="FBSETUPIP" OrigName="fbSetupIP" Type="DRAWSETUPIP" OrigType="DrawSetupIP" Addr="0x7EF0830" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2096"/>
-		<Var Name="FBUPDATECOUNTERSTRING_1" OrigName="fbupdateCounterString_1" Type="STATIC01" OrigType="Static01" Addr="0x7EF0DC4" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3524"/>
-		<Var Name="FBUPDATECOUNTEREDIT_2" OrigName="fbupdateCounterEdit_2" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0DFB" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3579"/>
-		<Var Name="FBUPDATECOUNTERSTRING_3" OrigName="fbupdateCounterString_3" Type="STATIC01" OrigType="Static01" Addr="0x7EF0E40" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3648"/>
-		<Var Name="FBUPDATECOUNTEREDIT_4" OrigName="fbupdateCounterEdit_4" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0E77" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3703"/>
-		<Var Name="FBUPDATECOUNTERBUTTON_5" OrigName="fbupdateCounterButton_5" Type="BUTTON02" OrigType="Button02" Addr="0x7EF0EBC" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3772"/>
-		<Var Name="FBUPDATECOUNTER" OrigName="fbupdateCounter" Type="DRAWUPDATECOUNTER" OrigType="DrawupdateCounter" Addr="0x7EF0D90" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3472"/>
-		<Var Name="FBREFRFIRST" OrigName="fbRefrfirst" Type="REFRFIRST" OrigType="Refrfirst" Addr="0x7EF0EFE" Group="first_vars" RelocationRecord="$$DATA$$+3838"/>
-		<Var Name="FBREFRMAIN" OrigName="fbRefrmain" Type="REFRMAIN" OrigType="Refrmain" Addr="0x7EF0F18" Group="main_vars" RelocationRecord="$$DATA$$+3864"/>
-		<Var Name="FBREFRSETUPRS2" OrigName="fbRefrSetupRS2" Type="REFRSETUPRS2" OrigType="RefrSetupRS2" Addr="0x7EF0F32" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+3890"/>
-		<Var Name="FBREFRSETUPIP" OrigName="fbRefrSetupIP" Type="REFRSETUPIP" OrigType="RefrSetupIP" Addr="0x7EF0F4C" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3916"/>
-		<Var Name="FBREFRUPDATECOUNTER" OrigName="fbRefrupdateCounter" Type="REFRUPDATECOUNTER" OrigType="RefrupdateCounter" Addr="0x7EF0F66" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3942"/>
+		<Var Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x8680018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
+		<Var Name="$GUIBACKBUFFER" OrigName="$guiBackBuffer" Type="UINT" OrigType="UINT" Addr="0x8680070" Group="Back_buffer" RelocationRecord="$$DATA$$+112" Dims="10"/>
+		<Var Name="FBBACKPAGE" OrigName="fbBackPage" Type="DRAWBACKPAGE" OrigType="DrawBackPage" Addr="0x8680060" Group="Back_page_manager" RelocationRecord="$$DATA$$+96"/>
+		<Var Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x868000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
+		<Var Name="FBFIRSTBUTTON_1" OrigName="fbfirstButton_1" Type="BUTTON02" OrigType="Button02" Addr="0x8680084" Group="first_vars" RelocationRecord="$$DATA$$+132"/>
+		<Var Name="FBFIRSTBUTTON_2" OrigName="fbfirstButton_2" Type="BUTTON02" OrigType="Button02" Addr="0x86800C5" Group="first_vars" RelocationRecord="$$DATA$$+197"/>
+		<Var Name="FBFIRSTBUTTON_3" OrigName="fbfirstButton_3" Type="BUTTON02" OrigType="Button02" Addr="0x8680106" Group="first_vars" RelocationRecord="$$DATA$$+262"/>
+		<Var Name="FBFIRSTBUTTON_4" OrigName="fbfirstButton_4" Type="BUTTON02" OrigType="Button02" Addr="0x8680147" Group="first_vars" RelocationRecord="$$DATA$$+327"/>
+		<Var Name="FBFIRST" OrigName="fbfirst" Type="DRAWFIRST" OrigType="Drawfirst" Addr="0x868002C" Group="first_vars" RelocationRecord="$$DATA$$+44"/>
+		<Var Name="FBMAINEDIT_1" OrigName="fbmainEdit_1" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86801BC" Group="main_vars" RelocationRecord="$$DATA$$+444"/>
+		<Var Name="FBMAINSTRING_2" OrigName="fbmainString_2" Type="STATIC01" OrigType="Static01" Addr="0x8680201" Group="main_vars" RelocationRecord="$$DATA$$+513"/>
+		<Var Name="FBMAINSTRING_3" OrigName="fbmainString_3" Type="STATIC01" OrigType="Static01" Addr="0x8680238" Group="main_vars" RelocationRecord="$$DATA$$+568"/>
+		<Var Name="FBMAINSTRING_4" OrigName="fbmainString_4" Type="STATIC01" OrigType="Static01" Addr="0x868026F" Group="main_vars" RelocationRecord="$$DATA$$+623"/>
+		<Var Name="FBMAINEDIT_5" OrigName="fbmainEdit_5" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86802A6" Group="main_vars" RelocationRecord="$$DATA$$+678"/>
+		<Var Name="FBMAINSTRING_6" OrigName="fbmainString_6" Type="STATIC01" OrigType="Static01" Addr="0x86802EB" Group="main_vars" RelocationRecord="$$DATA$$+747"/>
+		<Var Name="FBMAINSTRING_8" OrigName="fbmainString_8" Type="STATIC01" OrigType="Static01" Addr="0x8680322" Group="main_vars" RelocationRecord="$$DATA$$+802"/>
+		<Var Name="FBMAINEDIT_9" OrigName="fbmainEdit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680359" Group="main_vars" RelocationRecord="$$DATA$$+857"/>
+		<Var Name="FBMAINSTRING_10" OrigName="fbmainString_10" Type="STATIC01" OrigType="Static01" Addr="0x868039E" Group="main_vars" RelocationRecord="$$DATA$$+926"/>
+		<Var Name="FBMAINEDIT_11" OrigName="fbmainEdit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86803D5" Group="main_vars" RelocationRecord="$$DATA$$+981"/>
+		<Var Name="FBMAINSTRING_12" OrigName="fbmainString_12" Type="STATIC01" OrigType="Static01" Addr="0x868041A" Group="main_vars" RelocationRecord="$$DATA$$+1050"/>
+		<Var Name="FBMAINEDIT_13" OrigName="fbmainEdit_13" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680451" Group="main_vars" RelocationRecord="$$DATA$$+1105"/>
+		<Var Name="FBMAINSTRING_14" OrigName="fbmainString_14" Type="STATIC01" OrigType="Static01" Addr="0x8680496" Group="main_vars" RelocationRecord="$$DATA$$+1174"/>
+		<Var Name="FBMAINEDIT_15" OrigName="fbmainEdit_15" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86804CD" Group="main_vars" RelocationRecord="$$DATA$$+1229"/>
+		<Var Name="FBMAIN" OrigName="fbmain" Type="DRAWMAIN" OrigType="Drawmain" Addr="0x8680188" Group="main_vars" RelocationRecord="$$DATA$$+392"/>
+		<Var Name="FBSETUPRS2STRING_1" OrigName="fbSetupRS2String_1" Type="STATIC01" OrigType="Static01" Addr="0x8680548" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1352"/>
+		<Var Name="FBSETUPRS2STRING_2" OrigName="fbSetupRS2String_2" Type="STATIC01" OrigType="Static01" Addr="0x868057F" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1407"/>
+		<Var Name="FBSETUPRS2STRING_3" OrigName="fbSetupRS2String_3" Type="STATIC01" OrigType="Static01" Addr="0x86805B6" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1462"/>
+		<Var Name="FBSETUPRS2STRING_4" OrigName="fbSetupRS2String_4" Type="STATIC01" OrigType="Static01" Addr="0x86805ED" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1517"/>
+		<Var Name="FBSETUPRS2STRING_5" OrigName="fbSetupRS2String_5" Type="STATIC01" OrigType="Static01" Addr="0x8680624" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1572"/>
+		<Var Name="FBSETUPRS2STRING_6" OrigName="fbSetupRS2String_6" Type="STATIC01" OrigType="Static01" Addr="0x868065B" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1627"/>
+		<Var Name="FBSETUPRS2EDIT_7" OrigName="fbSetupRS2Edit_7" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680692" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1682"/>
+		<Var Name="FBSETUPRS2EDIT_8" OrigName="fbSetupRS2Edit_8" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86806D7" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1751"/>
+		<Var Name="FBSETUPRS2EDIT_9" OrigName="fbSetupRS2Edit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x868071C" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1820"/>
+		<Var Name="FBSETUPRS2EDIT_10" OrigName="fbSetupRS2Edit_10" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680761" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1889"/>
+		<Var Name="FBSETUPRS2EDIT_11" OrigName="fbSetupRS2Edit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86807A6" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1958"/>
+		<Var Name="FBSETUPRS2EDIT_12" OrigName="fbSetupRS2Edit_12" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86807EB" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+2027"/>
+		<Var Name="FBSETUPRS2" OrigName="fbSetupRS2" Type="DRAWSETUPRS2" OrigType="DrawSetupRS2" Addr="0x8680514" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1300"/>
+		<Var Name="FBSETUPIPSTRING_1" OrigName="fbSetupIPString_1" Type="STATIC01" OrigType="Static01" Addr="0x8680864" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2148"/>
+		<Var Name="FBSETUPIPSTRING_2" OrigName="fbSetupIPString_2" Type="STATIC01" OrigType="Static01" Addr="0x868089B" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2203"/>
+		<Var Name="FBSETUPIPSTRING_3" OrigName="fbSetupIPString_3" Type="STATIC01" OrigType="Static01" Addr="0x86808D2" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2258"/>
+		<Var Name="FBSETUPIPSTRING_4" OrigName="fbSetupIPString_4" Type="STATIC01" OrigType="Static01" Addr="0x8680909" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2313"/>
+		<Var Name="FBSETUPIPEDIT_5" OrigName="fbSetupIPEdit_5" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680940" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2368"/>
+		<Var Name="FBSETUPIPEDIT_6" OrigName="fbSetupIPEdit_6" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680985" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2437"/>
+		<Var Name="FBSETUPIPEDIT_7" OrigName="fbSetupIPEdit_7" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86809CA" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2506"/>
+		<Var Name="FBSETUPIPEDIT_8" OrigName="fbSetupIPEdit_8" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680A0F" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2575"/>
+		<Var Name="FBSETUPIPEDIT_9" OrigName="fbSetupIPEdit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680A54" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2644"/>
+		<Var Name="FBSETUPIPEDIT_10" OrigName="fbSetupIPEdit_10" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680A99" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2713"/>
+		<Var Name="FBSETUPIPEDIT_11" OrigName="fbSetupIPEdit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680ADE" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2782"/>
+		<Var Name="FBSETUPIPEDIT_12" OrigName="fbSetupIPEdit_12" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680B23" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2851"/>
+		<Var Name="FBSETUPIPEDIT_13" OrigName="fbSetupIPEdit_13" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680B68" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2920"/>
+		<Var Name="FBSETUPIPEDIT_14" OrigName="fbSetupIPEdit_14" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680BAD" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2989"/>
+		<Var Name="FBSETUPIPEDIT_15" OrigName="fbSetupIPEdit_15" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680BF2" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3058"/>
+		<Var Name="FBSETUPIPEDIT_16" OrigName="fbSetupIPEdit_16" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680C37" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3127"/>
+		<Var Name="FBSETUPIPEDIT_17" OrigName="fbSetupIPEdit_17" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680C7C" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3196"/>
+		<Var Name="FBSETUPIPEDIT_18" OrigName="fbSetupIPEdit_18" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680CC1" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3265"/>
+		<Var Name="FBSETUPIPEDIT_19" OrigName="fbSetupIPEdit_19" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680D06" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3334"/>
+		<Var Name="FBSETUPIPEDIT_20" OrigName="fbSetupIPEdit_20" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680D4B" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3403"/>
+		<Var Name="FBSETUPIP" OrigName="fbSetupIP" Type="DRAWSETUPIP" OrigType="DrawSetupIP" Addr="0x8680830" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2096"/>
+		<Var Name="FBUPDATECOUNTERSTRING_1" OrigName="fbupdateCounterString_1" Type="STATIC01" OrigType="Static01" Addr="0x8680DC4" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3524"/>
+		<Var Name="FBUPDATECOUNTEREDIT_2" OrigName="fbupdateCounterEdit_2" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680DFB" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3579"/>
+		<Var Name="FBUPDATECOUNTERSTRING_3" OrigName="fbupdateCounterString_3" Type="STATIC01" OrigType="Static01" Addr="0x8680E40" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3648"/>
+		<Var Name="FBUPDATECOUNTEREDIT_4" OrigName="fbupdateCounterEdit_4" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680E77" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3703"/>
+		<Var Name="FBUPDATECOUNTERBUTTON_5" OrigName="fbupdateCounterButton_5" Type="BUTTON02" OrigType="Button02" Addr="0x8680EBC" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3772"/>
+		<Var Name="FBUPDATECOUNTER" OrigName="fbupdateCounter" Type="DRAWUPDATECOUNTER" OrigType="DrawupdateCounter" Addr="0x8680D90" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3472"/>
+		<Var Name="FBREFRFIRST" OrigName="fbRefrfirst" Type="REFRFIRST" OrigType="Refrfirst" Addr="0x8680EFE" Group="first_vars" RelocationRecord="$$DATA$$+3838"/>
+		<Var Name="FBREFRMAIN" OrigName="fbRefrmain" Type="REFRMAIN" OrigType="Refrmain" Addr="0x8680F18" Group="main_vars" RelocationRecord="$$DATA$$+3864"/>
+		<Var Name="FBREFRSETUPRS2" OrigName="fbRefrSetupRS2" Type="REFRSETUPRS2" OrigType="RefrSetupRS2" Addr="0x8680F32" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+3890"/>
+		<Var Name="FBREFRSETUPIP" OrigName="fbRefrSetupIP" Type="REFRSETUPIP" OrigType="RefrSetupIP" Addr="0x8680F4C" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3916"/>
+		<Var Name="FBREFRUPDATECOUNTER" OrigName="fbRefrupdateCounter" Type="REFRUPDATECOUNTER" OrigType="RefrupdateCounter" Addr="0x8680F66" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3942"/>
 		<Var Name="SYSLANGID" OrigName="sysLangID" Type="WORD" OrigType="WORD" Addr="0x71390EA2" Descr="HMI active Language ID" Group="Ungrouped_vars" RelocationRecord="%M99+0" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="99" DataBlockIndex="0" Access="3"/>
 		<Var Name="SYSLOCALLEDS" OrigName="sysLocalLeds" Type="USINT" OrigType="USINT" Addr="0x71390FCC" Descr="Local Leds Status. ..." Group="Led_and_Backlight_Status" RelocationRecord="%Q2+0" OnDataBlock="true" DataBlockType="Q" DBDataType="B" DataBlockNumber="2" DataBlockIndex="0" Access="3" Dims="3"/>
 		<Var Name="SYSBACKLIGHT" OrigName="sysBacklight" Type="USINT" OrigType="USINT" Addr="0x71390FCF" Descr="Backlight Status. ..." Group="Led_and_Backlight_Status" RelocationRecord="%Q3+0" OnDataBlock="true" DataBlockType="Q" DBDataType="B" DataBlockNumber="3" DataBlockIndex="0" Access="3"/>
@@ -112,27 +112,27 @@
 		<Var Name="SYSVER" OrigName="sysVER" Type="UINT" OrigType="UINT" Addr="0x7138B05C" Descr="Version number" Group="System_BIOS_version" RelocationRecord="%M33+0" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="33" DataBlockIndex="0" Access="1"/>
 		<Var Name="SYSKEYPRESSED" OrigName="sysKeyPressed" Type="DWORD" OrigType="DWORD" Addr="0x7138B1C8" Descr="Last key pressed code. ..." Group="Keyboard" RelocationRecord="%M3104+0" OnDataBlock="true" DataBlockType="M" DBDataType="B" DataBlockNumber="3104" DataBlockIndex="0" Access="3"/>
 		<Var Name="SYSCURRENTSELECTEDPOSITION" OrigName="sysCurrentSelectedPosition" Type="UINT" OrigType="UINT" Addr="0x7138B1C4" Descr="Current selected position into current page order." Group="Keyboard" RelocationRecord="%M3105+0" OnDataBlock="true" DataBlockType="M" DBDataType="B" DataBlockNumber="3105" DataBlockIndex="0" Access="1"/>
-		<Var Name="$$POUCBARRAY$$DRAW" OrigName="$$POUCBARRAY$$Draw" Type="@$$STRUPOUTCB$$" OrigType="@$$STRUPOUTCB$$" Addr="0x7EF0F80" RelocationRecord="$$DATA$$+3968" Dims="2"/>
-		<Var Name="$$POUCBARRAY$$REFRESH" OrigName="$$POUCBARRAY$$Refresh" Type="@$$STRUPOUTCB$$" OrigType="@$$STRUPOUTCB$$" Addr="0x7EF0F88" RelocationRecord="$$DATA$$+3976" Dims="2"/>
+		<Var Name="$$POUCBARRAY$$DRAW" OrigName="$$POUCBARRAY$$Draw" Type="@$$STRUPOUTCB$$" OrigType="@$$STRUPOUTCB$$" Addr="0x8680F80" RelocationRecord="$$DATA$$+3968" Dims="2"/>
+		<Var Name="$$POUCBARRAY$$REFRESH" OrigName="$$POUCBARRAY$$Refresh" Type="@$$STRUPOUTCB$$" OrigType="@$$STRUPOUTCB$$" Addr="0x8680F88" RelocationRecord="$$DATA$$+3976" Dims="2"/>
 		<Const Name="0" OrigName="0" Type="USINT" OrigType="USINT">0</Const>
 		<Const Name="0" OrigName="0" Type="USINT" OrigType="USINT">0</Const>
-		<Var Name="$$CODEBASE$$" OrigName="$$CODEBASE$$" Type="UDINT" OrigType="UDINT" Addr="0x7F70000" RelocationRecord="$$CODE$$+0"/>
-		<Var Name="$$CODESTART$$" OrigName="$$CODESTART$$" Type="UDINT" OrigType="UDINT" Addr="0x7F70AEC" RelocationRecord="$$CODE$$+2796"/>
-		<Var Name="$$CODESIZE$$" OrigName="$$CODESIZE$$" Type="UDINT" OrigType="UDINT" Addr="0x7F7D64C" RelocationRecord="$$CODE$$+54860"/>
-		<Var Name="$$CODEEND$$" OrigName="$$CODEEND$$" Type="UDINT" OrigType="UDINT" Addr="0x80F0000" RelocationRecord="$$CODE$$+1572864"/>
-		<Var Name="$$DATASIZE$$" OrigName="$$DATASIZE$$" Type="UDINT" OrigType="UDINT" Addr="0x7EF0F9C" RelocationRecord="$$DATA$$+3996"/>
+		<Var Name="$$CODEBASE$$" OrigName="$$CODEBASE$$" Type="UDINT" OrigType="UDINT" Addr="0x8700000" RelocationRecord="$$CODE$$+0"/>
+		<Var Name="$$CODESTART$$" OrigName="$$CODESTART$$" Type="UDINT" OrigType="UDINT" Addr="0x8700AEC" RelocationRecord="$$CODE$$+2796"/>
+		<Var Name="$$CODESIZE$$" OrigName="$$CODESIZE$$" Type="UDINT" OrigType="UDINT" Addr="0x870D64C" RelocationRecord="$$CODE$$+54860"/>
+		<Var Name="$$CODEEND$$" OrigName="$$CODEEND$$" Type="UDINT" OrigType="UDINT" Addr="0x8880000" RelocationRecord="$$CODE$$+1572864"/>
+		<Var Name="$$DATASIZE$$" OrigName="$$DATASIZE$$" Type="UDINT" OrigType="UDINT" Addr="0x8680F9C" RelocationRecord="$$DATA$$+3996"/>
 		<Var Name="$$AUXDATASIZE$$" OrigName="$$AUXDATASIZE$$" Type="UDINT" OrigType="UDINT" Addr="0x0" RelocationRecord="$$AUXDATA$$+0"/>
 		<Var Name="$$BITDATASIZE$$" OrigName="$$BITDATASIZE$$" Type="UDINT" OrigType="UDINT" Addr="0x0" RelocationRecord="$$BITDATA$$+0"/>
 		<Var Name="$$RITDATASIZE$$" OrigName="$$RITDATASIZE$$" Type="UDINT" OrigType="UDINT" Addr="0x0" RelocationRecord="$$RETDATA$$+0"/>
 	</GlobalVars>
 	<Programs>
-		<Prog Name="PAGEDRAW" OrigName="PageDraw" SrcType="3" CodeAddr="0x7F77C40" HashCode="6544FEE5">
-			<Var Name="RES" OrigName="res" Type="USINT" OrigType="USINT" Addr="0x7EF000C" RelocationRecord="$$DATA$$+12"/>
-			<GenVar Name="$$POUCB$$" OrigName="$$POUCB$$" Type="$$STRUPOUTCB$$" OrigType="$$STRUPOUTCB$$" Addr="0x7EF0F90" RelocationRecord="$$DATA$$+3984"/>
+		<Prog Name="PAGEDRAW" OrigName="PageDraw" SrcType="3" CodeAddr="0x8707C40" HashCode="6544FEE5">
+			<Var Name="RES" OrigName="res" Type="USINT" OrigType="USINT" Addr="0x868000C" RelocationRecord="$$DATA$$+12"/>
+			<GenVar Name="$$POUCB$$" OrigName="$$POUCB$$" Type="$$STRUPOUTCB$$" OrigType="$$STRUPOUTCB$$" Addr="0x8680F90" RelocationRecord="$$DATA$$+3984"/>
 		</Prog>
-		<Prog Name="PAGEREFRESH" OrigName="PageRefresh" SrcType="3" CodeAddr="0x7F77F60" HashCode="3EA2DE16">
-			<Var Name="RES" OrigName="res" Type="USINT" OrigType="USINT" Addr="0x7EF006D" RelocationRecord="$$DATA$$+109"/>
-			<GenVar Name="$$POUCB$$" OrigName="$$POUCB$$" Type="$$STRUPOUTCB$$" OrigType="$$STRUPOUTCB$$" Addr="0x7EF0F96" RelocationRecord="$$DATA$$+3990"/>
+		<Prog Name="PAGEREFRESH" OrigName="PageRefresh" SrcType="3" CodeAddr="0x8707F60" HashCode="3EA2DE16">
+			<Var Name="RES" OrigName="res" Type="USINT" OrigType="USINT" Addr="0x868006D" RelocationRecord="$$DATA$$+109"/>
+			<GenVar Name="$$POUCB$$" OrigName="$$POUCB$$" Type="$$STRUPOUTCB$$" OrigType="$$STRUPOUTCB$$" Addr="0x8680F96" RelocationRecord="$$DATA$$+3990"/>
 		</Prog>
 	</Programs>
 	<FunctionBlocks>
@@ -163,14 +163,14 @@
 			<Var Name="MEMTRANSP" OrigName="memTransp" Type="BOOL" OrigType="BOOL" Addr="0x18[1]" Attribs="relative" Descr="Transparency status"/>
 			<Var Name="MEMSEL" OrigName="memSel" Type="BOOL" OrigType="BOOL" Addr="0x18[2]" Attribs="relative" Descr="Transparency status"/>
 		</FBlock>
-		<FBlock Name="DRAWBACKPAGE" OrigName="DrawBackPage" SrcType="3" FrameSize="13" CodeAddr="0x7F74B40" HashCode="C2147C5A">
+		<FBlock Name="DRAWBACKPAGE" OrigName="DrawBackPage" SrcType="3" FrameSize="13" CodeAddr="0x8704B40" HashCode="C2147C5A">
 			<VarI Name="ISOPENING" OrigName="IsOpening" Type="BOOL" OrigType="BOOL" Addr="0x18[0]" Attribs="relative"/>
 			<VarI Name="CURRPAGEID" OrigName="CurrPageId" Type="UINT" OrigType="UINT" Addr="0x18[1]" Attribs="relative"/>
 			<VarO Name="BACKPAGEID" OrigName="BackPageId" Type="UINT" OrigType="UINT" Addr="0x18[3]" Attribs="relative"/>
-			<VarExt Name="$GIBACKBUFFERCURR" OrigName="$giBackBufferCurr" Type="INT" OrigType="INT" Addr="0x7EF0010" Group="Back_buffer" RelocationRecord="$$DATA$$+16"/>
-			<VarExt Name="$GIBACKBUFFERFIRST" OrigName="$giBackBufferFirst" Type="INT" OrigType="INT" Addr="0x7EF0012" Group="Back_buffer" RelocationRecord="$$DATA$$+18"/>
-			<VarExt Name="$GIBACKBUFFERLAST" OrigName="$giBackBufferLast" Type="INT" OrigType="INT" Addr="0x7EF0014" Group="Back_buffer" RelocationRecord="$$DATA$$+20"/>
-			<VarExt Name="$GUIBACKBUFFER" OrigName="$guiBackBuffer" Type="UINT" OrigType="UINT" Addr="0x7EF0070" Group="Back_buffer" RelocationRecord="$$DATA$$+112" Dims="10"/>
+			<VarExt Name="$GIBACKBUFFERCURR" OrigName="$giBackBufferCurr" Type="INT" OrigType="INT" Addr="0x8680010" Group="Back_buffer" RelocationRecord="$$DATA$$+16"/>
+			<VarExt Name="$GIBACKBUFFERFIRST" OrigName="$giBackBufferFirst" Type="INT" OrigType="INT" Addr="0x8680012" Group="Back_buffer" RelocationRecord="$$DATA$$+18"/>
+			<VarExt Name="$GIBACKBUFFERLAST" OrigName="$giBackBufferLast" Type="INT" OrigType="INT" Addr="0x8680014" Group="Back_buffer" RelocationRecord="$$DATA$$+20"/>
+			<VarExt Name="$GUIBACKBUFFER" OrigName="$guiBackBuffer" Type="UINT" OrigType="UINT" Addr="0x8680070" Group="Back_buffer" RelocationRecord="$$DATA$$+112" Dims="10"/>
 		</FBlock>
 		<FBlock Name="EDITBOX01" OrigName="EditBox01" SrcType="6" FrameSize="69" CodeAddr="0x71482B60" HashCode="00001505">
 			<VarI Name="WHND" OrigName="wHnd" Type="UINT" OrigType="UINT" Addr="0x18[1]" Attribs="relative" Descr="Object handle"/>
@@ -223,7 +223,7 @@
 			<VarI Name="NUMCHARS" OrigName="numChars" Type="UINT" OrigType="UINT" Addr="0x18[53]" Attribs="relative" Descr="Number of printable chars"/>
 			<Var Name="MEMVIS" OrigName="memVis" Type="BOOL" OrigType="BOOL" Addr="0x18[0]" Attribs="relative" Descr="Visibility status"/>
 		</FBlock>
-		<FBlock Name="REFRFIRST" OrigName="Refrfirst" SrcType="3" FrameSize="26" CodeAddr="0x7F74DC0" HashCode="84528041">
+		<FBlock Name="REFRFIRST" OrigName="Refrfirst" SrcType="3" FrameSize="26" CodeAddr="0x8704DC0" HashCode="84528041">
 			<Var Name="RES" OrigName="res" Type="USINT" OrigType="USINT" Addr="0x18[0]" Attribs="relative"/>
 			<Var Name="PAGID" OrigName="pagID" Type="UINT" OrigType="UINT" Addr="0x18[1]" Attribs="relative"/>
 			<Var Name="N" OrigName="n" Type="USINT" OrigType="USINT" Addr="0x18[3]" Attribs="relative"/>
@@ -233,15 +233,15 @@
 			<Var Name="RY1" OrigName="ry1" Type="UINT" OrigType="UINT" Addr="0x18[12]" Attribs="relative"/>
 			<Var Name="RX2" OrigName="rx2" Type="UINT" OrigType="UINT" Addr="0x18[14]" Attribs="relative"/>
 			<Var Name="RY2" OrigName="ry2" Type="UINT" OrigType="UINT" Addr="0x18[16]" Attribs="relative"/>
-			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x7EF0018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
-			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x7EF000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
-			<VarExt Name="FBFIRSTBUTTON_1" OrigName="fbfirstButton_1" Type="BUTTON02" OrigType="Button02" Addr="0x7EF0084" Group="first_vars" RelocationRecord="$$DATA$$+132"/>
-			<VarExt Name="FBFIRSTBUTTON_2" OrigName="fbfirstButton_2" Type="BUTTON02" OrigType="Button02" Addr="0x7EF00C5" Group="first_vars" RelocationRecord="$$DATA$$+197"/>
-			<VarExt Name="FBFIRSTBUTTON_3" OrigName="fbfirstButton_3" Type="BUTTON02" OrigType="Button02" Addr="0x7EF0106" Group="first_vars" RelocationRecord="$$DATA$$+262"/>
-			<VarExt Name="FBFIRSTBUTTON_4" OrigName="fbfirstButton_4" Type="BUTTON02" OrigType="Button02" Addr="0x7EF0147" Group="first_vars" RelocationRecord="$$DATA$$+327"/>
-			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x7EF000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
+			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x8680018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
+			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x868000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
+			<VarExt Name="FBFIRSTBUTTON_1" OrigName="fbfirstButton_1" Type="BUTTON02" OrigType="Button02" Addr="0x8680084" Group="first_vars" RelocationRecord="$$DATA$$+132"/>
+			<VarExt Name="FBFIRSTBUTTON_2" OrigName="fbfirstButton_2" Type="BUTTON02" OrigType="Button02" Addr="0x86800C5" Group="first_vars" RelocationRecord="$$DATA$$+197"/>
+			<VarExt Name="FBFIRSTBUTTON_3" OrigName="fbfirstButton_3" Type="BUTTON02" OrigType="Button02" Addr="0x8680106" Group="first_vars" RelocationRecord="$$DATA$$+262"/>
+			<VarExt Name="FBFIRSTBUTTON_4" OrigName="fbfirstButton_4" Type="BUTTON02" OrigType="Button02" Addr="0x8680147" Group="first_vars" RelocationRecord="$$DATA$$+327"/>
+			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x868000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
 		</FBlock>
-		<FBlock Name="DRAWFIRST" OrigName="Drawfirst" SrcType="3" FrameSize="52" CodeAddr="0x7F75640" HashCode="B8702AC2">
+		<FBlock Name="DRAWFIRST" OrigName="Drawfirst" SrcType="3" FrameSize="52" CodeAddr="0x8705640" HashCode="B8702AC2">
 			<VarO Name="UIOUTVAR" OrigName="uiOutVar" Type="UINT" OrigType="UINT" Addr="0x18[42]" Attribs="relative"/>
 			<Var Name="RES" OrigName="res" Type="USINT" OrigType="USINT" Addr="0x18[0]" Attribs="relative"/>
 			<Var Name="BSTATREDRW" OrigName="bStatRedrw" Type="BOOL" OrigType="BOOL" Addr="0x18[1]" Attribs="relative"/>
@@ -268,16 +268,16 @@
 			<Var Name="WPARAM" OrigName="wParam" Type="UINT" OrigType="UINT" Addr="0x18[40]" Attribs="relative"/>
 			<TmpVar Name="$$TMP0" OrigName="$$TMP0" Type="@STRING" OrigType="@STRING" Addr="0x16[-4]" Attribs="relative,stack"/>
 			<TmpVar Name="$$TMP1" OrigName="$$TMP1" Type="UINT" OrigType="UINT" Addr="0x16[-6]" Attribs="relative,stack"/>
-			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x7EF0018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
-			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x7EF000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
-			<VarExt Name="FBBACKPAGE" OrigName="fbBackPage" Type="DRAWBACKPAGE" OrigType="DrawBackPage" Addr="0x7EF0060" Group="Back_page_manager" RelocationRecord="$$DATA$$+96"/>
-			<VarExt Name="FBFIRSTBUTTON_1" OrigName="fbfirstButton_1" Type="BUTTON02" OrigType="Button02" Addr="0x7EF0084" Group="first_vars" RelocationRecord="$$DATA$$+132"/>
-			<VarExt Name="FBFIRSTBUTTON_2" OrigName="fbfirstButton_2" Type="BUTTON02" OrigType="Button02" Addr="0x7EF00C5" Group="first_vars" RelocationRecord="$$DATA$$+197"/>
-			<VarExt Name="FBFIRSTBUTTON_3" OrigName="fbfirstButton_3" Type="BUTTON02" OrigType="Button02" Addr="0x7EF0106" Group="first_vars" RelocationRecord="$$DATA$$+262"/>
-			<VarExt Name="FBFIRSTBUTTON_4" OrigName="fbfirstButton_4" Type="BUTTON02" OrigType="Button02" Addr="0x7EF0147" Group="first_vars" RelocationRecord="$$DATA$$+327"/>
-			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x7EF000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
+			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x8680018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
+			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x868000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
+			<VarExt Name="FBBACKPAGE" OrigName="fbBackPage" Type="DRAWBACKPAGE" OrigType="DrawBackPage" Addr="0x8680060" Group="Back_page_manager" RelocationRecord="$$DATA$$+96"/>
+			<VarExt Name="FBFIRSTBUTTON_1" OrigName="fbfirstButton_1" Type="BUTTON02" OrigType="Button02" Addr="0x8680084" Group="first_vars" RelocationRecord="$$DATA$$+132"/>
+			<VarExt Name="FBFIRSTBUTTON_2" OrigName="fbfirstButton_2" Type="BUTTON02" OrigType="Button02" Addr="0x86800C5" Group="first_vars" RelocationRecord="$$DATA$$+197"/>
+			<VarExt Name="FBFIRSTBUTTON_3" OrigName="fbfirstButton_3" Type="BUTTON02" OrigType="Button02" Addr="0x8680106" Group="first_vars" RelocationRecord="$$DATA$$+262"/>
+			<VarExt Name="FBFIRSTBUTTON_4" OrigName="fbfirstButton_4" Type="BUTTON02" OrigType="Button02" Addr="0x8680147" Group="first_vars" RelocationRecord="$$DATA$$+327"/>
+			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x868000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
 		</FBlock>
-		<FBlock Name="REFRMAIN" OrigName="Refrmain" SrcType="3" FrameSize="26" CodeAddr="0x7F74E6A" HashCode="CCB5D70C">
+		<FBlock Name="REFRMAIN" OrigName="Refrmain" SrcType="3" FrameSize="26" CodeAddr="0x8704E6A" HashCode="CCB5D70C">
 			<Var Name="RES" OrigName="res" Type="USINT" OrigType="USINT" Addr="0x18[0]" Attribs="relative"/>
 			<Var Name="PAGID" OrigName="pagID" Type="UINT" OrigType="UINT" Addr="0x18[1]" Attribs="relative"/>
 			<Var Name="N" OrigName="n" Type="USINT" OrigType="USINT" Addr="0x18[3]" Attribs="relative"/>
@@ -287,25 +287,25 @@
 			<Var Name="RY1" OrigName="ry1" Type="UINT" OrigType="UINT" Addr="0x18[12]" Attribs="relative"/>
 			<Var Name="RX2" OrigName="rx2" Type="UINT" OrigType="UINT" Addr="0x18[14]" Attribs="relative"/>
 			<Var Name="RY2" OrigName="ry2" Type="UINT" OrigType="UINT" Addr="0x18[16]" Attribs="relative"/>
-			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x7EF0018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
-			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x7EF000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
-			<VarExt Name="FBMAINSTRING_2" OrigName="fbmainString_2" Type="STATIC01" OrigType="Static01" Addr="0x7EF0201" Group="main_vars" RelocationRecord="$$DATA$$+513"/>
-			<VarExt Name="FBMAINSTRING_3" OrigName="fbmainString_3" Type="STATIC01" OrigType="Static01" Addr="0x7EF0238" Group="main_vars" RelocationRecord="$$DATA$$+568"/>
-			<VarExt Name="FBMAINSTRING_4" OrigName="fbmainString_4" Type="STATIC01" OrigType="Static01" Addr="0x7EF026F" Group="main_vars" RelocationRecord="$$DATA$$+623"/>
-			<VarExt Name="FBMAINSTRING_6" OrigName="fbmainString_6" Type="STATIC01" OrigType="Static01" Addr="0x7EF02EB" Group="main_vars" RelocationRecord="$$DATA$$+747"/>
-			<VarExt Name="FBMAINSTRING_8" OrigName="fbmainString_8" Type="STATIC01" OrigType="Static01" Addr="0x7EF0322" Group="main_vars" RelocationRecord="$$DATA$$+802"/>
-			<VarExt Name="FBMAINSTRING_10" OrigName="fbmainString_10" Type="STATIC01" OrigType="Static01" Addr="0x7EF039E" Group="main_vars" RelocationRecord="$$DATA$$+926"/>
-			<VarExt Name="FBMAINSTRING_12" OrigName="fbmainString_12" Type="STATIC01" OrigType="Static01" Addr="0x7EF041A" Group="main_vars" RelocationRecord="$$DATA$$+1050"/>
-			<VarExt Name="FBMAINSTRING_14" OrigName="fbmainString_14" Type="STATIC01" OrigType="Static01" Addr="0x7EF0496" Group="main_vars" RelocationRecord="$$DATA$$+1174"/>
-			<VarExt Name="FBMAINEDIT_1" OrigName="fbmainEdit_1" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF01BC" Group="main_vars" RelocationRecord="$$DATA$$+444"/>
-			<VarExt Name="FBMAINEDIT_5" OrigName="fbmainEdit_5" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF02A6" Group="main_vars" RelocationRecord="$$DATA$$+678"/>
-			<VarExt Name="FBMAINEDIT_9" OrigName="fbmainEdit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0359" Group="main_vars" RelocationRecord="$$DATA$$+857"/>
-			<VarExt Name="FBMAINEDIT_11" OrigName="fbmainEdit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF03D5" Group="main_vars" RelocationRecord="$$DATA$$+981"/>
-			<VarExt Name="FBMAINEDIT_13" OrigName="fbmainEdit_13" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0451" Group="main_vars" RelocationRecord="$$DATA$$+1105"/>
-			<VarExt Name="FBMAINEDIT_15" OrigName="fbmainEdit_15" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF04CD" Group="main_vars" RelocationRecord="$$DATA$$+1229"/>
-			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x7EF000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
+			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x8680018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
+			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x868000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
+			<VarExt Name="FBMAINSTRING_2" OrigName="fbmainString_2" Type="STATIC01" OrigType="Static01" Addr="0x8680201" Group="main_vars" RelocationRecord="$$DATA$$+513"/>
+			<VarExt Name="FBMAINSTRING_3" OrigName="fbmainString_3" Type="STATIC01" OrigType="Static01" Addr="0x8680238" Group="main_vars" RelocationRecord="$$DATA$$+568"/>
+			<VarExt Name="FBMAINSTRING_4" OrigName="fbmainString_4" Type="STATIC01" OrigType="Static01" Addr="0x868026F" Group="main_vars" RelocationRecord="$$DATA$$+623"/>
+			<VarExt Name="FBMAINSTRING_6" OrigName="fbmainString_6" Type="STATIC01" OrigType="Static01" Addr="0x86802EB" Group="main_vars" RelocationRecord="$$DATA$$+747"/>
+			<VarExt Name="FBMAINSTRING_8" OrigName="fbmainString_8" Type="STATIC01" OrigType="Static01" Addr="0x8680322" Group="main_vars" RelocationRecord="$$DATA$$+802"/>
+			<VarExt Name="FBMAINSTRING_10" OrigName="fbmainString_10" Type="STATIC01" OrigType="Static01" Addr="0x868039E" Group="main_vars" RelocationRecord="$$DATA$$+926"/>
+			<VarExt Name="FBMAINSTRING_12" OrigName="fbmainString_12" Type="STATIC01" OrigType="Static01" Addr="0x868041A" Group="main_vars" RelocationRecord="$$DATA$$+1050"/>
+			<VarExt Name="FBMAINSTRING_14" OrigName="fbmainString_14" Type="STATIC01" OrigType="Static01" Addr="0x8680496" Group="main_vars" RelocationRecord="$$DATA$$+1174"/>
+			<VarExt Name="FBMAINEDIT_1" OrigName="fbmainEdit_1" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86801BC" Group="main_vars" RelocationRecord="$$DATA$$+444"/>
+			<VarExt Name="FBMAINEDIT_5" OrigName="fbmainEdit_5" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86802A6" Group="main_vars" RelocationRecord="$$DATA$$+678"/>
+			<VarExt Name="FBMAINEDIT_9" OrigName="fbmainEdit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680359" Group="main_vars" RelocationRecord="$$DATA$$+857"/>
+			<VarExt Name="FBMAINEDIT_11" OrigName="fbmainEdit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86803D5" Group="main_vars" RelocationRecord="$$DATA$$+981"/>
+			<VarExt Name="FBMAINEDIT_13" OrigName="fbmainEdit_13" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680451" Group="main_vars" RelocationRecord="$$DATA$$+1105"/>
+			<VarExt Name="FBMAINEDIT_15" OrigName="fbmainEdit_15" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86804CD" Group="main_vars" RelocationRecord="$$DATA$$+1229"/>
+			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x868000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
 		</FBlock>
-		<FBlock Name="REFRSETUPIP" OrigName="RefrSetupIP" SrcType="3" FrameSize="26" CodeAddr="0x7F74F92" HashCode="51D5FC2D">
+		<FBlock Name="REFRSETUPIP" OrigName="RefrSetupIP" SrcType="3" FrameSize="26" CodeAddr="0x8704F92" HashCode="51D5FC2D">
 			<Var Name="RES" OrigName="res" Type="USINT" OrigType="USINT" Addr="0x18[0]" Attribs="relative"/>
 			<Var Name="PAGID" OrigName="pagID" Type="UINT" OrigType="UINT" Addr="0x18[1]" Attribs="relative"/>
 			<Var Name="N" OrigName="n" Type="USINT" OrigType="USINT" Addr="0x18[3]" Attribs="relative"/>
@@ -315,31 +315,31 @@
 			<Var Name="RY1" OrigName="ry1" Type="UINT" OrigType="UINT" Addr="0x18[12]" Attribs="relative"/>
 			<Var Name="RX2" OrigName="rx2" Type="UINT" OrigType="UINT" Addr="0x18[14]" Attribs="relative"/>
 			<Var Name="RY2" OrigName="ry2" Type="UINT" OrigType="UINT" Addr="0x18[16]" Attribs="relative"/>
-			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x7EF0018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
-			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x7EF000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
-			<VarExt Name="FBSETUPIPSTRING_1" OrigName="fbSetupIPString_1" Type="STATIC01" OrigType="Static01" Addr="0x7EF0864" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2148"/>
-			<VarExt Name="FBSETUPIPSTRING_2" OrigName="fbSetupIPString_2" Type="STATIC01" OrigType="Static01" Addr="0x7EF089B" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2203"/>
-			<VarExt Name="FBSETUPIPSTRING_3" OrigName="fbSetupIPString_3" Type="STATIC01" OrigType="Static01" Addr="0x7EF08D2" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2258"/>
-			<VarExt Name="FBSETUPIPSTRING_4" OrigName="fbSetupIPString_4" Type="STATIC01" OrigType="Static01" Addr="0x7EF0909" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2313"/>
-			<VarExt Name="FBSETUPIPEDIT_5" OrigName="fbSetupIPEdit_5" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0940" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2368"/>
-			<VarExt Name="FBSETUPIPEDIT_6" OrigName="fbSetupIPEdit_6" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0985" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2437"/>
-			<VarExt Name="FBSETUPIPEDIT_7" OrigName="fbSetupIPEdit_7" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF09CA" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2506"/>
-			<VarExt Name="FBSETUPIPEDIT_8" OrigName="fbSetupIPEdit_8" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0A0F" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2575"/>
-			<VarExt Name="FBSETUPIPEDIT_9" OrigName="fbSetupIPEdit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0A54" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2644"/>
-			<VarExt Name="FBSETUPIPEDIT_10" OrigName="fbSetupIPEdit_10" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0A99" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2713"/>
-			<VarExt Name="FBSETUPIPEDIT_11" OrigName="fbSetupIPEdit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0ADE" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2782"/>
-			<VarExt Name="FBSETUPIPEDIT_12" OrigName="fbSetupIPEdit_12" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0B23" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2851"/>
-			<VarExt Name="FBSETUPIPEDIT_13" OrigName="fbSetupIPEdit_13" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0B68" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2920"/>
-			<VarExt Name="FBSETUPIPEDIT_14" OrigName="fbSetupIPEdit_14" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0BAD" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2989"/>
-			<VarExt Name="FBSETUPIPEDIT_15" OrigName="fbSetupIPEdit_15" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0BF2" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3058"/>
-			<VarExt Name="FBSETUPIPEDIT_16" OrigName="fbSetupIPEdit_16" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0C37" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3127"/>
-			<VarExt Name="FBSETUPIPEDIT_17" OrigName="fbSetupIPEdit_17" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0C7C" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3196"/>
-			<VarExt Name="FBSETUPIPEDIT_18" OrigName="fbSetupIPEdit_18" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0CC1" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3265"/>
-			<VarExt Name="FBSETUPIPEDIT_19" OrigName="fbSetupIPEdit_19" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0D06" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3334"/>
-			<VarExt Name="FBSETUPIPEDIT_20" OrigName="fbSetupIPEdit_20" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0D4B" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3403"/>
-			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x7EF000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
+			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x8680018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
+			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x868000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
+			<VarExt Name="FBSETUPIPSTRING_1" OrigName="fbSetupIPString_1" Type="STATIC01" OrigType="Static01" Addr="0x8680864" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2148"/>
+			<VarExt Name="FBSETUPIPSTRING_2" OrigName="fbSetupIPString_2" Type="STATIC01" OrigType="Static01" Addr="0x868089B" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2203"/>
+			<VarExt Name="FBSETUPIPSTRING_3" OrigName="fbSetupIPString_3" Type="STATIC01" OrigType="Static01" Addr="0x86808D2" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2258"/>
+			<VarExt Name="FBSETUPIPSTRING_4" OrigName="fbSetupIPString_4" Type="STATIC01" OrigType="Static01" Addr="0x8680909" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2313"/>
+			<VarExt Name="FBSETUPIPEDIT_5" OrigName="fbSetupIPEdit_5" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680940" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2368"/>
+			<VarExt Name="FBSETUPIPEDIT_6" OrigName="fbSetupIPEdit_6" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680985" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2437"/>
+			<VarExt Name="FBSETUPIPEDIT_7" OrigName="fbSetupIPEdit_7" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86809CA" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2506"/>
+			<VarExt Name="FBSETUPIPEDIT_8" OrigName="fbSetupIPEdit_8" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680A0F" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2575"/>
+			<VarExt Name="FBSETUPIPEDIT_9" OrigName="fbSetupIPEdit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680A54" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2644"/>
+			<VarExt Name="FBSETUPIPEDIT_10" OrigName="fbSetupIPEdit_10" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680A99" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2713"/>
+			<VarExt Name="FBSETUPIPEDIT_11" OrigName="fbSetupIPEdit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680ADE" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2782"/>
+			<VarExt Name="FBSETUPIPEDIT_12" OrigName="fbSetupIPEdit_12" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680B23" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2851"/>
+			<VarExt Name="FBSETUPIPEDIT_13" OrigName="fbSetupIPEdit_13" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680B68" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2920"/>
+			<VarExt Name="FBSETUPIPEDIT_14" OrigName="fbSetupIPEdit_14" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680BAD" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2989"/>
+			<VarExt Name="FBSETUPIPEDIT_15" OrigName="fbSetupIPEdit_15" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680BF2" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3058"/>
+			<VarExt Name="FBSETUPIPEDIT_16" OrigName="fbSetupIPEdit_16" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680C37" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3127"/>
+			<VarExt Name="FBSETUPIPEDIT_17" OrigName="fbSetupIPEdit_17" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680C7C" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3196"/>
+			<VarExt Name="FBSETUPIPEDIT_18" OrigName="fbSetupIPEdit_18" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680CC1" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3265"/>
+			<VarExt Name="FBSETUPIPEDIT_19" OrigName="fbSetupIPEdit_19" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680D06" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3334"/>
+			<VarExt Name="FBSETUPIPEDIT_20" OrigName="fbSetupIPEdit_20" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680D4B" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3403"/>
+			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x868000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
 		</FBlock>
-		<FBlock Name="REFRSETUPRS2" OrigName="RefrSetupRS2" SrcType="3" FrameSize="26" CodeAddr="0x7F7535C" HashCode="59D175E3">
+		<FBlock Name="REFRSETUPRS2" OrigName="RefrSetupRS2" SrcType="3" FrameSize="26" CodeAddr="0x870535C" HashCode="59D175E3">
 			<Var Name="RES" OrigName="res" Type="USINT" OrigType="USINT" Addr="0x18[0]" Attribs="relative"/>
 			<Var Name="PAGID" OrigName="pagID" Type="UINT" OrigType="UINT" Addr="0x18[1]" Attribs="relative"/>
 			<Var Name="N" OrigName="n" Type="USINT" OrigType="USINT" Addr="0x18[3]" Attribs="relative"/>
@@ -349,23 +349,23 @@
 			<Var Name="RY1" OrigName="ry1" Type="UINT" OrigType="UINT" Addr="0x18[12]" Attribs="relative"/>
 			<Var Name="RX2" OrigName="rx2" Type="UINT" OrigType="UINT" Addr="0x18[14]" Attribs="relative"/>
 			<Var Name="RY2" OrigName="ry2" Type="UINT" OrigType="UINT" Addr="0x18[16]" Attribs="relative"/>
-			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x7EF0018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
-			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x7EF000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
-			<VarExt Name="FBSETUPRS2STRING_1" OrigName="fbSetupRS2String_1" Type="STATIC01" OrigType="Static01" Addr="0x7EF0548" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1352"/>
-			<VarExt Name="FBSETUPRS2STRING_2" OrigName="fbSetupRS2String_2" Type="STATIC01" OrigType="Static01" Addr="0x7EF057F" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1407"/>
-			<VarExt Name="FBSETUPRS2STRING_3" OrigName="fbSetupRS2String_3" Type="STATIC01" OrigType="Static01" Addr="0x7EF05B6" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1462"/>
-			<VarExt Name="FBSETUPRS2STRING_4" OrigName="fbSetupRS2String_4" Type="STATIC01" OrigType="Static01" Addr="0x7EF05ED" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1517"/>
-			<VarExt Name="FBSETUPRS2STRING_5" OrigName="fbSetupRS2String_5" Type="STATIC01" OrigType="Static01" Addr="0x7EF0624" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1572"/>
-			<VarExt Name="FBSETUPRS2STRING_6" OrigName="fbSetupRS2String_6" Type="STATIC01" OrigType="Static01" Addr="0x7EF065B" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1627"/>
-			<VarExt Name="FBSETUPRS2EDIT_7" OrigName="fbSetupRS2Edit_7" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0692" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1682"/>
-			<VarExt Name="FBSETUPRS2EDIT_8" OrigName="fbSetupRS2Edit_8" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF06D7" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1751"/>
-			<VarExt Name="FBSETUPRS2EDIT_9" OrigName="fbSetupRS2Edit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF071C" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1820"/>
-			<VarExt Name="FBSETUPRS2EDIT_10" OrigName="fbSetupRS2Edit_10" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0761" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1889"/>
-			<VarExt Name="FBSETUPRS2EDIT_11" OrigName="fbSetupRS2Edit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF07A6" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1958"/>
-			<VarExt Name="FBSETUPRS2EDIT_12" OrigName="fbSetupRS2Edit_12" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF07EB" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+2027"/>
-			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x7EF000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
+			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x8680018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
+			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x868000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
+			<VarExt Name="FBSETUPRS2STRING_1" OrigName="fbSetupRS2String_1" Type="STATIC01" OrigType="Static01" Addr="0x8680548" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1352"/>
+			<VarExt Name="FBSETUPRS2STRING_2" OrigName="fbSetupRS2String_2" Type="STATIC01" OrigType="Static01" Addr="0x868057F" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1407"/>
+			<VarExt Name="FBSETUPRS2STRING_3" OrigName="fbSetupRS2String_3" Type="STATIC01" OrigType="Static01" Addr="0x86805B6" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1462"/>
+			<VarExt Name="FBSETUPRS2STRING_4" OrigName="fbSetupRS2String_4" Type="STATIC01" OrigType="Static01" Addr="0x86805ED" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1517"/>
+			<VarExt Name="FBSETUPRS2STRING_5" OrigName="fbSetupRS2String_5" Type="STATIC01" OrigType="Static01" Addr="0x8680624" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1572"/>
+			<VarExt Name="FBSETUPRS2STRING_6" OrigName="fbSetupRS2String_6" Type="STATIC01" OrigType="Static01" Addr="0x868065B" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1627"/>
+			<VarExt Name="FBSETUPRS2EDIT_7" OrigName="fbSetupRS2Edit_7" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680692" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1682"/>
+			<VarExt Name="FBSETUPRS2EDIT_8" OrigName="fbSetupRS2Edit_8" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86806D7" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1751"/>
+			<VarExt Name="FBSETUPRS2EDIT_9" OrigName="fbSetupRS2Edit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x868071C" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1820"/>
+			<VarExt Name="FBSETUPRS2EDIT_10" OrigName="fbSetupRS2Edit_10" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680761" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1889"/>
+			<VarExt Name="FBSETUPRS2EDIT_11" OrigName="fbSetupRS2Edit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86807A6" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1958"/>
+			<VarExt Name="FBSETUPRS2EDIT_12" OrigName="fbSetupRS2Edit_12" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86807EB" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+2027"/>
+			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x868000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
 		</FBlock>
-		<FBlock Name="DRAWMAIN" OrigName="Drawmain" SrcType="3" FrameSize="52" CodeAddr="0x7F75BF4" HashCode="1D50D492">
+		<FBlock Name="DRAWMAIN" OrigName="Drawmain" SrcType="3" FrameSize="52" CodeAddr="0x8705BF4" HashCode="1D50D492">
 			<VarO Name="UIOUTVAR" OrigName="uiOutVar" Type="UINT" OrigType="UINT" Addr="0x18[42]" Attribs="relative"/>
 			<Var Name="RES" OrigName="res" Type="USINT" OrigType="USINT" Addr="0x18[0]" Attribs="relative"/>
 			<Var Name="BSTATREDRW" OrigName="bStatRedrw" Type="BOOL" OrigType="BOOL" Addr="0x18[1]" Attribs="relative"/>
@@ -392,26 +392,26 @@
 			<Var Name="WPARAM" OrigName="wParam" Type="UINT" OrigType="UINT" Addr="0x18[40]" Attribs="relative"/>
 			<TmpVar Name="$$TMP0" OrigName="$$TMP0" Type="@STRING" OrigType="@STRING" Addr="0x16[-4]" Attribs="relative,stack"/>
 			<TmpVar Name="$$TMP1" OrigName="$$TMP1" Type="UINT" OrigType="UINT" Addr="0x16[-6]" Attribs="relative,stack"/>
-			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x7EF0018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
-			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x7EF000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
-			<VarExt Name="FBBACKPAGE" OrigName="fbBackPage" Type="DRAWBACKPAGE" OrigType="DrawBackPage" Addr="0x7EF0060" Group="Back_page_manager" RelocationRecord="$$DATA$$+96"/>
-			<VarExt Name="FBMAINSTRING_2" OrigName="fbmainString_2" Type="STATIC01" OrigType="Static01" Addr="0x7EF0201" Group="main_vars" RelocationRecord="$$DATA$$+513"/>
-			<VarExt Name="FBMAINSTRING_3" OrigName="fbmainString_3" Type="STATIC01" OrigType="Static01" Addr="0x7EF0238" Group="main_vars" RelocationRecord="$$DATA$$+568"/>
-			<VarExt Name="FBMAINSTRING_4" OrigName="fbmainString_4" Type="STATIC01" OrigType="Static01" Addr="0x7EF026F" Group="main_vars" RelocationRecord="$$DATA$$+623"/>
-			<VarExt Name="FBMAINSTRING_6" OrigName="fbmainString_6" Type="STATIC01" OrigType="Static01" Addr="0x7EF02EB" Group="main_vars" RelocationRecord="$$DATA$$+747"/>
-			<VarExt Name="FBMAINSTRING_8" OrigName="fbmainString_8" Type="STATIC01" OrigType="Static01" Addr="0x7EF0322" Group="main_vars" RelocationRecord="$$DATA$$+802"/>
-			<VarExt Name="FBMAINSTRING_10" OrigName="fbmainString_10" Type="STATIC01" OrigType="Static01" Addr="0x7EF039E" Group="main_vars" RelocationRecord="$$DATA$$+926"/>
-			<VarExt Name="FBMAINSTRING_12" OrigName="fbmainString_12" Type="STATIC01" OrigType="Static01" Addr="0x7EF041A" Group="main_vars" RelocationRecord="$$DATA$$+1050"/>
-			<VarExt Name="FBMAINSTRING_14" OrigName="fbmainString_14" Type="STATIC01" OrigType="Static01" Addr="0x7EF0496" Group="main_vars" RelocationRecord="$$DATA$$+1174"/>
-			<VarExt Name="FBMAINEDIT_1" OrigName="fbmainEdit_1" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF01BC" Group="main_vars" RelocationRecord="$$DATA$$+444"/>
-			<VarExt Name="FBMAINEDIT_5" OrigName="fbmainEdit_5" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF02A6" Group="main_vars" RelocationRecord="$$DATA$$+678"/>
-			<VarExt Name="FBMAINEDIT_9" OrigName="fbmainEdit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0359" Group="main_vars" RelocationRecord="$$DATA$$+857"/>
-			<VarExt Name="FBMAINEDIT_11" OrigName="fbmainEdit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF03D5" Group="main_vars" RelocationRecord="$$DATA$$+981"/>
-			<VarExt Name="FBMAINEDIT_13" OrigName="fbmainEdit_13" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0451" Group="main_vars" RelocationRecord="$$DATA$$+1105"/>
-			<VarExt Name="FBMAINEDIT_15" OrigName="fbmainEdit_15" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF04CD" Group="main_vars" RelocationRecord="$$DATA$$+1229"/>
-			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x7EF000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
+			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x8680018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
+			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x868000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
+			<VarExt Name="FBBACKPAGE" OrigName="fbBackPage" Type="DRAWBACKPAGE" OrigType="DrawBackPage" Addr="0x8680060" Group="Back_page_manager" RelocationRecord="$$DATA$$+96"/>
+			<VarExt Name="FBMAINSTRING_2" OrigName="fbmainString_2" Type="STATIC01" OrigType="Static01" Addr="0x8680201" Group="main_vars" RelocationRecord="$$DATA$$+513"/>
+			<VarExt Name="FBMAINSTRING_3" OrigName="fbmainString_3" Type="STATIC01" OrigType="Static01" Addr="0x8680238" Group="main_vars" RelocationRecord="$$DATA$$+568"/>
+			<VarExt Name="FBMAINSTRING_4" OrigName="fbmainString_4" Type="STATIC01" OrigType="Static01" Addr="0x868026F" Group="main_vars" RelocationRecord="$$DATA$$+623"/>
+			<VarExt Name="FBMAINSTRING_6" OrigName="fbmainString_6" Type="STATIC01" OrigType="Static01" Addr="0x86802EB" Group="main_vars" RelocationRecord="$$DATA$$+747"/>
+			<VarExt Name="FBMAINSTRING_8" OrigName="fbmainString_8" Type="STATIC01" OrigType="Static01" Addr="0x8680322" Group="main_vars" RelocationRecord="$$DATA$$+802"/>
+			<VarExt Name="FBMAINSTRING_10" OrigName="fbmainString_10" Type="STATIC01" OrigType="Static01" Addr="0x868039E" Group="main_vars" RelocationRecord="$$DATA$$+926"/>
+			<VarExt Name="FBMAINSTRING_12" OrigName="fbmainString_12" Type="STATIC01" OrigType="Static01" Addr="0x868041A" Group="main_vars" RelocationRecord="$$DATA$$+1050"/>
+			<VarExt Name="FBMAINSTRING_14" OrigName="fbmainString_14" Type="STATIC01" OrigType="Static01" Addr="0x8680496" Group="main_vars" RelocationRecord="$$DATA$$+1174"/>
+			<VarExt Name="FBMAINEDIT_1" OrigName="fbmainEdit_1" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86801BC" Group="main_vars" RelocationRecord="$$DATA$$+444"/>
+			<VarExt Name="FBMAINEDIT_5" OrigName="fbmainEdit_5" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86802A6" Group="main_vars" RelocationRecord="$$DATA$$+678"/>
+			<VarExt Name="FBMAINEDIT_9" OrigName="fbmainEdit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680359" Group="main_vars" RelocationRecord="$$DATA$$+857"/>
+			<VarExt Name="FBMAINEDIT_11" OrigName="fbmainEdit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86803D5" Group="main_vars" RelocationRecord="$$DATA$$+981"/>
+			<VarExt Name="FBMAINEDIT_13" OrigName="fbmainEdit_13" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680451" Group="main_vars" RelocationRecord="$$DATA$$+1105"/>
+			<VarExt Name="FBMAINEDIT_15" OrigName="fbmainEdit_15" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86804CD" Group="main_vars" RelocationRecord="$$DATA$$+1229"/>
+			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x868000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
 		</FBlock>
-		<FBlock Name="DRAWSETUPIP" OrigName="DrawSetupIP" SrcType="3" FrameSize="52" CodeAddr="0x7F76404" HashCode="7AC7146F">
+		<FBlock Name="DRAWSETUPIP" OrigName="DrawSetupIP" SrcType="3" FrameSize="52" CodeAddr="0x8706404" HashCode="7AC7146F">
 			<VarO Name="UIOUTVAR" OrigName="uiOutVar" Type="UINT" OrigType="UINT" Addr="0x18[42]" Attribs="relative"/>
 			<Var Name="RES" OrigName="res" Type="USINT" OrigType="USINT" Addr="0x18[0]" Attribs="relative"/>
 			<Var Name="BSTATREDRW" OrigName="bStatRedrw" Type="BOOL" OrigType="BOOL" Addr="0x18[1]" Attribs="relative"/>
@@ -438,32 +438,32 @@
 			<Var Name="WPARAM" OrigName="wParam" Type="UINT" OrigType="UINT" Addr="0x18[40]" Attribs="relative"/>
 			<TmpVar Name="$$TMP0" OrigName="$$TMP0" Type="@STRING" OrigType="@STRING" Addr="0x16[-4]" Attribs="relative,stack"/>
 			<TmpVar Name="$$TMP1" OrigName="$$TMP1" Type="UINT" OrigType="UINT" Addr="0x16[-6]" Attribs="relative,stack"/>
-			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x7EF0018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
-			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x7EF000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
-			<VarExt Name="FBBACKPAGE" OrigName="fbBackPage" Type="DRAWBACKPAGE" OrigType="DrawBackPage" Addr="0x7EF0060" Group="Back_page_manager" RelocationRecord="$$DATA$$+96"/>
-			<VarExt Name="FBSETUPIPSTRING_1" OrigName="fbSetupIPString_1" Type="STATIC01" OrigType="Static01" Addr="0x7EF0864" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2148"/>
-			<VarExt Name="FBSETUPIPSTRING_2" OrigName="fbSetupIPString_2" Type="STATIC01" OrigType="Static01" Addr="0x7EF089B" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2203"/>
-			<VarExt Name="FBSETUPIPSTRING_3" OrigName="fbSetupIPString_3" Type="STATIC01" OrigType="Static01" Addr="0x7EF08D2" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2258"/>
-			<VarExt Name="FBSETUPIPSTRING_4" OrigName="fbSetupIPString_4" Type="STATIC01" OrigType="Static01" Addr="0x7EF0909" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2313"/>
-			<VarExt Name="FBSETUPIPEDIT_5" OrigName="fbSetupIPEdit_5" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0940" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2368"/>
-			<VarExt Name="FBSETUPIPEDIT_6" OrigName="fbSetupIPEdit_6" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0985" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2437"/>
-			<VarExt Name="FBSETUPIPEDIT_7" OrigName="fbSetupIPEdit_7" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF09CA" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2506"/>
-			<VarExt Name="FBSETUPIPEDIT_8" OrigName="fbSetupIPEdit_8" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0A0F" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2575"/>
-			<VarExt Name="FBSETUPIPEDIT_9" OrigName="fbSetupIPEdit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0A54" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2644"/>
-			<VarExt Name="FBSETUPIPEDIT_10" OrigName="fbSetupIPEdit_10" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0A99" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2713"/>
-			<VarExt Name="FBSETUPIPEDIT_11" OrigName="fbSetupIPEdit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0ADE" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2782"/>
-			<VarExt Name="FBSETUPIPEDIT_12" OrigName="fbSetupIPEdit_12" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0B23" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2851"/>
-			<VarExt Name="FBSETUPIPEDIT_13" OrigName="fbSetupIPEdit_13" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0B68" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2920"/>
-			<VarExt Name="FBSETUPIPEDIT_14" OrigName="fbSetupIPEdit_14" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0BAD" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2989"/>
-			<VarExt Name="FBSETUPIPEDIT_15" OrigName="fbSetupIPEdit_15" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0BF2" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3058"/>
-			<VarExt Name="FBSETUPIPEDIT_16" OrigName="fbSetupIPEdit_16" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0C37" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3127"/>
-			<VarExt Name="FBSETUPIPEDIT_17" OrigName="fbSetupIPEdit_17" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0C7C" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3196"/>
-			<VarExt Name="FBSETUPIPEDIT_18" OrigName="fbSetupIPEdit_18" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0CC1" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3265"/>
-			<VarExt Name="FBSETUPIPEDIT_19" OrigName="fbSetupIPEdit_19" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0D06" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3334"/>
-			<VarExt Name="FBSETUPIPEDIT_20" OrigName="fbSetupIPEdit_20" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0D4B" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3403"/>
-			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x7EF000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
+			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x8680018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
+			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x868000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
+			<VarExt Name="FBBACKPAGE" OrigName="fbBackPage" Type="DRAWBACKPAGE" OrigType="DrawBackPage" Addr="0x8680060" Group="Back_page_manager" RelocationRecord="$$DATA$$+96"/>
+			<VarExt Name="FBSETUPIPSTRING_1" OrigName="fbSetupIPString_1" Type="STATIC01" OrigType="Static01" Addr="0x8680864" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2148"/>
+			<VarExt Name="FBSETUPIPSTRING_2" OrigName="fbSetupIPString_2" Type="STATIC01" OrigType="Static01" Addr="0x868089B" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2203"/>
+			<VarExt Name="FBSETUPIPSTRING_3" OrigName="fbSetupIPString_3" Type="STATIC01" OrigType="Static01" Addr="0x86808D2" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2258"/>
+			<VarExt Name="FBSETUPIPSTRING_4" OrigName="fbSetupIPString_4" Type="STATIC01" OrigType="Static01" Addr="0x8680909" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2313"/>
+			<VarExt Name="FBSETUPIPEDIT_5" OrigName="fbSetupIPEdit_5" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680940" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2368"/>
+			<VarExt Name="FBSETUPIPEDIT_6" OrigName="fbSetupIPEdit_6" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680985" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2437"/>
+			<VarExt Name="FBSETUPIPEDIT_7" OrigName="fbSetupIPEdit_7" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86809CA" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2506"/>
+			<VarExt Name="FBSETUPIPEDIT_8" OrigName="fbSetupIPEdit_8" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680A0F" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2575"/>
+			<VarExt Name="FBSETUPIPEDIT_9" OrigName="fbSetupIPEdit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680A54" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2644"/>
+			<VarExt Name="FBSETUPIPEDIT_10" OrigName="fbSetupIPEdit_10" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680A99" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2713"/>
+			<VarExt Name="FBSETUPIPEDIT_11" OrigName="fbSetupIPEdit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680ADE" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2782"/>
+			<VarExt Name="FBSETUPIPEDIT_12" OrigName="fbSetupIPEdit_12" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680B23" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2851"/>
+			<VarExt Name="FBSETUPIPEDIT_13" OrigName="fbSetupIPEdit_13" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680B68" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2920"/>
+			<VarExt Name="FBSETUPIPEDIT_14" OrigName="fbSetupIPEdit_14" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680BAD" Group="SetupIP_vars" RelocationRecord="$$DATA$$+2989"/>
+			<VarExt Name="FBSETUPIPEDIT_15" OrigName="fbSetupIPEdit_15" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680BF2" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3058"/>
+			<VarExt Name="FBSETUPIPEDIT_16" OrigName="fbSetupIPEdit_16" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680C37" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3127"/>
+			<VarExt Name="FBSETUPIPEDIT_17" OrigName="fbSetupIPEdit_17" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680C7C" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3196"/>
+			<VarExt Name="FBSETUPIPEDIT_18" OrigName="fbSetupIPEdit_18" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680CC1" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3265"/>
+			<VarExt Name="FBSETUPIPEDIT_19" OrigName="fbSetupIPEdit_19" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680D06" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3334"/>
+			<VarExt Name="FBSETUPIPEDIT_20" OrigName="fbSetupIPEdit_20" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680D4B" Group="SetupIP_vars" RelocationRecord="$$DATA$$+3403"/>
+			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x868000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
 		</FBlock>
-		<FBlock Name="DRAWSETUPRS2" OrigName="DrawSetupRS2" SrcType="3" FrameSize="52" CodeAddr="0x7F76E10" HashCode="B9FD277D">
+		<FBlock Name="DRAWSETUPRS2" OrigName="DrawSetupRS2" SrcType="3" FrameSize="52" CodeAddr="0x8706E10" HashCode="B9FD277D">
 			<VarO Name="UIOUTVAR" OrigName="uiOutVar" Type="UINT" OrigType="UINT" Addr="0x18[42]" Attribs="relative"/>
 			<Var Name="RES" OrigName="res" Type="USINT" OrigType="USINT" Addr="0x18[0]" Attribs="relative"/>
 			<Var Name="BSTATREDRW" OrigName="bStatRedrw" Type="BOOL" OrigType="BOOL" Addr="0x18[1]" Attribs="relative"/>
@@ -490,24 +490,24 @@
 			<Var Name="WPARAM" OrigName="wParam" Type="UINT" OrigType="UINT" Addr="0x18[40]" Attribs="relative"/>
 			<TmpVar Name="$$TMP0" OrigName="$$TMP0" Type="@STRING" OrigType="@STRING" Addr="0x16[-4]" Attribs="relative,stack"/>
 			<TmpVar Name="$$TMP1" OrigName="$$TMP1" Type="UINT" OrigType="UINT" Addr="0x16[-6]" Attribs="relative,stack"/>
-			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x7EF0018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
-			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x7EF000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
-			<VarExt Name="FBBACKPAGE" OrigName="fbBackPage" Type="DRAWBACKPAGE" OrigType="DrawBackPage" Addr="0x7EF0060" Group="Back_page_manager" RelocationRecord="$$DATA$$+96"/>
-			<VarExt Name="FBSETUPRS2STRING_1" OrigName="fbSetupRS2String_1" Type="STATIC01" OrigType="Static01" Addr="0x7EF0548" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1352"/>
-			<VarExt Name="FBSETUPRS2STRING_2" OrigName="fbSetupRS2String_2" Type="STATIC01" OrigType="Static01" Addr="0x7EF057F" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1407"/>
-			<VarExt Name="FBSETUPRS2STRING_3" OrigName="fbSetupRS2String_3" Type="STATIC01" OrigType="Static01" Addr="0x7EF05B6" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1462"/>
-			<VarExt Name="FBSETUPRS2STRING_4" OrigName="fbSetupRS2String_4" Type="STATIC01" OrigType="Static01" Addr="0x7EF05ED" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1517"/>
-			<VarExt Name="FBSETUPRS2STRING_5" OrigName="fbSetupRS2String_5" Type="STATIC01" OrigType="Static01" Addr="0x7EF0624" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1572"/>
-			<VarExt Name="FBSETUPRS2STRING_6" OrigName="fbSetupRS2String_6" Type="STATIC01" OrigType="Static01" Addr="0x7EF065B" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1627"/>
-			<VarExt Name="FBSETUPRS2EDIT_7" OrigName="fbSetupRS2Edit_7" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0692" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1682"/>
-			<VarExt Name="FBSETUPRS2EDIT_8" OrigName="fbSetupRS2Edit_8" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF06D7" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1751"/>
-			<VarExt Name="FBSETUPRS2EDIT_9" OrigName="fbSetupRS2Edit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF071C" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1820"/>
-			<VarExt Name="FBSETUPRS2EDIT_10" OrigName="fbSetupRS2Edit_10" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0761" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1889"/>
-			<VarExt Name="FBSETUPRS2EDIT_11" OrigName="fbSetupRS2Edit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF07A6" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1958"/>
-			<VarExt Name="FBSETUPRS2EDIT_12" OrigName="fbSetupRS2Edit_12" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF07EB" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+2027"/>
-			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x7EF000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
+			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x8680018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
+			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x868000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
+			<VarExt Name="FBBACKPAGE" OrigName="fbBackPage" Type="DRAWBACKPAGE" OrigType="DrawBackPage" Addr="0x8680060" Group="Back_page_manager" RelocationRecord="$$DATA$$+96"/>
+			<VarExt Name="FBSETUPRS2STRING_1" OrigName="fbSetupRS2String_1" Type="STATIC01" OrigType="Static01" Addr="0x8680548" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1352"/>
+			<VarExt Name="FBSETUPRS2STRING_2" OrigName="fbSetupRS2String_2" Type="STATIC01" OrigType="Static01" Addr="0x868057F" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1407"/>
+			<VarExt Name="FBSETUPRS2STRING_3" OrigName="fbSetupRS2String_3" Type="STATIC01" OrigType="Static01" Addr="0x86805B6" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1462"/>
+			<VarExt Name="FBSETUPRS2STRING_4" OrigName="fbSetupRS2String_4" Type="STATIC01" OrigType="Static01" Addr="0x86805ED" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1517"/>
+			<VarExt Name="FBSETUPRS2STRING_5" OrigName="fbSetupRS2String_5" Type="STATIC01" OrigType="Static01" Addr="0x8680624" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1572"/>
+			<VarExt Name="FBSETUPRS2STRING_6" OrigName="fbSetupRS2String_6" Type="STATIC01" OrigType="Static01" Addr="0x868065B" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1627"/>
+			<VarExt Name="FBSETUPRS2EDIT_7" OrigName="fbSetupRS2Edit_7" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680692" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1682"/>
+			<VarExt Name="FBSETUPRS2EDIT_8" OrigName="fbSetupRS2Edit_8" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86806D7" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1751"/>
+			<VarExt Name="FBSETUPRS2EDIT_9" OrigName="fbSetupRS2Edit_9" Type="EDITBOX01" OrigType="EditBox01" Addr="0x868071C" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1820"/>
+			<VarExt Name="FBSETUPRS2EDIT_10" OrigName="fbSetupRS2Edit_10" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680761" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1889"/>
+			<VarExt Name="FBSETUPRS2EDIT_11" OrigName="fbSetupRS2Edit_11" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86807A6" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+1958"/>
+			<VarExt Name="FBSETUPRS2EDIT_12" OrigName="fbSetupRS2Edit_12" Type="EDITBOX01" OrigType="EditBox01" Addr="0x86807EB" Group="SetupRS2_vars" RelocationRecord="$$DATA$$+2027"/>
+			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x868000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
 		</FBlock>
-		<FBlock Name="REFRUPDATECOUNTER" OrigName="RefrupdateCounter" SrcType="3" FrameSize="26" CodeAddr="0x7F75532" HashCode="33A0B70F">
+		<FBlock Name="REFRUPDATECOUNTER" OrigName="RefrupdateCounter" SrcType="3" FrameSize="26" CodeAddr="0x8705532" HashCode="33A0B70F">
 			<Var Name="RES" OrigName="res" Type="USINT" OrigType="USINT" Addr="0x18[0]" Attribs="relative"/>
 			<Var Name="PAGID" OrigName="pagID" Type="UINT" OrigType="UINT" Addr="0x18[1]" Attribs="relative"/>
 			<Var Name="N" OrigName="n" Type="USINT" OrigType="USINT" Addr="0x18[3]" Attribs="relative"/>
@@ -517,16 +517,16 @@
 			<Var Name="RY1" OrigName="ry1" Type="UINT" OrigType="UINT" Addr="0x18[12]" Attribs="relative"/>
 			<Var Name="RX2" OrigName="rx2" Type="UINT" OrigType="UINT" Addr="0x18[14]" Attribs="relative"/>
 			<Var Name="RY2" OrigName="ry2" Type="UINT" OrigType="UINT" Addr="0x18[16]" Attribs="relative"/>
-			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x7EF0018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
-			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x7EF000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
-			<VarExt Name="FBUPDATECOUNTERSTRING_1" OrigName="fbupdateCounterString_1" Type="STATIC01" OrigType="Static01" Addr="0x7EF0DC4" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3524"/>
-			<VarExt Name="FBUPDATECOUNTERSTRING_3" OrigName="fbupdateCounterString_3" Type="STATIC01" OrigType="Static01" Addr="0x7EF0E40" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3648"/>
-			<VarExt Name="FBUPDATECOUNTEREDIT_2" OrigName="fbupdateCounterEdit_2" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0DFB" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3579"/>
-			<VarExt Name="FBUPDATECOUNTEREDIT_4" OrigName="fbupdateCounterEdit_4" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0E77" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3703"/>
-			<VarExt Name="FBUPDATECOUNTERBUTTON_5" OrigName="fbupdateCounterButton_5" Type="BUTTON02" OrigType="Button02" Addr="0x7EF0EBC" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3772"/>
-			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x7EF000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
+			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x8680018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
+			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x868000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
+			<VarExt Name="FBUPDATECOUNTERSTRING_1" OrigName="fbupdateCounterString_1" Type="STATIC01" OrigType="Static01" Addr="0x8680DC4" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3524"/>
+			<VarExt Name="FBUPDATECOUNTERSTRING_3" OrigName="fbupdateCounterString_3" Type="STATIC01" OrigType="Static01" Addr="0x8680E40" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3648"/>
+			<VarExt Name="FBUPDATECOUNTEREDIT_2" OrigName="fbupdateCounterEdit_2" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680DFB" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3579"/>
+			<VarExt Name="FBUPDATECOUNTEREDIT_4" OrigName="fbupdateCounterEdit_4" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680E77" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3703"/>
+			<VarExt Name="FBUPDATECOUNTERBUTTON_5" OrigName="fbupdateCounterButton_5" Type="BUTTON02" OrigType="Button02" Addr="0x8680EBC" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3772"/>
+			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x868000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
 		</FBlock>
-		<FBlock Name="DRAWUPDATECOUNTER" OrigName="DrawupdateCounter" SrcType="3" FrameSize="52" CodeAddr="0x7F775CA" HashCode="75DE42A7">
+		<FBlock Name="DRAWUPDATECOUNTER" OrigName="DrawupdateCounter" SrcType="3" FrameSize="52" CodeAddr="0x87075CA" HashCode="75DE42A7">
 			<VarO Name="UIOUTVAR" OrigName="uiOutVar" Type="UINT" OrigType="UINT" Addr="0x18[42]" Attribs="relative"/>
 			<Var Name="RES" OrigName="res" Type="USINT" OrigType="USINT" Addr="0x18[0]" Attribs="relative"/>
 			<Var Name="BSTATREDRW" OrigName="bStatRedrw" Type="BOOL" OrigType="BOOL" Addr="0x18[1]" Attribs="relative"/>
@@ -553,15 +553,15 @@
 			<Var Name="WPARAM" OrigName="wParam" Type="UINT" OrigType="UINT" Addr="0x18[40]" Attribs="relative"/>
 			<TmpVar Name="$$TMP0" OrigName="$$TMP0" Type="@STRING" OrigType="@STRING" Addr="0x16[-4]" Attribs="relative,stack"/>
 			<TmpVar Name="$$TMP1" OrigName="$$TMP1" Type="UINT" OrigType="UINT" Addr="0x16[-6]" Attribs="relative,stack"/>
-			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x7EF0018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
-			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x7EF000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
-			<VarExt Name="FBBACKPAGE" OrigName="fbBackPage" Type="DRAWBACKPAGE" OrigType="DrawBackPage" Addr="0x7EF0060" Group="Back_page_manager" RelocationRecord="$$DATA$$+96"/>
-			<VarExt Name="FBUPDATECOUNTERSTRING_1" OrigName="fbupdateCounterString_1" Type="STATIC01" OrigType="Static01" Addr="0x7EF0DC4" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3524"/>
-			<VarExt Name="FBUPDATECOUNTERSTRING_3" OrigName="fbupdateCounterString_3" Type="STATIC01" OrigType="Static01" Addr="0x7EF0E40" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3648"/>
-			<VarExt Name="FBUPDATECOUNTEREDIT_2" OrigName="fbupdateCounterEdit_2" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0DFB" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3579"/>
-			<VarExt Name="FBUPDATECOUNTEREDIT_4" OrigName="fbupdateCounterEdit_4" Type="EDITBOX01" OrigType="EditBox01" Addr="0x7EF0E77" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3703"/>
-			<VarExt Name="FBUPDATECOUNTERBUTTON_5" OrigName="fbupdateCounterButton_5" Type="BUTTON02" OrigType="Button02" Addr="0x7EF0EBC" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3772"/>
-			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x7EF000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
+			<VarExt Name="GUICALLSTACK" OrigName="guiCallStack" Type="UINT" OrigType="UINT" Addr="0x8680018" Group="Call_stack" RelocationRecord="$$DATA$$+24" Dims="10"/>
+			<VarExt Name="GISTACKPTR" OrigName="giStackPtr" Type="INT" OrigType="INT" Addr="0x868000E" Group="Call_stack" RelocationRecord="$$DATA$$+14"/>
+			<VarExt Name="FBBACKPAGE" OrigName="fbBackPage" Type="DRAWBACKPAGE" OrigType="DrawBackPage" Addr="0x8680060" Group="Back_page_manager" RelocationRecord="$$DATA$$+96"/>
+			<VarExt Name="FBUPDATECOUNTERSTRING_1" OrigName="fbupdateCounterString_1" Type="STATIC01" OrigType="Static01" Addr="0x8680DC4" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3524"/>
+			<VarExt Name="FBUPDATECOUNTERSTRING_3" OrigName="fbupdateCounterString_3" Type="STATIC01" OrigType="Static01" Addr="0x8680E40" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3648"/>
+			<VarExt Name="FBUPDATECOUNTEREDIT_2" OrigName="fbupdateCounterEdit_2" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680DFB" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3579"/>
+			<VarExt Name="FBUPDATECOUNTEREDIT_4" OrigName="fbupdateCounterEdit_4" Type="EDITBOX01" OrigType="EditBox01" Addr="0x8680E77" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3703"/>
+			<VarExt Name="FBUPDATECOUNTERBUTTON_5" OrigName="fbupdateCounterButton_5" Type="BUTTON02" OrigType="Button02" Addr="0x8680EBC" Group="updateCounter_vars" RelocationRecord="$$DATA$$+3772"/>
+			<VarExt Name="$WAITREFRESH" OrigName="$waitRefresh" Type="BOOL" OrigType="BOOL" Addr="0x868000D" Group="Sets" RelocationRecord="$$DATA$$+13"/>
 		</FBlock>
 	</FunctionBlocks>
 	<Functions>
@@ -860,7 +860,7 @@
 			<VarI Name="X2" OrigName="x2" Type="UINT" OrigType="UINT" Addr="0x18[20]" Attribs="relative,stack" Descr="X-coordinate of the lower-right corner"/>
 			<VarI Name="Y2" OrigName="y2" Type="UINT" OrigType="UINT" Addr="0x18[24]" Attribs="relative,stack" Descr="Y-coordinate of the lower-right corner"/>
 		</Fun>
-		<Fun Name="SYSCLOCKWRITE" OrigName="sysClockWrite" SrcType="6" CodeAddr="0x3978E0" HashCode="00001505">
+		<Fun Name="SYSCLOCKWRITE" OrigName="sysClockWrite" SrcType="6" CodeAddr="0x6878E0" HashCode="00001505">
 			<Res Name="SYSCLOCKWRITE" OrigName="sysClockWrite" Type="USINT" OrigType="USINT" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="SECONDS" OrigName="seconds" Type="USINT" OrigType="USINT" Addr="0x18[8]" Attribs="relative,stack" Descr="seconds "/>
 			<VarI Name="MINUTES" OrigName="minutes" Type="USINT" OrigType="USINT" Addr="0x18[12]" Attribs="relative,stack" Descr="minutes "/>
@@ -891,7 +891,7 @@
 			<VarI Name="MSG1" OrigName="msg1" Type="STRING" OrigType="STRING" Addr="0x18[8]" Attribs="relative,stack" Descr="first string" length="32"/>
 			<VarI Name="MSG2" OrigName="msg2" Type="STRING" OrigType="STRING" Addr="0x18[12]" Attribs="relative,stack" Descr="second string" length="32"/>
 		</Fun>
-		<Fun Name="SYSSWAP_DIATOHMI" OrigName="sysSwap_DiaToHmi" SrcType="6" CodeAddr="0x397EE0" HashCode="00001505">
+		<Fun Name="SYSSWAP_DIATOHMI" OrigName="sysSwap_DiaToHmi" SrcType="6" CodeAddr="0x687EE0" HashCode="00001505">
 			<Res Name="SYSSWAP_DIATOHMI" OrigName="sysSwap_DiaToHmi" Type="BOOL" OrigType="BOOL" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="ID" OrigName="id" Type="USINT" OrigType="USINT" Addr="0x18[8]" Attribs="relative,stack" Descr="User HMI Page ID [0..11]"/>
 		</Fun>
@@ -915,7 +915,7 @@
 			<Res Name="VIDEO_LOADEXTERNALFONT" OrigName="Video_LoadExternalFont" Type="UDINT" OrigType="UDINT" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="FILENAME" OrigName="filename" Type="STRING" OrigType="STRING" Addr="0x18[8]" Attribs="relative,stack" length="32"/>
 		</Fun>
-		<Fun Name="VIDEO_SETDEVICECFG" OrigName="Video_SetDeviceCfg" SrcType="6" CodeAddr="0x397F40" HashCode="00001505">
+		<Fun Name="VIDEO_SETDEVICECFG" OrigName="Video_SetDeviceCfg" SrcType="6" CodeAddr="0x687F40" HashCode="00001505">
 			<Res Name="VIDEO_SETDEVICECFG" OrigName="Video_SetDeviceCfg" Type="BOOL" OrigType="BOOL" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="IDXDEVICE" OrigName="idxDevice" Type="USINT" OrigType="USINT" Addr="0x18[8]" Attribs="relative,stack" Descr="index of device"/>
 			<VarI Name="RES" OrigName="res" Type="USINT" OrigType="USINT" Addr="0x18[12]" Attribs="relative,stack" Descr="0 - local device, 1 - Modbus RTU, 2 - Modbus TCP, 3 - CANopen"/>
@@ -925,67 +925,67 @@
 			<Res Name="SYS_USBD_COMMAND" OrigName="sys_USBD_Command" Type="USINT" OrigType="USINT" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="CMD" OrigName="cmd" Type="USINT" OrigType="USINT" Addr="0x18[8]" Attribs="relative,stack" Descr="Command: 0=disable, 1=enable"/>
 		</Fun>
-		<Fun Name="SYS_USBD_STATUS" OrigName="sys_USBD_Status" SrcType="6" CodeAddr="0x398520" HashCode="00001505">
+		<Fun Name="SYS_USBD_STATUS" OrigName="sys_USBD_Status" SrcType="6" CodeAddr="0x688520" HashCode="00001505">
 			<Res Name="SYS_USBD_STATUS" OrigName="sys_USBD_Status" Type="USINT" OrigType="USINT" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="DUMMY" OrigName="dummy" Type="USINT" OrigType="USINT" Addr="0x18[8]" Attribs="relative,stack" Descr="Dummy input"/>
 		</Fun>
-		<Fun Name="SYS_F_WOPEN" OrigName="sys_F_WOPEN" SrcType="6" CodeAddr="0x3982C0" HashCode="00001505">
+		<Fun Name="SYS_F_WOPEN" OrigName="sys_F_WOPEN" SrcType="6" CodeAddr="0x6882C0" HashCode="00001505">
 			<Res Name="SYS_F_WOPEN" OrigName="sys_F_WOPEN" Type="DWORD" OrigType="DWORD" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="FILE" OrigName="file" Type="STRING" OrigType="STRING" Addr="0x18[8]" Attribs="relative,stack" Descr="File's name" length="32"/>
 		</Fun>
-		<Fun Name="SYS_F_ROPEN" OrigName="sys_F_ROPEN" SrcType="6" CodeAddr="0x3982E0" HashCode="00001505">
+		<Fun Name="SYS_F_ROPEN" OrigName="sys_F_ROPEN" SrcType="6" CodeAddr="0x6882E0" HashCode="00001505">
 			<Res Name="SYS_F_ROPEN" OrigName="sys_F_ROPEN" Type="DWORD" OrigType="DWORD" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="FILE" OrigName="file" Type="STRING" OrigType="STRING" Addr="0x18[8]" Attribs="relative,stack" Descr="File's name" length="32"/>
 		</Fun>
-		<Fun Name="SYS_FM_READ" OrigName="sys_FM_READ" SrcType="6" CodeAddr="0x398300" HashCode="00001505">
+		<Fun Name="SYS_FM_READ" OrigName="sys_FM_READ" SrcType="6" CodeAddr="0x688300" HashCode="00001505">
 			<Res Name="SYS_FM_READ" OrigName="sys_FM_READ" Type="BOOL" OrigType="BOOL" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="ID" OrigName="id" Type="DWORD" OrigType="DWORD" Addr="0x18[8]" Attribs="relative,stack" Descr="File's ID"/>
 			<VarI Name="MSG" OrigName="msg" Type="STRING" OrigType="STRING" Addr="0x18[12]" Attribs="relative,stack" Descr="String to read" length="32"/>
 			<VarI Name="LEN" OrigName="len" Type="UDINT" OrigType="UDINT" Addr="0x18[16]" Attribs="relative,stack" Descr="SIZEOF(String to read)"/>
 		</Fun>
-		<Fun Name="SYS_FM_WRITE" OrigName="sys_FM_WRITE" SrcType="6" CodeAddr="0x398320" HashCode="00001505">
+		<Fun Name="SYS_FM_WRITE" OrigName="sys_FM_WRITE" SrcType="6" CodeAddr="0x688320" HashCode="00001505">
 			<Res Name="SYS_FM_WRITE" OrigName="sys_FM_WRITE" Type="BOOL" OrigType="BOOL" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="ID" OrigName="id" Type="DWORD" OrigType="DWORD" Addr="0x18[8]" Attribs="relative,stack" Descr="File's ID"/>
 			<VarI Name="MSG" OrigName="msg" Type="STRING" OrigType="STRING" Addr="0x18[12]" Attribs="relative,stack" Descr="String to write" length="32"/>
 		</Fun>
-		<Fun Name="SYS_F_CLOSE" OrigName="sys_F_CLOSE" SrcType="6" CodeAddr="0x398340" HashCode="00001505">
+		<Fun Name="SYS_F_CLOSE" OrigName="sys_F_CLOSE" SrcType="6" CodeAddr="0x688340" HashCode="00001505">
 			<Res Name="SYS_F_CLOSE" OrigName="sys_F_CLOSE" Type="BOOL" OrigType="BOOL" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="ID" OrigName="id" Type="DWORD" OrigType="DWORD" Addr="0x18[8]" Attribs="relative,stack" Descr="File's ID"/>
 		</Fun>
-		<Fun Name="SYS_FA_READ" OrigName="sys_FA_READ" SrcType="6" CodeAddr="0x398360" HashCode="00001505">
+		<Fun Name="SYS_FA_READ" OrigName="sys_FA_READ" SrcType="6" CodeAddr="0x688360" HashCode="00001505">
 			<Res Name="SYS_FA_READ" OrigName="sys_FA_READ" Type="REAL" OrigType="REAL" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="ID" OrigName="id" Type="DWORD" OrigType="DWORD" Addr="0x18[8]" Attribs="relative,stack" Descr="File's ID"/>
 		</Fun>
-		<Fun Name="SYS_FA_WRITE" OrigName="sys_FA_WRITE" SrcType="6" CodeAddr="0x398380" HashCode="00001505">
+		<Fun Name="SYS_FA_WRITE" OrigName="sys_FA_WRITE" SrcType="6" CodeAddr="0x688380" HashCode="00001505">
 			<Res Name="SYS_FA_WRITE" OrigName="sys_FA_WRITE" Type="BOOL" OrigType="BOOL" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="ID" OrigName="id" Type="DWORD" OrigType="DWORD" Addr="0x18[8]" Attribs="relative,stack" Descr="File's ID"/>
 			<VarI Name="VALUE" OrigName="value" Type="REAL" OrigType="REAL" Addr="0x18[12]" Attribs="relative,stack" Descr="Float to write"/>
 		</Fun>
-		<Fun Name="SYS_F_EOF" OrigName="sys_F_EOF" SrcType="6" CodeAddr="0x3983A0" HashCode="00001505">
+		<Fun Name="SYS_F_EOF" OrigName="sys_F_EOF" SrcType="6" CodeAddr="0x6883A0" HashCode="00001505">
 			<Res Name="SYS_F_EOF" OrigName="sys_F_EOF" Type="BOOL" OrigType="BOOL" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="ID" OrigName="id" Type="DWORD" OrigType="DWORD" Addr="0x18[8]" Attribs="relative,stack" Descr="File's ID"/>
 		</Fun>
-		<Fun Name="SYS_F_REMOVE" OrigName="sys_F_REMOVE" SrcType="6" CodeAddr="0x3983C0" HashCode="00001505">
+		<Fun Name="SYS_F_REMOVE" OrigName="sys_F_REMOVE" SrcType="6" CodeAddr="0x6883C0" HashCode="00001505">
 			<Res Name="SYS_F_REMOVE" OrigName="sys_F_REMOVE" Type="BOOL" OrigType="BOOL" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="FILE" OrigName="file" Type="STRING" OrigType="STRING" Addr="0x18[8]" Attribs="relative,stack" Descr="File's name" length="32"/>
 		</Fun>
-		<Fun Name="SYS_F_WOPENA" OrigName="sys_F_WOPENA" SrcType="6" CodeAddr="0x3983E0" HashCode="00001505">
+		<Fun Name="SYS_F_WOPENA" OrigName="sys_F_WOPENA" SrcType="6" CodeAddr="0x6883E0" HashCode="00001505">
 			<Res Name="SYS_F_WOPENA" OrigName="sys_F_WOPENA" Type="DWORD" OrigType="DWORD" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="FILE" OrigName="file" Type="STRING" OrigType="STRING" Addr="0x18[8]" Attribs="relative,stack" Descr="File's name" length="32"/>
 		</Fun>
-		<Fun Name="SYS_F_FILELENGTH" OrigName="sys_F_FILELENGTH" SrcType="6" CodeAddr="0x398400" HashCode="00001505">
+		<Fun Name="SYS_F_FILELENGTH" OrigName="sys_F_FILELENGTH" SrcType="6" CodeAddr="0x688400" HashCode="00001505">
 			<Res Name="SYS_F_FILELENGTH" OrigName="sys_F_FILELENGTH" Type="DINT" OrigType="DINT" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="FILE" OrigName="file" Type="STRING" OrigType="STRING" Addr="0x18[8]" Attribs="relative,stack" Descr="File's name" length="32"/>
 		</Fun>
-		<Fun Name="SYSCOPM_SDO_OPENCHN" OrigName="sysCOPM_Sdo_OpenChn" SrcType="6" CodeAddr="0x398520" HashCode="00001505">
+		<Fun Name="SYSCOPM_SDO_OPENCHN" OrigName="sysCOPM_Sdo_OpenChn" SrcType="6" CodeAddr="0x688520" HashCode="00001505">
 			<Res Name="SYSCOPM_SDO_OPENCHN" OrigName="sysCOPM_Sdo_OpenChn" Type="UDINT" OrigType="UDINT" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="DUMMY" OrigName="dummy" Type="BOOL" OrigType="BOOL" Addr="0x18[8]" Attribs="relative,stack" Descr="Dummy arg"/>
 		</Fun>
-		<Fun Name="SYSCOPM_SDO_CLOSECHN" OrigName="sysCOPM_Sdo_CloseChn" SrcType="6" CodeAddr="0x398520" HashCode="00001505">
+		<Fun Name="SYSCOPM_SDO_CLOSECHN" OrigName="sysCOPM_Sdo_CloseChn" SrcType="6" CodeAddr="0x688520" HashCode="00001505">
 			<Res Name="SYSCOPM_SDO_CLOSECHN" OrigName="sysCOPM_Sdo_CloseChn" Type="BOOL" OrigType="BOOL" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="HDLR" OrigName="hdlr" Type="UDINT" OrigType="UDINT" Addr="0x18[8]" Attribs="relative,stack" Descr="SDO Handle"/>
 		</Fun>
-		<Fun Name="SYSCOPM_SDO_DOWNLOADREQUEST" OrigName="sysCOPM_Sdo_DownloadRequest" SrcType="6" CodeAddr="0x398520" HashCode="00001505">
+		<Fun Name="SYSCOPM_SDO_DOWNLOADREQUEST" OrigName="sysCOPM_Sdo_DownloadRequest" SrcType="6" CodeAddr="0x688520" HashCode="00001505">
 			<Res Name="SYSCOPM_SDO_DOWNLOADREQUEST" OrigName="sysCOPM_Sdo_DownloadRequest" Type="UDINT" OrigType="UDINT" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="HDLR" OrigName="hdlr" Type="UDINT" OrigType="UDINT" Addr="0x18[8]" Attribs="relative,stack" Descr="SDO Handle"/>
 			<VarI Name="NODE" OrigName="node" Type="USINT" OrigType="USINT" Addr="0x18[12]" Attribs="relative,stack" Descr="CanOpen Address Node"/>
@@ -995,7 +995,7 @@
 			<VarI Name="NVALUE" OrigName="nValue" Type="DINT" OrigType="DINT" Addr="0x18[28]" Attribs="relative,stack" Descr="Value"/>
 			<VarI Name="TO" OrigName="to" Type="UDINT" OrigType="UDINT" Addr="0x18[32]" Attribs="relative,stack" Descr="Time out [ms]"/>
 		</Fun>
-		<Fun Name="SYSCOPM_SDO_UPLOADREQUEST" OrigName="sysCOPM_Sdo_UploadRequest" SrcType="6" CodeAddr="0x398520" HashCode="00001505">
+		<Fun Name="SYSCOPM_SDO_UPLOADREQUEST" OrigName="sysCOPM_Sdo_UploadRequest" SrcType="6" CodeAddr="0x688520" HashCode="00001505">
 			<Res Name="SYSCOPM_SDO_UPLOADREQUEST" OrigName="sysCOPM_Sdo_UploadRequest" Type="UDINT" OrigType="UDINT" Addr="0x18[-4]" Attribs="relative,stack"/>
 			<VarI Name="HDLR" OrigName="hdlr" Type="UDINT" OrigType="UDINT" Addr="0x18[8]" Attribs="relative,stack" Descr="SDO Handle"/>
 			<VarI Name="NODE" OrigName="node" Type="USINT" OrigType="USINT" Addr="0x18[12]" Attribs="relative,stack" Descr="CanOpen Address Node"/>
@@ -1131,15 +1131,15 @@
 		<DBlock Imgc="0" Type="M" DbId="5003" Addr="0x7139133C" NEl="1" DataSize="4" RW="R"/>
 		<DBlock Imgc="0" Type="M" DbId="5004" Addr="0x71391338" NEl="1" DataSize="4" RW="R"/>
 		<DBlock Imgc="0" Type="M" DbId="5005" Addr="0x71391334" NEl="1" DataSize="4" RW="R"/>
-		<DBlock Imgc="0" Type="M" DbId="0" Addr="0x7C60000" NEl="0" DataSize="0"/>
-		<DBlock Imgc="0" Type="M" DbId="60003" Addr="0x7C60000" NEl="1" DataSize="2" RW="RW"/>
+		<DBlock Imgc="0" Type="M" DbId="0" Addr="0x83F0000" NEl="0" DataSize="0"/>
+		<DBlock Imgc="0" Type="M" DbId="60003" Addr="0x83F0000" NEl="1" DataSize="2" RW="RW"/>
 		<DBlock Imgc="0" Type="M" DbId="60007" Addr="0x714B39C0" NEl="10" DataSize="1" RW="RW"/>
-		<DBlock Imgc="0" Type="M" DbId="60000" Addr="0x7C60004" NEl="36" DataSize="1" RW="R"/>
-		<DBlock Imgc="0" Type="M" DbId="60001" Addr="0x7C60028" NEl="100" DataSize="280" RW="R"/>
-		<DBlock Imgc="0" Type="M" DbId="60002" Addr="0x7C66D88" NEl="12" DataSize="1" RW="R"/>
+		<DBlock Imgc="0" Type="M" DbId="60000" Addr="0x83F0004" NEl="36" DataSize="1" RW="R"/>
+		<DBlock Imgc="0" Type="M" DbId="60001" Addr="0x83F0028" NEl="100" DataSize="280" RW="R"/>
+		<DBlock Imgc="0" Type="M" DbId="60002" Addr="0x83F6D88" NEl="12" DataSize="1" RW="R"/>
 		<DBlock Imgc="0" Type="M" DbId="60101" Addr="0x71B299C8" NEl="1" DataSize="4" RW="R"/>
 		<DBlock Imgc="0" Type="M" DbId="60102" Addr="0x71B299C4" NEl="1" DataSize="4" RW="R"/>
-		<DBlock Imgc="0" Type="M" DbId="60008" Addr="0x7C66D94" NEl="1" DataSize="1" RW="R"/>
+		<DBlock Imgc="0" Type="M" DbId="60008" Addr="0x83F6D94" NEl="1" DataSize="1" RW="R"/>
 	</DataBlocks>
 	<VirtualTables/>
 	<UnspecAddrs/>
