@@ -11,24 +11,24 @@ ep_time_wash AT %MW101.2 : INT;
 epprom_kw_cnt AT %MW101.4 : DWORD;
 ep_stopping_ats_time AT %MW101.6 : INT;
 	{G:"Status_variables"}
-Pressure AT %MW110.0 : INT;
-kw_counter AT %MW110.2 : DWORD;
-q_counter AT %MW110.4 : DWORD;
-kw_value AT %MW110.6 : INT;
-q_value AT %MW110.7 : INT;
-ATS_State_bits AT %MW110.8 : WORD;
-ATS_Current_prsnt AT %MW110.9 : INT;
-ATS_Current_L1 AT %MW110.10 : INT;
-ATS_Current_L2 AT %MW110.11 : INT;
-ATS_Current_L3 AT %MW110.12 : INT;
-ATS_Last_FaultCode AT %MW110.13 : INT;
-ATS_RunTime_Hors AT %MW110.14 : WORD;
-ATS_OnTimes_Cnt AT %MW110.15 : WORD;
-Alarms AT %MW110.16 : WORD;
-CMD AT %MW110.17 : WORD := 0;
-ATS_Voltage AT %MW110.18 : INT := 0;
-sv_washing AT %MW110.19 : BOOL := 0;
-Alarms_Val AT %MW110.20 : WORD := 0;
+Pressure AT %MW110.0 : INT;	{ DE:"тиск (56 = 5,6 бар)" }
+kw_counter AT %MW110.2 : DWORD;	{ DE:"лічильник електроенергії" }
+q_counter AT %MW110.4 : DWORD;	{ DE:"лічильник витрати води" }
+kw_value AT %MW110.6 : INT;	{ DE:"миттєве споживання електроенергії (456 = 45,6 кВт/год)" }
+q_value AT %MW110.7 : INT;	{ DE:"миттєва витрата води (135 = 13,5 м3/год)" }
+ATS_State_bits AT %MW110.8 : WORD;	{ DE:"b0 - rdy, b1 - on, b2 - alm, b3 - wrn, b4 - loc, b5 -  ramp, b6..8 - LI1..LI3" }
+ATS_Current_prsnt AT %MW110.9 : INT;	{ DE:"струм в % 0 - 200%" }
+ATS_Current_L1 AT %MW110.10 : INT;	{ DE:"Струм в Амперах L1" }
+ATS_Current_L2 AT %MW110.11 : INT;	{ DE:"Струм в Амперах L2" }
+ATS_Current_L3 AT %MW110.12 : INT;	{ DE:"Струм в Амперах L3" }
+ATS_Last_FaultCode AT %MW110.13 : INT;	{ DE:"Код останньої аварії" }
+ATS_RunTime_Hors AT %MW110.14 : WORD;	{ DE:"напрацювання в годинах" }
+ATS_OnTimes_Cnt AT %MW110.15 : WORD;	{ DE:"кількість запусків" }
+Alarms AT %MW110.16 : WORD;	{ DE:"Аварії ПП" }
+CMD AT %MW110.17 : WORD := 0;	{ DE:"Слово-команда від скади b0 - on, b1 - скидання аварій контролера" }
+ATS_Voltage AT %MW110.18 : INT := 0;	{ DE:"Напруга ПП" }
+sv_washing AT %MW110.19 : BOOL := 0;	{ DE:"Прапорець промивки" }
+Alarms_Val AT %MW110.20 : WORD := 0;	{ DE:"Аварії електрозасувок" }
 	{G:"IO_Mapping"}
 i_adc_pressure AT %IW1.0 : INT;	{ DE:"AIL1 analogue input" }
 i_val_state AT %IW1.2 : INT;	{ DE:"AIL3 analogue input" }
