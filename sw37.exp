@@ -29,6 +29,7 @@ CMD AT %MW110.17 : WORD := 0;	{ DE:"Слово-команда від скади 
 ATS_Voltage AT %MW110.18 : INT := 0;	{ DE:"Напруга ПП" }
 sv_washing AT %MW110.19 : BOOL := 0;	{ DE:"Прапорець промивки" }
 Alarms_Val AT %MW110.20 : WORD := 0;	{ DE:"Аварії електрозасувок" }
+wash_time_minutes AT %MW110.21 : INT := 0;
 	{G:"IO_Mapping"}
 i_adc_pressure AT %IW1.0 : INT;	{ DE:"AIL1 analogue input" }
 i_val_state AT %IW1.2 : INT;	{ DE:"AIL3 analogue input" }

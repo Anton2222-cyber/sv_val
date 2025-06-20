@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <plcProject caseSensitive="false" extcheck="true">
 	<image>sw38.imgx</image>
-	<commSettings>Modbus:1,1000,M#COM:4,38400,N,8,1,H</commSettings>
+	<commSettings>Modbus:1,1000,M6#COM:3,38400,N,8,1,H</commSettings>
 	<sources>
 		<main>sw38.plc</main>
 		<target id="M172P_596p15">FreeAdvance_HMI_596p15.tgt</target>
