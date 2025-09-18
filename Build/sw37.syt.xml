@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?xml-stylesheet type ="text/xsl" href="file://C:/Users/Anton/AppData/Local/Temp/LLSymTab.xsl" version="1.0"?>
-<LLSymbolTable Version="1.4" Name="sw37" TargetID="M172P_596p15" CodeId="0x124FA2A4" DebugMemoId="0xA190B976" MemoId="0x00009027" DataRelocation="none" DbRelocation="patch" FunctRelocation="patch" dataAddrMode="byte" codeAddrMode="byte" NoIncrAlloc="false" is64bit="false" isBigEndian="false" dataSignature="0x632475C1">
+<LLSymbolTable Version="1.4" Name="sw37" TargetID="M172P_596p15" CodeId="0x6EB73626" DebugMemoId="0xA190B976" MemoId="0x00009027" DataRelocation="none" DbRelocation="patch" FunctRelocation="patch" dataAddrMode="byte" codeAddrMode="byte" NoIncrAlloc="false" is64bit="false" isBigEndian="false" dataSignature="0xCE276806">
 	<Resource Name="EWAD" Proc="ARMv7M"/>
 	<CaseSensitive>false</CaseSensitive>
 	<CompilerOptions FBExtCheck="true"/>
@@ -52,50 +52,52 @@
 		<Var Name="ALARMS" OrigName="Alarms" Type="WORD" OrigType="WORD" Addr="0xA0003F18" Descr="Аварії ПП" Group="Status_variables" RelocationRecord="%M110+32" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="16" Access="3"/>
 		<Var Name="ATS_RUNTIME_HORS" OrigName="ATS_RunTime_Hors" Type="WORD" OrigType="WORD" Addr="0xA0003F14" Descr="напрацювання в годинах" Group="Status_variables" RelocationRecord="%M110+28" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="14" Access="3"/>
 		<Var Name="ATS_ONTIMES_CNT" OrigName="ATS_OnTimes_Cnt" Type="WORD" OrigType="WORD" Addr="0xA0003F16" Descr="кількість запусків" Group="Status_variables" RelocationRecord="%M110+30" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="15" Access="3"/>
-		<Const Name="$$PARDBLENGTH" OrigName="$$ParDBLength" Type="DWORD" OrigType="DWORD" hidden="true">23</Const>
+		<Const Name="$$PARDBLENGTH" OrigName="$$ParDBLength" Type="DWORD" OrigType="DWORD" hidden="true">25</Const>
 		<Var Name="DI_VAL_CLOSE_STATE_R" OrigName="di_val_close_state_R" Type="BOOL" OrigType="BOOL" Addr="0x10000420" Descr="DIL1 digital input" Group="IO_Mapping" RelocationRecord="%I0+0" OnDataBlock="true" DataBlockType="I" DBDataType="X" DataBlockNumber="0" DataBlockIndex="0" Access="1"/>
 		<Var Name="O_VAL_CLOSE_R" OrigName="o_val_close_R" Type="BOOL" OrigType="BOOL" Addr="0x100004AF" Descr="DOL4 digital output" Group="IO_Mapping" RelocationRecord="%Q1+3" OnDataBlock="true" DataBlockType="Q" DBDataType="X" DataBlockNumber="1" DataBlockIndex="3" Access="3"/>
 		<Var Name="O_VAL_OPEN_R" OrigName="o_val_open_R" Type="BOOL" OrigType="BOOL" Addr="0x100004AE" Descr="DOL3 digital output" Group="IO_Mapping" RelocationRecord="%Q1+2" OnDataBlock="true" DataBlockType="Q" DBDataType="X" DataBlockNumber="1" DataBlockIndex="2" Access="3"/>
+		<Var Name="DI_VAL_OPEN_STATE_FALL" OrigName="di_val_open_state_fall" Type="INT" OrigType="INT" Addr="0x10000448" Descr="AIL4 analogue input" Group="IO_Mapping" RelocationRecord="%I1+6" OnDataBlock="true" DataBlockType="I" DBDataType="W" DataBlockNumber="1" DataBlockIndex="3" Access="1"/>
+		<Var Name="SYSTIMER" OrigName="sysTimer" Type="UDINT" OrigType="UDINT" Addr="0x1000052C" Descr="System timer [ms]" Group="System_Timers" RelocationRecord="%M0+0" OnDataBlock="true" DataBlockType="M" DBDataType="D" DataBlockNumber="0" DataBlockIndex="0" Access="1"/>
 		<Var Name="DI_VAL_CLOSE_STATE_FALL" OrigName="di_val_close_state_fall" Type="INT" OrigType="INT" Addr="0x1000044A" Descr="AIL5 analogue input" Group="IO_Mapping" RelocationRecord="%I1+8" OnDataBlock="true" DataBlockType="I" DBDataType="W" DataBlockNumber="1" DataBlockIndex="4" Access="1"/>
-		<Var Name="O_VAL_CLOSE_FALL" OrigName="o_val_close_fall" Type="BOOL" OrigType="BOOL" Addr="0x100004AD" Descr="DOL2 digital output" Group="IO_Mapping" RelocationRecord="%Q1+1" OnDataBlock="true" DataBlockType="Q" DBDataType="X" DataBlockNumber="1" DataBlockIndex="1" Access="3"/>
+		<Var Name="DI_VAL_OPEN_STATE_R" OrigName="di_val_open_state_R" Type="BOOL" OrigType="BOOL" Addr="0x10000422" Descr="DIL3 digital input" Group="IO_Mapping" RelocationRecord="%I0+2" OnDataBlock="true" DataBlockType="I" DBDataType="X" DataBlockNumber="0" DataBlockIndex="2" Access="1"/>
+		<Var Name="ALARMS_VAL" OrigName="Alarms_Val" Type="WORD" OrigType="WORD" Addr="0xA0003F20" Descr="Аварії електрозасувок" Group="Status_variables" RelocationRecord="%M110+40" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="20" Access="3"/>
 		<Var Name="O_VAL_OPEN_FALL" OrigName="o_val_open_fall" Type="BOOL" OrigType="BOOL" Addr="0x100004AC" Descr="DOL1 digital output" Group="IO_Mapping" RelocationRecord="%Q1+0" OnDataBlock="true" DataBlockType="Q" DBDataType="X" DataBlockNumber="1" DataBlockIndex="0" Access="3"/>
+		<Var Name="O_VAL_CLOSE_FALL" OrigName="o_val_close_fall" Type="BOOL" OrigType="BOOL" Addr="0x100004AD" Descr="DOL2 digital output" Group="IO_Mapping" RelocationRecord="%Q1+1" OnDataBlock="true" DataBlockType="Q" DBDataType="X" DataBlockNumber="1" DataBlockIndex="1" Access="3"/>
+		<Var Name="EP_SV_WASHING" OrigName="ep_sv_washing" Type="BOOL" OrigType="BOOL" Addr="0xA00017F6" Group="EEPROM_Parameters" RelocationRecord="%M101+14" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="101" DataBlockIndex="7" Access="1"/>
+		<Var Name="SV_WASHING" OrigName="sv_washing" Type="BOOL" OrigType="BOOL" Addr="0xA0003F1E" Descr="Прапорець промивки" Group="Status_variables" RelocationRecord="%M110+38" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="19" Access="3"/>
+		<Var Name="EP_TIME_WASH" OrigName="ep_time_wash" Type="INT" OrigType="INT" Addr="0xA00017EC" Group="EEPROM_Parameters" RelocationRecord="%M101+4" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="101" DataBlockIndex="2" Access="1"/>
+		<Var Name="WASH_TIME_MINUTES" OrigName="wash_time_minutes" Type="INT" OrigType="INT" Addr="0xA0003F22" Group="Status_variables" RelocationRecord="%M110+42" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="21" Access="3"/>
 		<Var Name="PAR_POLI" OrigName="Par_POLI" Type="UINT" OrigType="UINT" Addr="0x10000182" Descr="Polycarbonate code" Group="System_Parameters_EEPROM_RAM_image" RelocationRecord="%M100+386" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="100" DataBlockIndex="193" Access="1"/>
 		<Var Name="I_PB_REM" OrigName="i_pb_rem" Type="INT" OrigType="INT" Addr="0xA1A00042" Descr="AIL8 analogue input" Task="Timed"/>
 		<Var Name="CMD" OrigName="CMD" Type="WORD" OrigType="WORD" Addr="0xA0003F1A" Descr="Слово-команда від скади b0 - on, b1 - скидання аварій контролера" Group="Status_variables" RelocationRecord="%M110+34" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="17" Access="3"/>
-		<Var Name="SYSTIMER" OrigName="sysTimer" Type="UDINT" OrigType="UDINT" Addr="0x1000052C" Descr="System timer [ms]" Group="System_Timers" RelocationRecord="%M0+0" OnDataBlock="true" DataBlockType="M" DBDataType="D" DataBlockNumber="0" DataBlockIndex="0" Access="1"/>
-		<Var Name="SV_WASHING" OrigName="sv_washing" Type="BOOL" OrigType="BOOL" Addr="0xA0003F1E" Descr="Прапорець промивки" Group="Status_variables" RelocationRecord="%M110+38" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="19" Access="3"/>
 		<Var Name="Q_START_ATS" OrigName="q_start_ats" Type="BOOL" OrigType="BOOL" Addr="0x100004B3" Descr="DOL8 digital output" Group="IO_Mapping" RelocationRecord="%Q1+7" OnDataBlock="true" DataBlockType="Q" DBDataType="X" DataBlockNumber="1" DataBlockIndex="7" Access="3"/>
 		<Var Name="I_VAL_STATE" OrigName="i_val_state" Type="INT" OrigType="INT" Addr="0x10000446" Descr="AIL3 analogue input" Group="IO_Mapping" RelocationRecord="%I1+4" OnDataBlock="true" DataBlockType="I" DBDataType="W" DataBlockNumber="1" DataBlockIndex="2" Access="3"/>
-		<Var Name="I_VAL_STATE" OrigName="i_val_state" Type="INT" OrigType="INT" Addr="0xA1A000DE" Descr="AIL3 analogue input" Task="Timed"/>
-		<Var Name="DI_VAL_OPEN_STATE_FALL" OrigName="di_val_open_state_fall" Type="INT" OrigType="INT" Addr="0x10000448" Descr="AIL4 analogue input" Group="IO_Mapping" RelocationRecord="%I1+6" OnDataBlock="true" DataBlockType="I" DBDataType="W" DataBlockNumber="1" DataBlockIndex="3" Access="3"/>
-		<Var Name="DI_VAL_OPEN_STATE_FALL" OrigName="di_val_open_state_fall" Type="INT" OrigType="INT" Addr="0xA1A000E0" Descr="AIL4 analogue input" Task="Timed"/>
-		<Var Name="DI_VAL_CLOSE_STATE_FALL" OrigName="di_val_close_state_fall" Type="INT" OrigType="INT" Addr="0xA1A000E2" Descr="AIL5 analogue input" Task="Timed"/>
-		<Var Name="DI_VAL_OPEN_STATE_R" OrigName="di_val_open_state_R" Type="INT" OrigType="INT" Addr="0x1000044C" Descr="AIL6 analogue input" Group="IO_Mapping" RelocationRecord="%I1+10" OnDataBlock="true" DataBlockType="I" DBDataType="W" DataBlockNumber="1" DataBlockIndex="5" Access="3"/>
-		<Var Name="DI_VAL_OPEN_STATE_R" OrigName="di_val_open_state_R" Type="INT" OrigType="INT" Addr="0xA1A000E4" Descr="AIL6 analogue input" Task="Timed"/>
-		<Var Name="DI_VAL_CLOSE_STATE_R" OrigName="di_val_close_state_R" Type="BOOL" OrigType="BOOL" Addr="0xA1A00041" Descr="DIL1 digital input" Task="Timed"/>
-		<Var Name="ALARMS_VAL" OrigName="Alarms_Val" Type="WORD" OrigType="WORD" Addr="0xA0003F20" Descr="Аварії електрозасувок" Group="Status_variables" RelocationRecord="%M110+40" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="20" Access="3"/>
-		<Var Name="WASH_TIME_MINUTES" OrigName="wash_time_minutes" Type="INT" OrigType="INT" Addr="0xA0003F22" Group="Status_variables" RelocationRecord="%M110+42" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="21" Access="3"/>
-		<Var Name="EP_TIME_WASH" OrigName="ep_time_wash" Type="INT" OrigType="INT" Addr="0xA00017EC" Group="EEPROM_Parameters" RelocationRecord="%M101+4" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="101" DataBlockIndex="2" Access="1"/>
+		<Var Name="I_VAL_STATE" OrigName="i_val_state" Type="INT" OrigType="INT" Addr="0xA1A00120" Descr="AIL3 analogue input" Task="Timed"/>
+		<Var Name="DI_VAL_OPEN_STATE_FALL" OrigName="di_val_open_state_fall" Type="INT" OrigType="INT" Addr="0xA1A00122" Descr="AIL4 analogue input" Task="Timed"/>
+		<Var Name="DI_VAL_CLOSE_STATE_FALL" OrigName="di_val_close_state_fall" Type="INT" OrigType="INT" Addr="0xA1A00124" Descr="AIL5 analogue input" Task="Timed"/>
+		<Var Name="DI_VAL_OPEN_STATE_R" OrigName="di_val_open_state_R" Type="BOOL" OrigType="BOOL" Addr="0xA1A00126" Descr="DIL3 digital input" Task="Timed"/>
+		<Var Name="DI_VAL_CLOSE_STATE_R" OrigName="di_val_close_state_R" Type="BOOL" OrigType="BOOL" Addr="0xA1A00127" Descr="DIL1 digital input" Task="Timed"/>
+		<Var Name="EP_STOPPING_ATS_TIME" OrigName="ep_stopping_ats_time" Type="INT" OrigType="INT" Addr="0xA00017F4" Group="EEPROM_Parameters" RelocationRecord="%M101+12" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="101" DataBlockIndex="6" Access="1"/>
 		<Var Name="I_SNS_DOOR" OrigName="i_sns_door" Type="BOOL" OrigType="BOOL" Addr="0x10000423" Descr="DIL4 digital input" Group="IO_Mapping" RelocationRecord="%I0+3" OnDataBlock="true" DataBlockType="I" DBDataType="X" DataBlockNumber="0" DataBlockIndex="3" Access="3"/>
-		<Var Name="I_SNS_DOOR" OrigName="i_sns_door" Type="BOOL" OrigType="BOOL" Addr="0xA1A000ED" Descr="DIL4 digital input" Task="Timed"/>
+		<Var Name="I_SNS_DOOR" OrigName="i_sns_door" Type="BOOL" OrigType="BOOL" Addr="0xA1A00188" Descr="DIL4 digital input" Task="Timed"/>
 		<Var Name="I_RNPP" OrigName="i_rnpp" Type="BOOL" OrigType="BOOL" Addr="0x10000424" Descr="DIL5 digital input" Group="IO_Mapping" RelocationRecord="%I0+4" OnDataBlock="true" DataBlockType="I" DBDataType="X" DataBlockNumber="0" DataBlockIndex="4" Access="3"/>
-		<Var Name="I_RNPP" OrigName="i_rnpp" Type="BOOL" OrigType="BOOL" Addr="0xA1A000EF" Descr="DIL5 digital input" Task="Timed"/>
-		<Var Name="I_NO_ALM_ATS" OrigName="i_no_alm_ats" Type="BOOL" OrigType="BOOL" Addr="0xA1A000EE" Descr="DIL7 digital input" Task="Timed"/>
+		<Var Name="I_RNPP" OrigName="i_rnpp" Type="BOOL" OrigType="BOOL" Addr="0xA1A00189" Descr="DIL5 digital input" Task="Timed"/>
+		<Var Name="I_NO_ALM_ATS" OrigName="i_no_alm_ats" Type="BOOL" OrigType="BOOL" Addr="0xA1A0018A" Descr="DIL7 digital input" Task="Timed"/>
+		<Var Name="MS_COUNTER" OrigName="ms_counter" Type="UDINT" OrigType="UDINT" Addr="0xA0003F24" Group="Status_variables" RelocationRecord="%M110+44" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="22" Access="3"/>
 		<Var Name="FDI_Q_CNT" OrigName="fdi_q_cnt" Type="UDINT" OrigType="UDINT" Addr="0x100004F8" Descr="FDI2 Input counter" Group="IO_Mapping" RelocationRecord="%M500+0" OnDataBlock="true" DataBlockType="M" DBDataType="B" DataBlockNumber="500" DataBlockIndex="0" Access="1"/>
 		<Var Name="Q_COUNTER" OrigName="q_counter" Type="DWORD" OrigType="DWORD" Addr="0xA0003F00" Descr="лічильник витрати води" Group="Status_variables" RelocationRecord="%M110+8" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="4" Access="3"/>
 		<Var Name="FDI_Q_RESET" OrigName="fdi_q_reset" Type="BOOL" OrigType="BOOL" Addr="0x100007D5" Descr="FDI2 reset input counter value" Group="IO_Mapping" RelocationRecord="%M550+0" OnDataBlock="true" DataBlockType="M" DBDataType="X" DataBlockNumber="550" DataBlockIndex="0" Access="3"/>
-		<Var Name="FDI_Q_FREQ" OrigName="fdi_q_freq" Type="UDINT" OrigType="UDINT" Addr="0x100004FC" Descr="FDI2 Input frequency" Group="IO_Mapping" RelocationRecord="%M500+4" OnDataBlock="true" DataBlockType="M" DBDataType="B" DataBlockNumber="500" DataBlockIndex="1" Access="1"/>
 		<Var Name="Q_VALUE" OrigName="q_value" Type="INT" OrigType="INT" Addr="0xA0003F06" Descr="миттєва витрата води (135 = 13,5 м3/год)" Group="Status_variables" RelocationRecord="%M110+14" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="7" Access="3"/>
 		<Var Name="EPPROM_KW_CNT" OrigName="epprom_kw_cnt" Type="DWORD" OrigType="DWORD" Addr="0xA00017F0" Group="EEPROM_Parameters" RelocationRecord="%M101+8" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="101" DataBlockIndex="4" Access="1"/>
 		<Var Name="KW_COUNTER" OrigName="kw_counter" Type="DWORD" OrigType="DWORD" Addr="0xA0003EFC" Descr="лічильник електроенергії" Group="Status_variables" RelocationRecord="%M110+4" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="2" Access="3"/>
 		<Var Name="EPPROM_Q_CNT" OrigName="epprom_q_cnt" Type="DWORD" OrigType="DWORD" Addr="0xA00017E8" Group="EEPROM_Parameters" RelocationRecord="%M101+0" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="101" DataBlockIndex="0" Access="1"/>
 		<Var Name="I_ADC_PRESSURE" OrigName="i_adc_pressure" Type="INT" OrigType="INT" Addr="0x10000442" Descr="AIL1 analogue input" Group="IO_Mapping" RelocationRecord="%I1+0" OnDataBlock="true" DataBlockType="I" DBDataType="W" DataBlockNumber="1" DataBlockIndex="0" Access="3"/>
-		<Var Name="I_ADC_PRESSURE" OrigName="i_adc_pressure" Type="INT" OrigType="INT" Addr="0xA1A00108" Descr="AIL1 analogue input" Task="Timed"/>
+		<Var Name="I_ADC_PRESSURE" OrigName="i_adc_pressure" Type="INT" OrigType="INT" Addr="0xA1A001AC" Descr="AIL1 analogue input" Task="Timed"/>
 		<Var Name="PRESSURE" OrigName="Pressure" Type="INT" OrigType="INT" Addr="0xA0003EF8" Descr="тиск (56 = 5,6 бар)" Group="Status_variables" RelocationRecord="%M110+0" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="0" Access="3"/>
-		<Var Name="EP_STOPPING_ATS_TIME" OrigName="ep_stopping_ats_time" Type="INT" OrigType="INT" Addr="0xA00017F4" Group="EEPROM_Parameters" RelocationRecord="%M101+12" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="101" DataBlockIndex="6" Access="1"/>
 		<Var Name="KW_VALUE" OrigName="kw_value" Type="INT" OrigType="INT" Addr="0xA0003F04" Descr="миттєве споживання електроенергії (456 = 45,6 кВт/год)" Group="Status_variables" RelocationRecord="%M110+12" OnDataBlock="true" DataBlockType="M" DBDataType="W" DataBlockNumber="110" DataBlockIndex="6" Access="3"/>
-		<Var Name="I_SNS_PRESSURE" OrigName="i_sns_pressure" Type="BOOL" OrigType="BOOL" Addr="0x10000422" Descr="DIL3 digital input" Group="IO_Mapping" RelocationRecord="%I0+2" OnDataBlock="true" DataBlockType="I" DBDataType="X" DataBlockNumber="0" DataBlockIndex="2" Access="1"/>
+		<Var Name="I_SNS_DRY" OrigName="i_sns_dry" Type="INT" OrigType="INT" Addr="0x1000044C" Descr="AIL6 analogue input" Group="IO_Mapping" RelocationRecord="%I1+10" OnDataBlock="true" DataBlockType="I" DBDataType="W" DataBlockNumber="1" DataBlockIndex="5" Access="1"/>
 		<Var Name="I_QF_ATS" OrigName="i_qf_ats" Type="BOOL" OrigType="BOOL" Addr="0x10000425" Descr="DIL6 digital input" Group="IO_Mapping" RelocationRecord="%I0+5" OnDataBlock="true" DataBlockType="I" DBDataType="X" DataBlockNumber="0" DataBlockIndex="5" Access="1"/>
+		<Var Name="FDI_Q_FREQ" OrigName="fdi_q_freq" Type="UDINT" OrigType="UDINT" Addr="0x100004FC" Descr="FDI2 Input frequency" Group="IO_Mapping" RelocationRecord="%M500+4" OnDataBlock="true" DataBlockType="M" DBDataType="B" DataBlockNumber="500" DataBlockIndex="1" Access="1"/>
 		<Var Name="SYSLOCALDIGITALINPUTS" OrigName="sysLocalDigitalInputs" Type="BOOL" OrigType="BOOL" Addr="0x10000420" Descr="Local Digital Inputs" Group="Digital_Inputs" RelocationRecord="%I0+0" OnDataBlock="true" DataBlockType="I" DBDataType="X" DataBlockNumber="0" DataBlockIndex="0" Access="1" Dims="12"/>
 		<Var Name="SYSEXPDIGITALINPUTS" OrigName="sysExpDigitalInputs" Type="BOOL" OrigType="BOOL" Addr="0x10000CEE" Descr="Expansion Digital Inputs" Group="Digital_Inputs" RelocationRecord="%I10+0" OnDataBlock="true" DataBlockType="I" DBDataType="X" DataBlockNumber="10" DataBlockIndex="0" Access="1" Dims="96"/>
 		<Var Name="SYSLOCALDIGITALINPUTSIMPULSECOUNTER" OrigName="sysLocalDigitalInputsImpulseCounter" Type="UDINT" OrigType="UDINT" Addr="0x10001AF4" Descr="Local Digital Inputs Impulse Counter" Group="Digital_Inputs" RelocationRecord="%M55+0" OnDataBlock="true" DataBlockType="M" DBDataType="D" DataBlockNumber="55" DataBlockIndex="0" Access="1" Dims="12"/>
@@ -494,54 +496,61 @@
 		<Var Name="SYSMODBUS_MSG_RECEIVED_RS485_2" OrigName="sysMODBUS_msg_received_RS485_2" Type="UDINT" OrigType="UDINT" Addr="0xA04866A8" Descr="Counter for modbus message received on RS485-2" Group="System_Modbus_messages" RelocationRecord="%M5000+8" OnDataBlock="true" DataBlockType="M" DBDataType="D" DataBlockNumber="5000" DataBlockIndex="2" Access="3"/>
 		<Var Name="SYSMODBUS_MSG_RECEIVED_RS485_PLUGIN" OrigName="sysMODBUS_msg_received_RS485_Plugin" Type="UDINT" OrigType="UDINT" Addr="0xA04866AC" Descr="Counter for modbus message received on RS485/232 Plugin" Group="System_Modbus_messages" RelocationRecord="%M5000+12" OnDataBlock="true" DataBlockType="M" DBDataType="D" DataBlockNumber="5000" DataBlockIndex="3" Access="3"/>
 		<Var Name="$$CODEBASE$$" OrigName="$$CODEBASE$$" Type="UDINT" OrigType="UDINT" Addr="0xA1900000"/>
-		<Var Name="$$CODESTART$$" OrigName="$$CODESTART$$" Type="UDINT" OrigType="UDINT" Addr="0xA190043C"/>
-		<Var Name="$$CODESIZE$$" OrigName="$$CODESIZE$$" Type="UDINT" OrigType="UDINT" Addr="0xA1906244"/>
+		<Var Name="$$CODESTART$$" OrigName="$$CODESTART$$" Type="UDINT" OrigType="UDINT" Addr="0xA1900484"/>
+		<Var Name="$$CODESIZE$$" OrigName="$$CODESIZE$$" Type="UDINT" OrigType="UDINT" Addr="0xA1906588"/>
 		<Var Name="$$CODEEND$$" OrigName="$$CODEEND$$" Type="UDINT" OrigType="UDINT" Addr="0xA1A00000"/>
-		<Var Name="$$DATASIZE$$" OrigName="$$DATASIZE$$" Type="UDINT" OrigType="UDINT" Addr="0xA1A00124"/>
+		<Var Name="$$DATASIZE$$" OrigName="$$DATASIZE$$" Type="UDINT" OrigType="UDINT" Addr="0xA1A001C8"/>
 		<Var Name="$$AUXDATASIZE$$" OrigName="$$AUXDATASIZE$$" Type="UDINT" OrigType="UDINT" Addr="0x0"/>
 		<Var Name="$$BITDATASIZE$$" OrigName="$$BITDATASIZE$$" Type="UDINT" OrigType="UDINT" Addr="0x0"/>
 		<Var Name="$$RITDATASIZE$$" OrigName="$$RITDATASIZE$$" Type="UDINT" OrigType="UDINT" Addr="0x0"/>
 	</GlobalVars>
 	<Programs>
-		<Prog Name="ATS_MDB" OrigName="ATS_mdb" SrcType="3" CodeAddr="0xA1904D80" HashCode="F5F90CD6">
+		<Prog Name="ATS_MDB" OrigName="ATS_mdb" SrcType="3" CodeAddr="0xA1904DE0" HashCode="F5F90CD6">
 			<Var Name="RESP_ETA_LCR" OrigName="resp_eta_lcr" Type="INT" OrigType="INT" Addr="0xA1A0000C" Dims="4"/>
 			<Var Name="RES" OrigName="res" Type="INT" OrigType="INT" Addr="0xA1A00018"/>
 			<TmpVar Name="$$TMP0" OrigName="$$TMP0" Type="@INT" OrigType="@INT" Addr="0xA1A00014"/>
 		</Prog>
-		<Prog Name="INITPARDB" OrigName="InitParDB" SrcType="3" CodeAddr="0xA1905510" HashCode="0EB734A5">
+		<Prog Name="INITPARDB" OrigName="InitParDB" SrcType="3" CodeAddr="0xA1905700" HashCode="0CE896B0">
 			<Var Name="WARNINGSKILLER" OrigName="warningsKiller" Type="USINT" OrigType="USINT" Addr="0xA1A00040"/>
 			<Var Name="DUMMYCRC32" OrigName="dummyCrc32" Type="UDINT" OrigType="UDINT" Addr="0xA1A0003C"/>
 		</Prog>
-		<Prog Name="INIT_VAL" OrigName="init_val" SrcType="3" CodeAddr="0xA1905430" HashCode="C31FDCCE"/>
-		<Prog Name="PARCHECK" OrigName="ParCheck" SrcType="3" CodeAddr="0xA19054A4" HashCode="A281779A"/>
-		<Prog Name="SR_ATS_CTRL" OrigName="sr_ATS_Ctrl" SrcType="3" CodeAddr="0xA1905864" HashCode="2669DDD8">
-			<Var Name="STOPPING_TIMER" OrigName="stopping_timer" Type="TON" OrigType="TON" Addr="0xA1A000F0"/>
-			<Var Name="DOWNTIMEIN" OrigName="downtimeIN" Type="BOOL" OrigType="BOOL" Addr="0xA1A000EC"/>
-			<Var Name="CHECKWASHANDSTART" OrigName="checkWashAndStart" Type="CHECKWASHANDSTART" OrigType="CheckWashAndStart" Addr="0xA1A00044"/>
-			<Var Name="TIME_SEC" OrigName="time_sec" Type="INT" OrigType="INT" Addr="0xA1A000DC"/>
-			<Var Name="PREV_WASH_TIME_MINUTES" OrigName="prev_wash_time_minutes" Type="INT" OrigType="INT" Addr="0xA1A000E6"/>
-			<TmpVar Name="$$TMP6" OrigName="$$TMP6" Type="DINT" OrigType="DINT" Addr="0xA1A000E8"/>
+		<Prog Name="INIT_VAL" OrigName="init_val" SrcType="3" CodeAddr="0xA1905490" HashCode="30FE3791">
+			<Var Name="CHECKALARMVAL" OrigName="checkAlarmVal" Type="CHECKALARMVAL" OrigType="CheckAlarmVal" Addr="0xA1A00044"/>
+			<Var Name="VALVE_RISING" OrigName="valve_rising" Type="BOOL" OrigType="BOOL" Addr="0xA1A00041"/>
 		</Prog>
-		<Prog Name="SR_COUNTERS" OrigName="sr_counters" SrcType="3" CodeAddr="0xA190560C" HashCode="C6C3AB8D">
-			<Var Name="KW_PULSES_PER_ACS" OrigName="kw_pulses_per_acs" Type="UINT" OrigType="UINT" Addr="0xA1A00104"/>
-			<Var Name="Q_PULSES_PER_ACS" OrigName="q_pulses_per_acs" Type="UINT" OrigType="UINT" Addr="0xA1A00106"/>
+		<Prog Name="PARCHECK" OrigName="ParCheck" SrcType="3" CodeAddr="0xA1905694" HashCode="A281779A"/>
+		<Prog Name="SR_ATS_CTRL" OrigName="sr_ATS_Ctrl" SrcType="3" CodeAddr="0xA1905A90" HashCode="E5394CA6">
+			<Var Name="STOPPING_TIMER" OrigName="stopping_timer" Type="TON" OrigType="TON" Addr="0xA1A00174"/>
+			<Var Name="DOWNTIMEIN" OrigName="downtimeIN" Type="BOOL" OrigType="BOOL" Addr="0xA1A00129"/>
+			<Var Name="CHECKWASHANDSTART" OrigName="checkWashAndStart" Type="CHECKWASHANDSTART" OrigType="CheckWashAndStart" Addr="0xA1A00088"/>
+			<Var Name="PREV_WASH_TIME_MINUTES" OrigName="prev_wash_time_minutes" Type="INT" OrigType="INT" Addr="0xA1A0012A"/>
+			<Var Name="CHECKALARMVAL" OrigName="checkAlarmVal" Type="CHECKALARMVAL" OrigType="CheckAlarmVal" Addr="0xA1A0012C"/>
+			<Var Name="VALVE_RISING" OrigName="valve_rising" Type="BOOL" OrigType="BOOL" Addr="0xA1A00128"/>
+			<TmpVar Name="$$TMP6" OrigName="$$TMP6" Type="DINT" OrigType="DINT" Addr="0xA1A00170"/>
 		</Prog>
-		<Prog Name="SR_INIT_COUNTERS" OrigName="sr_init_counters" SrcType="3" CodeAddr="0xA19053C0" HashCode="C5D31733"/>
-		<Prog Name="SR_PRESSURE" OrigName="sr_pressure" SrcType="3" CodeAddr="0xA1905590" HashCode="FD173778"/>
-		<Prog Name="SR_SAVE_COUNTERS" OrigName="sr_save_counters" SrcType="3" CodeAddr="0xA1905740" HashCode="A966EA7C">
-			<Var Name="POWER_ERR" OrigName="power_err" Type="R_TRIG" OrigType="R_TRIG" Addr="0xA1A00120"/>
-			<Var Name="TON_START_UP" OrigName="ton_start_up" Type="TON" OrigType="TON" Addr="0xA1A0010C"/>
-			<Var Name="RES_Q" OrigName="res_q" Type="BOOL" OrigType="BOOL" Addr="0xA1A0010B"/>
-			<Var Name="RES_KW" OrigName="res_kw" Type="BOOL" OrigType="BOOL" Addr="0xA1A0010A"/>
+		<Prog Name="SR_COUNTERS" OrigName="sr_counters" SrcType="3" CodeAddr="0xA19057FC" HashCode="74A85072">
+			<Var Name="KW_PULSES_PER_ACS" OrigName="kw_pulses_per_acs" Type="UINT" OrigType="UINT" Addr="0xA1A0018C"/>
+			<Var Name="Q_PULSES_PER_ACS" OrigName="q_pulses_per_acs" Type="UINT" OrigType="UINT" Addr="0xA1A0018E"/>
+			<Var Name="MS_TIMER" OrigName="ms_timer" Type="TON" OrigType="TON" Addr="0xA1A00190"/>
+			<Var Name="LAST_TICK_TIME" OrigName="last_tick_time" Type="UDINT" OrigType="UDINT" Addr="0xA1A001A4"/>
+			<Var Name="TIME_BETWEEN" OrigName="time_between" Type="UDINT" OrigType="UDINT" Addr="0xA1A001A8" Descr="Різниця між двома тиками, у мс"/>
+		</Prog>
+		<Prog Name="SR_INIT_COUNTERS" OrigName="sr_init_counters" SrcType="3" CodeAddr="0xA1905420" HashCode="C5D31733"/>
+		<Prog Name="SR_PRESSURE" OrigName="sr_pressure" SrcType="3" CodeAddr="0xA1905780" HashCode="FD173778"/>
+		<Prog Name="SR_SAVE_COUNTERS" OrigName="sr_save_counters" SrcType="3" CodeAddr="0xA190596C" HashCode="A966EA7C">
+			<Var Name="POWER_ERR" OrigName="power_err" Type="R_TRIG" OrigType="R_TRIG" Addr="0xA1A001C4"/>
+			<Var Name="TON_START_UP" OrigName="ton_start_up" Type="TON" OrigType="TON" Addr="0xA1A001B0"/>
+			<Var Name="RES_Q" OrigName="res_q" Type="BOOL" OrigType="BOOL" Addr="0xA1A0018B"/>
+			<Var Name="RES_KW" OrigName="res_kw" Type="BOOL" OrigType="BOOL" Addr="0xA1A001AF"/>
 		</Prog>
 	</Programs>
 	<FunctionBlocks>
-		<FBlock Name="R_TRIG" OrigName="R_TRIG" SrcType="0" FrameSize="4" CodeAddr="0xA1904478" HashCode="45CFD1FC">
+		<FBlock Name="R_TRIG" OrigName="R_TRIG" SrcType="0" FrameSize="4" CodeAddr="0xA19044C8" HashCode="45CFD1FC">
 			<VarI Name="CLK" OrigName="clk" Type="BOOL" OrigType="BOOL" Addr="0x6[1]" Attribs="relative" Descr="Input for edge detection"/>
 			<VarO Name="Q" OrigName="q" Type="BOOL" OrigType="BOOL" Addr="0x6[2]" Attribs="relative" Descr="Raising edge output"/>
 			<Var Name="M" OrigName="m" Type="BOOL" OrigType="BOOL" Addr="0x6[0]" Attribs="relative"/>
 		</FBlock>
-		<FBlock Name="TON" OrigName="TON" SrcType="0" FrameSize="20" CodeAddr="0xA19044B0" HashCode="09CEF9A4">
+		<FBlock Name="TON" OrigName="TON" SrcType="0" FrameSize="20" CodeAddr="0xA1904500" HashCode="09CEF9A4">
 			<VarI Name="IN" OrigName="IN" Type="BOOL" OrigType="BOOL" Addr="0x6[4]" Attribs="relative" Descr="Timer input source"/>
 			<VarI Name="PT" OrigName="PT" Type="UDINT" OrigType="UDINT" Addr="0x6[8]" Attribs="relative" Descr="Preset time value (ms)"/>
 			<VarO Name="Q" OrigName="Q" Type="BOOL" OrigType="BOOL" Addr="0x6[12]" Attribs="relative" Descr="Timer output"/>
@@ -549,13 +558,13 @@
 			<Var Name="TIMSTART" OrigName="timStart" Type="UDINT" OrigType="UDINT" Addr="0x6[0]" Attribs="relative" Descr="Time value at start of counting"/>
 			<VarExt Name="SYSTIMER" OrigName="sysTimer" Type="UDINT" OrigType="UDINT" Addr="0x1000052C" Descr="System timer [ms]" Group="System_Timers" RelocationRecord="%M0+0" OnDataBlock="true" DataBlockType="M" DBDataType="D" DataBlockNumber="0" DataBlockIndex="0" Access="1"/>
 		</FBlock>
-		<FBlock Name="CHECKALARMVAL" OrigName="CheckAlarmVal" SrcType="3" FrameSize="68" CodeAddr="0xA1904550" HashCode="3FE86FEF">
+		<FBlock Name="CHECKALARMVAL" OrigName="CheckAlarmVal" SrcType="3" FrameSize="68" CodeAddr="0xA19045A0" HashCode="8200A2F7">
 			<VarO Name="CHECK_TIMER" OrigName="check_timer" Type="TON" OrigType="TON" Addr="0x6[4]" Attribs="relative" Descr="локальний FB таймера"/>
 			<VarO Name="IS_CHECK_DONE" OrigName="is_check_done" Type="BOOL" OrigType="BOOL" Addr="0x6[24]" Attribs="relative"/>
 			<VarO Name="ISOK" OrigName="isOK" Type="BOOL" OrigType="BOOL" Addr="0x6[25]" Attribs="relative"/>
 			<VarIO Name="DI_VAL_OPEN_STATE_FALL_FB" OrigName="di_val_open_state_fall_FB" Type="INT^" OrigType="INT^" Addr="0x6[28]" Attribs="relative"/>
 			<VarIO Name="DI_VAL_CLOSE_STATE_FALL_FB" OrigName="di_val_close_state_fall_FB" Type="INT^" OrigType="INT^" Addr="0x6[32]" Attribs="relative"/>
-			<VarIO Name="DI_VAL_OPEN_STATE_R_FB" OrigName="di_val_open_state_R_FB" Type="INT^" OrigType="INT^" Addr="0x6[36]" Attribs="relative"/>
+			<VarIO Name="DI_VAL_OPEN_STATE_R_FB" OrigName="di_val_open_state_R_FB" Type="BOOL^" OrigType="BOOL^" Addr="0x6[36]" Attribs="relative"/>
 			<VarIO Name="DI_VAL_CLOSE_STATE_R_FB" OrigName="di_val_close_state_R_FB" Type="BOOL^" OrigType="BOOL^" Addr="0x6[40]" Attribs="relative"/>
 			<VarIO Name="ALARM_VAL_FB" OrigName="Alarm_Val_FB" Type="WORD^" OrigType="WORD^" Addr="0x6[44]" Attribs="relative"/>
 			<VarIO Name="O_VAL_OPEN_R_FB" OrigName="o_val_open_R_FB" Type="BOOL^" OrigType="BOOL^" Addr="0x6[48]" Attribs="relative"/>
@@ -565,7 +574,7 @@
 			<VarIO Name="START_CHECK" OrigName="start_check" Type="BOOL^" OrigType="BOOL^" Addr="0x6[64]" Attribs="relative"/>
 			<Var Name="SHOULD_RUN_TIMER" OrigName="should_run_timer" Type="BOOL" OrigType="BOOL" Addr="0x6[0]" Attribs="relative"/>
 		</FBlock>
-		<FBlock Name="CHECKWASHANDSTART" OrigName="CheckWashAndStart" SrcType="3" FrameSize="152" CodeAddr="0xA1904778" HashCode="3F3842D0">
+		<FBlock Name="CHECKWASHANDSTART" OrigName="CheckWashAndStart" SrcType="3" FrameSize="152" CodeAddr="0xA19047D0" HashCode="3F3842D0">
 			<VarO Name="IS_RUNNING_WASH" OrigName="is_running_wash" Type="BOOL" OrigType="BOOL" Addr="0x6[98]" Attribs="relative"/>
 			<VarIO Name="SV_WASHING_FB" OrigName="sv_washing_FB" Type="BOOL^" OrigType="BOOL^" Addr="0x6[100]" Attribs="relative"/>
 			<VarIO Name="O_VAL_OPEN_R_FB" OrigName="o_val_open_R_FB" Type="BOOL^" OrigType="BOOL^" Addr="0x6[104]" Attribs="relative"/>
@@ -577,7 +586,7 @@
 			<VarIO Name="I_VAL_STATE_FB" OrigName="i_val_state_FB" Type="INT^" OrigType="INT^" Addr="0x6[128]" Attribs="relative"/>
 			<VarIO Name="DI_VAL_OPEN_STATE_FALL_FB" OrigName="di_val_open_state_fall_FB" Type="INT^" OrigType="INT^" Addr="0x6[132]" Attribs="relative"/>
 			<VarIO Name="DI_VAL_CLOSE_STATE_FALL_FB" OrigName="di_val_close_state_fall_FB" Type="INT^" OrigType="INT^" Addr="0x6[136]" Attribs="relative"/>
-			<VarIO Name="DI_VAL_OPEN_STATE_R_FB" OrigName="di_val_open_state_R_FB" Type="INT^" OrigType="INT^" Addr="0x6[140]" Attribs="relative"/>
+			<VarIO Name="DI_VAL_OPEN_STATE_R_FB" OrigName="di_val_open_state_R_FB" Type="BOOL^" OrigType="BOOL^" Addr="0x6[140]" Attribs="relative"/>
 			<VarIO Name="DI_VAL_CLOSE_STATE_R_FB" OrigName="di_val_close_state_R_FB" Type="BOOL^" OrigType="BOOL^" Addr="0x6[144]" Attribs="relative"/>
 			<VarIO Name="ALARM_VAL_FB" OrigName="Alarm_Val_FB" Type="WORD^" OrigType="WORD^" Addr="0x6[148]" Attribs="relative"/>
 			<Var Name="WASHING_TIMER" OrigName="washing_timer" Type="TON" OrigType="TON" Addr="0x6[0]" Attribs="relative" Descr="локальний FB таймера"/>

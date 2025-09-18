@@ -8,7 +8,7 @@
 	</LANGUAGES>
 	<PAGES_INFO>
 		<MODEL>flat</MODEL>
-		<FIRST_PAGE>first</FIRST_PAGE>
+		<FIRST_PAGE>main</FIRST_PAGE>
 		<CURR_LANG>0</CURR_LANG>
 		<TITLEBAR_FONT>EWP2_6x8</TITLEBAR_FONT>
 		<TITLEBAR_COLOR type="RGBColor">16777215</TITLEBAR_COLOR>
@@ -53,8 +53,8 @@
 						<TEXT>
 							<![CDATA[Тиск]]>
 						</TEXT>
-						<XPOS>5</XPOS>
-						<YPOS>5</YPOS>
+						<XPOS>2</XPOS>
+						<YPOS>36</YPOS>
 						<XDIM>36</XDIM>
 						<YDIM>8</YDIM>
 						<VISIBLE>TRUE</VISIBLE>
@@ -80,8 +80,8 @@
 						<TEXT>
 							<![CDATA[бар]]>
 						</TEXT>
-						<XPOS>81</XPOS>
-						<YPOS>5</YPOS>
+						<XPOS>37</XPOS>
+						<YPOS>46</YPOS>
 						<XDIM>36</XDIM>
 						<YDIM>8</YDIM>
 						<VISIBLE>TRUE</VISIBLE>
@@ -105,11 +105,11 @@
 						<BCKCOLOR type="RGBColor">16777215</BCKCOLOR>
 						<COLOR type="RGBColor">0</COLOR>
 						<TEXT>
-							<![CDATA[Лiч.:]]>
+							<![CDATA[Лiчильник]]>
 						</TEXT>
-						<XPOS>6</XPOS>
-						<YPOS>17</YPOS>
-						<XDIM>36</XDIM>
+						<XPOS>1</XPOS>
+						<YPOS>11</YPOS>
+						<XDIM>54</XDIM>
 						<YDIM>8</YDIM>
 						<VISIBLE>TRUE</VISIBLE>
 						<ZORDER>4</ZORDER>
@@ -118,7 +118,7 @@
 						<BORDPTS>0</BORDPTS>
 						<SELBCK type="RGBColor">0</SELBCK>
 						<SELCOL type="RGBColor">16777215</SELCOL>
-						<NUMCHAR>6</NUMCHAR>
+						<NUMCHAR>9</NUMCHAR>
 						<ALIGN>Left</ALIGN>
 						<REFRESH>FALSE</REFRESH>
 						<SELECT>FALSE</SELECT>
@@ -134,9 +134,9 @@
 						<TEXT>
 							<![CDATA[м3]]>
 						</TEXT>
-						<XPOS>82</XPOS>
-						<YPOS>17</YPOS>
-						<XDIM>31</XDIM>
+						<XPOS>42</XPOS>
+						<YPOS>21</YPOS>
+						<XDIM>30</XDIM>
 						<YDIM>8</YDIM>
 						<VISIBLE>TRUE</VISIBLE>
 						<ZORDER>6</ZORDER>
@@ -161,8 +161,8 @@
 						<TEXT>
 							<![CDATA[L1:]]>
 						</TEXT>
-						<XPOS>5</XPOS>
-						<YPOS>30</YPOS>
+						<XPOS>92</XPOS>
+						<YPOS>24</YPOS>
 						<XDIM>18</XDIM>
 						<YDIM>8</YDIM>
 						<VISIBLE>TRUE</VISIBLE>
@@ -188,8 +188,8 @@
 						<TEXT>
 							<![CDATA[L2:]]>
 						</TEXT>
-						<XPOS>50</XPOS>
-						<YPOS>30</YPOS>
+						<XPOS>92</XPOS>
+						<YPOS>38</YPOS>
 						<XDIM>18</XDIM>
 						<YDIM>8</YDIM>
 						<VISIBLE>TRUE</VISIBLE>
@@ -215,8 +215,8 @@
 						<TEXT>
 							<![CDATA[L3:]]>
 						</TEXT>
-						<XPOS>91</XPOS>
-						<YPOS>30</YPOS>
+						<XPOS>92</XPOS>
+						<YPOS>52</YPOS>
 						<XDIM>18</XDIM>
 						<YDIM>8</YDIM>
 						<VISIBLE>TRUE</VISIBLE>
@@ -242,8 +242,8 @@
 						<TEXT>
 							<![CDATA[V:]]>
 						</TEXT>
-						<XPOS>5</XPOS>
-						<YPOS>46</YPOS>
+						<XPOS>60</XPOS>
+						<YPOS>4</YPOS>
 						<XDIM>12</XDIM>
 						<YDIM>8</YDIM>
 						<VISIBLE>TRUE</VISIBLE>
@@ -262,9 +262,109 @@
 							<EVENT name="AfterUpdate"/>
 						</EVENTS>
 					</STRING>
+					<STRING name="String_25">
+						<FONT>EWP2_6x8</FONT>
+						<BCKCOLOR type="RGBColor">16777215</BCKCOLOR>
+						<COLOR type="RGBColor">0</COLOR>
+						<TEXT>
+							<![CDATA[AL]]>
+						</TEXT>
+						<XPOS>95</XPOS>
+						<YPOS>5</YPOS>
+						<XDIM>12</XDIM>
+						<YDIM>8</YDIM>
+						<VISIBLE>TRUE</VISIBLE>
+						<ZORDER>25</ZORDER>
+						<STYLE>Flat</STYLE>
+						<BORDCOL type="RGBColor">0</BORDCOL>
+						<BORDPTS>0</BORDPTS>
+						<SELBCK type="RGBColor">0</SELBCK>
+						<SELCOL type="RGBColor">16777215</SELCOL>
+						<NUMCHAR>2</NUMCHAR>
+						<ALIGN>Left</ALIGN>
+						<REFRESH>FALSE</REFRESH>
+						<SELECT>FALSE</SELECT>
+						<EVENTS>
+							<EVENT name="BeforeUpdate"/>
+							<EVENT name="AfterUpdate"/>
+						</EVENTS>
+					</STRING>
 				</STRINGS>
 				<IMGS/>
-				<LINES/>
+				<LINES>
+					<LINE name="Line_16">
+						<BORDPTS>1</BORDPTS>
+						<BORDCOL type="RGBColor">0</BORDCOL>
+						<XPOS>0</XPOS>
+						<YPOS>33</YPOS>
+						<XPOS2>86</XPOS2>
+						<YPOS2>33</YPOS2>
+						<ZORDER>16</ZORDER>
+					</LINE>
+					<LINE name="Line_17">
+						<BORDPTS>1</BORDPTS>
+						<BORDCOL type="RGBColor">0</BORDCOL>
+						<XPOS>87</XPOS>
+						<YPOS>62</YPOS>
+						<XPOS2>87</XPOS2>
+						<YPOS2>18</YPOS2>
+						<ZORDER>17</ZORDER>
+					</LINE>
+					<LINE name="Line_18">
+						<BORDPTS>1</BORDPTS>
+						<BORDCOL type="RGBColor">0</BORDCOL>
+						<XPOS>87</XPOS>
+						<YPOS>18</YPOS>
+						<XPOS2>128</XPOS2>
+						<YPOS2>18</YPOS2>
+						<ZORDER>18</ZORDER>
+					</LINE>
+					<LINE name="Line_19">
+						<BORDPTS>1</BORDPTS>
+						<BORDCOL type="RGBColor">0</BORDCOL>
+						<XPOS>57</XPOS>
+						<YPOS>0</YPOS>
+						<XPOS2>57</XPOS2>
+						<YPOS2>18</YPOS2>
+						<ZORDER>19</ZORDER>
+					</LINE>
+					<LINE name="Line_20">
+						<BORDPTS>1</BORDPTS>
+						<BORDCOL type="RGBColor">0</BORDCOL>
+						<XPOS>57</XPOS>
+						<YPOS>18</YPOS>
+						<XPOS2>91</XPOS2>
+						<YPOS2>18</YPOS2>
+						<ZORDER>20</ZORDER>
+					</LINE>
+					<LINE name="Line_21">
+						<BORDPTS>1</BORDPTS>
+						<BORDCOL type="RGBColor">0</BORDCOL>
+						<XPOS>0</XPOS>
+						<YPOS>7</YPOS>
+						<XPOS2>56</XPOS2>
+						<YPOS2>7</YPOS2>
+						<ZORDER>21</ZORDER>
+					</LINE>
+					<LINE name="Line_22">
+						<BORDPTS>1</BORDPTS>
+						<BORDCOL type="RGBColor">0</BORDCOL>
+						<XPOS>1</XPOS>
+						<YPOS>59</YPOS>
+						<XPOS2>87</XPOS2>
+						<YPOS2>59</YPOS2>
+						<ZORDER>22</ZORDER>
+					</LINE>
+					<LINE name="Line_23">
+						<BORDPTS>1</BORDPTS>
+						<BORDCOL type="RGBColor">0</BORDCOL>
+						<XPOS>94</XPOS>
+						<YPOS>0</YPOS>
+						<XPOS2>94</XPOS2>
+						<YPOS2>17</YPOS2>
+						<ZORDER>23</ZORDER>
+					</LINE>
+				</LINES>
 				<RECTS/>
 				<ANIMS/>
 				<EDITS>
@@ -277,8 +377,8 @@
 						<STYLE>Flat</STYLE>
 						<BORDCOL type="RGBColor">16777215</BORDCOL>
 						<BORDPTS>1</BORDPTS>
-						<XPOS>45</XPOS>
-						<YPOS>5</YPOS>
+						<XPOS>3</XPOS>
+						<YPOS>45</YPOS>
 						<XDIM>30</XDIM>
 						<YDIM>8</YDIM>
 						<NUMCHAR>5</NUMCHAR>
@@ -315,8 +415,8 @@
 						<STYLE>Flat</STYLE>
 						<BORDCOL type="RGBColor">16777215</BORDCOL>
 						<BORDPTS>1</BORDPTS>
-						<XPOS>44</XPOS>
-						<YPOS>17</YPOS>
+						<XPOS>3</XPOS>
+						<YPOS>20</YPOS>
 						<XDIM>36</XDIM>
 						<YDIM>8</YDIM>
 						<NUMCHAR>6</NUMCHAR>
@@ -353,8 +453,8 @@
 						<STYLE>Flat</STYLE>
 						<BORDCOL type="RGBColor">16777215</BORDCOL>
 						<BORDPTS>1</BORDPTS>
-						<XPOS>21</XPOS>
-						<YPOS>30</YPOS>
+						<XPOS>108</XPOS>
+						<YPOS>24</YPOS>
 						<XDIM>18</XDIM>
 						<YDIM>8</YDIM>
 						<NUMCHAR>3</NUMCHAR>
@@ -391,8 +491,8 @@
 						<STYLE>Flat</STYLE>
 						<BORDCOL type="RGBColor">16777215</BORDCOL>
 						<BORDPTS>1</BORDPTS>
-						<XPOS>65</XPOS>
-						<YPOS>30</YPOS>
+						<XPOS>107</XPOS>
+						<YPOS>38</YPOS>
 						<XDIM>18</XDIM>
 						<YDIM>8</YDIM>
 						<NUMCHAR>3</NUMCHAR>
@@ -429,8 +529,8 @@
 						<STYLE>Flat</STYLE>
 						<BORDCOL type="RGBColor">16777215</BORDCOL>
 						<BORDPTS>1</BORDPTS>
-						<XPOS>106</XPOS>
-						<YPOS>30</YPOS>
+						<XPOS>107</XPOS>
+						<YPOS>52</YPOS>
 						<XDIM>18</XDIM>
 						<YDIM>8</YDIM>
 						<NUMCHAR>3</NUMCHAR>
@@ -467,8 +567,8 @@
 						<STYLE>Flat</STYLE>
 						<BORDCOL type="RGBColor">16777215</BORDCOL>
 						<BORDPTS>1</BORDPTS>
-						<XPOS>19</XPOS>
-						<YPOS>46</YPOS>
+						<XPOS>74</XPOS>
+						<YPOS>4</YPOS>
 						<XDIM>18</XDIM>
 						<YDIM>8</YDIM>
 						<NUMCHAR>3</NUMCHAR>
@@ -480,6 +580,44 @@
 						<ZORDER>15</ZORDER>
 						<VAR type="INT">@LocalParameters.ATS_Voltage</VAR>
 						<TYPE>INT</TYPE>
+						<REFRESH>TRUE</REFRESH>
+						<VISIBLE>TRUE</VISIBLE>
+						<SELECT>TRUE</SELECT>
+						<LABEL/>
+						<VARMIN>*</VARMIN>
+						<VARMAX>*</VARMAX>
+						<EVENTS>
+							<EVENT name="BeforeUpdate"/>
+							<EVENT name="AfterUpdate"/>
+							<EVENT name="OnGotFocus"/>
+							<EVENT name="OnLostFocus"/>
+							<EVENT name="OnClick"/>
+							<EVENT name="OnEnter"/>
+							<EVENT name="OnChange"/>
+						</EVENTS>
+					</EDIT>
+					<EDIT name="Edit_24">
+						<FONT>EWP2_6x8</FONT>
+						<COLOR type="RGBColor">0</COLOR>
+						<BCKCOLOR type="RGBColor">16777215</BCKCOLOR>
+						<SELBCK type="RGBColor">0</SELBCK>
+						<SELCOL type="RGBColor">16777215</SELCOL>
+						<STYLE>Flat</STYLE>
+						<BORDCOL type="RGBColor">16777215</BORDCOL>
+						<BORDPTS>1</BORDPTS>
+						<XPOS>108</XPOS>
+						<YPOS>5</YPOS>
+						<XDIM>18</XDIM>
+						<YDIM>8</YDIM>
+						<NUMCHAR>3</NUMCHAR>
+						<ORDER>7</ORDER>
+						<FORMAT>%d</FORMAT>
+						<ALIGN>Left</ALIGN>
+						<ACCESS>RO</ACCESS>
+						<DESC/>
+						<ZORDER>24</ZORDER>
+						<VAR type="UINT">@LocalParameters.Alarms</VAR>
+						<TYPE>UINT</TYPE>
 						<REFRESH>TRUE</REFRESH>
 						<VISIBLE>TRUE</VISIBLE>
 						<SELECT>TRUE</SELECT>
@@ -514,7 +652,9 @@
 				<EVENT name="OnTimer"/>
 				<EVENT name="OnAfterDraw"/>
 			</EVENTS>
-			<ACTIONS/>
+			<ACTIONS>
+				<ACTION id="1" key="12">first</ACTION>
+			</ACTIONS>
 			<SCRIPT>
 				<![CDATA[]]>
 			</SCRIPT>
@@ -2176,10 +2316,10 @@
 						<BCKCOLOR type="RGBColor">16777215</BCKCOLOR>
 						<COLOR type="RGBColor">0</COLOR>
 						<TEXT>
-							<![CDATA[Секунд промивки]]>
+							<![CDATA[Час промивки,хв]]>
 						</TEXT>
-						<XPOS>1</XPOS>
-						<YPOS>17</YPOS>
+						<XPOS>3</XPOS>
+						<YPOS>35</YPOS>
 						<XDIM>90</XDIM>
 						<YDIM>8</YDIM>
 						<VISIBLE>TRUE</VISIBLE>
@@ -2198,19 +2338,19 @@
 							<EVENT name="AfterUpdate"/>
 						</EVENTS>
 					</STRING>
-					<STRING name="String_8">
+					<STRING name="String_6">
 						<FONT>EWP2_6x8</FONT>
 						<BCKCOLOR type="RGBColor">16777215</BCKCOLOR>
 						<COLOR type="RGBColor">0</COLOR>
 						<TEXT>
-							<![CDATA[хв]]>
+							<![CDATA[Вкл.промивку 1/0]]>
 						</TEXT>
-						<XPOS>57</XPOS>
-						<YPOS>30</YPOS>
-						<XDIM>12</XDIM>
+						<XPOS>4</XPOS>
+						<YPOS>17</YPOS>
+						<XDIM>96</XDIM>
 						<YDIM>8</YDIM>
 						<VISIBLE>TRUE</VISIBLE>
-						<ZORDER>8</ZORDER>
+						<ZORDER>6</ZORDER>
 						<STYLE>Flat</STYLE>
 						<BORDCOL type="RGBColor">0</BORDCOL>
 						<BORDPTS>0</BORDPTS>
@@ -2231,7 +2371,7 @@
 				<RECTS/>
 				<ANIMS/>
 				<EDITS>
-					<EDIT name="Edit_1">
+					<EDIT name="Edit_5">
 						<FONT>EWP2_6x8</FONT>
 						<COLOR type="RGBColor">0</COLOR>
 						<BCKCOLOR type="RGBColor">16777215</BCKCOLOR>
@@ -2240,18 +2380,18 @@
 						<STYLE>Flat</STYLE>
 						<BORDCOL type="RGBColor">0</BORDCOL>
 						<BORDPTS>1</BORDPTS>
-						<XPOS>94</XPOS>
-						<YPOS>18</YPOS>
-						<XDIM>30</XDIM>
+						<XPOS>102</XPOS>
+						<YPOS>35</YPOS>
+						<XDIM>18</XDIM>
 						<YDIM>8</YDIM>
-						<NUMCHAR>5</NUMCHAR>
-						<ORDER>0</ORDER>
+						<NUMCHAR>3</NUMCHAR>
+						<ORDER>2</ORDER>
 						<FORMAT>%d</FORMAT>
 						<ALIGN>Center</ALIGN>
-						<ACCESS>RO</ACCESS>
+						<ACCESS>RW</ACCESS>
 						<DESC/>
-						<ZORDER>1</ZORDER>
-						<VAR type="UINT">@LocalParameters.ep_time_wash</VAR>
+						<ZORDER>5</ZORDER>
+						<VAR type="UINT">@LocalParameters.wash_time_minutes</VAR>
 						<TYPE>UINT</TYPE>
 						<REFRESH>TRUE</REFRESH>
 						<VISIBLE>TRUE</VISIBLE>
@@ -2269,7 +2409,7 @@
 							<EVENT name="OnChange"/>
 						</EVENTS>
 					</EDIT>
-					<EDIT name="Edit_5">
+					<EDIT name="Edit_7">
 						<FONT>EWP2_6x8</FONT>
 						<COLOR type="RGBColor">0</COLOR>
 						<BCKCOLOR type="RGBColor">16777215</BCKCOLOR>
@@ -2278,19 +2418,19 @@
 						<STYLE>Flat</STYLE>
 						<BORDCOL type="RGBColor">0</BORDCOL>
 						<BORDPTS>1</BORDPTS>
-						<XPOS>47</XPOS>
-						<YPOS>39</YPOS>
-						<XDIM>30</XDIM>
+						<XPOS>102</XPOS>
+						<YPOS>17</YPOS>
+						<XDIM>18</XDIM>
 						<YDIM>8</YDIM>
-						<NUMCHAR>5</NUMCHAR>
+						<NUMCHAR>3</NUMCHAR>
 						<ORDER>1</ORDER>
 						<FORMAT>%d</FORMAT>
 						<ALIGN>Center</ALIGN>
 						<ACCESS>RW</ACCESS>
 						<DESC/>
-						<ZORDER>5</ZORDER>
-						<VAR type="UINT">@LocalParameters.wash_time_minutes</VAR>
-						<TYPE>UINT</TYPE>
+						<ZORDER>7</ZORDER>
+						<VAR type="BOOL">@LocalParameters.sv_washing</VAR>
+						<TYPE>BOOL</TYPE>
 						<REFRESH>TRUE</REFRESH>
 						<VISIBLE>TRUE</VISIBLE>
 						<SELECT>TRUE</SELECT>
@@ -2332,7 +2472,7 @@
 						<TYPE>Normal</TYPE>
 						<DESC/>
 						<ZORDER>3</ZORDER>
-						<ORDER>2</ORDER>
+						<ORDER>3</ORDER>
 						<SELTEXT/>
 						<EVENTS>
 							<EVENT name="OnClick"/>

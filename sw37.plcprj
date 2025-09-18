@@ -26,9 +26,6 @@
 				<task name="Boot">
 					<program>sr_init_counters</program>
 				</task>
-				<task name="Init">
-					<program>init_val</program>
-				</task>
 			</tasks>
 			<globalVars>
 				<group name="GVL" version="1.0.0">
@@ -45,7 +42,7 @@
 			</iecVarsDeclaration>
 			<functions/>
 			<functionBlocks>
-				<functionBlock name="CheckWashAndStart" version="1.0.0" creationDate="1749036398" lastModifiedDate="1750150128">
+				<functionBlock name="CheckWashAndStart" version="1.0.0" creationDate="1749036398" lastModifiedDate="1752230195">
 					<vars>
 						<inoutVars>
 							<var name="sv_washing_FB" type="BOOL"/>
@@ -54,13 +51,15 @@
 							<var name="o_val_open_fall_FB" type="BOOL"/>
 							<var name="o_val_close_fall_FB" type="BOOL"/>
 							<var name="q_start_ats_FB" type="BOOL"/>
-							<var name="ep_time_wash_FB" type="INT"/>
+							<var name="ep_time_wash_FB" type="UDINT"/>
 							<var name="i_val_state_FB" type="INT"/>
 							<var name="di_val_open_state_fall_FB" type="INT"/>
 							<var name="di_val_close_state_fall_FB" type="INT"/>
-							<var name="di_val_open_state_R_FB" type="INT"/>
+							<var name="di_val_open_state_R_FB" type="BOOL"/>
 							<var name="di_val_close_state_R_FB" type="BOOL"/>
 							<var name="Alarm_Val_FB" type="WORD"/>
+							<var name="ep_allow_val_FB" type="BOOL"/>
+							<var name="ep_time_move_val_FBW" type="UDINT"/>
 						</inoutVars>
 						<outputVars>
 							<var name="is_running_wash" type="BOOL"/>
@@ -105,13 +104,15 @@ VAR_IN_OUT
 	o_val_open_fall_FB : BOOL;
 	o_val_close_fall_FB : BOOL;
 	q_start_ats_FB : BOOL;
-	ep_time_wash_FB : INT;
+	ep_time_wash_FB : UDINT;
 	i_val_state_FB : INT;
 	di_val_open_state_fall_FB : INT;
 	di_val_close_state_fall_FB : INT;
-	di_val_open_state_R_FB : INT;
+	di_val_open_state_R_FB : BOOL;
 	di_val_close_state_R_FB : BOOL;
 	Alarm_Val_FB : WORD;
+	ep_allow_val_FB :BOOL;
+	ep_time_move_val_FBW :UDINT;
 END_VAR
 
 ]]>
@@ -119,17 +120,18 @@ END_VAR
 					<interfaces/>
 					<methods/>
 					<sourceCode type="ST">
-						<![CDATA[if sv_washing_FB^ and i_val_state_FB^=1 then
+						<![CDATA[if sv_washing_FB^ and i_val_state_FB^= 1 then
 onWash :=true;
 else
 onWash :=false;
 end_if;
 
-if onWash  then
+if onWash and ep_allow_val_FB^ then
 //start_check:=true;
 
 is_running_wash :=true;
 
+//if ep_allow_val_FB^ then
 prev_val_open_fall:=o_val_open_fall_FB^;
 prev_val_close_fall:=o_val_close_fall_FB^;
 prev_val_open_R:=o_val_open_R_FB^;
@@ -157,7 +159,8 @@ checkAlarmVal(di_val_open_state_fall_FB :=di_val_open_state_fall_FB,
 	o_val_close_R_FB := o_val_close_R_FB,
 	o_val_open_fall_FB := o_val_open_fall_FB,
 	o_val_close_fall_FB := o_val_close_fall_FB,
-	start_check:=valve_rising);
+	start_check:=valve_rising,
+	ep_time_move_val_FB:=ep_time_move_val_FBW);
 	
 	
     // по стану задвіжки + if
@@ -175,6 +178,7 @@ q_start_ats_FB^:=true;
 end_if;
 
 
+if ep_allow_val_FB^ then
 if washing_timer.Q then
 //washing_timer(IN := FALSE, PT := ep_time_wash_FB^);
 
@@ -233,7 +237,8 @@ checkAlarmVal(di_val_open_state_fall_FB :=di_val_open_state_fall_FB,
 	o_val_close_R_FB := o_val_close_R_FB,
 	o_val_open_fall_FB := o_val_open_fall_FB,
 	o_val_close_fall_FB := o_val_close_fall_FB,
-	start_check:=finish_val_rising);
+	start_check:=finish_val_rising,
+	ep_time_move_val_FB:=ep_time_move_val_FBW);
 
 if finish_val_rising then
 finish_val_rising:=false;
@@ -241,17 +246,18 @@ end_if;
 
 washing_timer(IN := onWash and q_start_ats_FB^, PT := ep_time_wash_FB^);
 
+end_if;
 
 
 ]]>
 					</sourceCode>
 				</functionBlock>
-				<functionBlock name="CheckAlarmVal" version="1.0.0" creationDate="1749620168" lastModifiedDate="1750140169">
+				<functionBlock name="CheckAlarmVal" version="1.0.0" creationDate="1749620168" lastModifiedDate="1752654352">
 					<vars>
 						<inoutVars>
 							<var name="di_val_open_state_fall_FB" type="INT"/>
 							<var name="di_val_close_state_fall_FB" type="INT"/>
-							<var name="di_val_open_state_R_FB" type="INT"/>
+							<var name="di_val_open_state_R_FB" type="BOOL"/>
 							<var name="di_val_close_state_R_FB" type="BOOL"/>
 							<var name="Alarm_Val_FB" type="WORD"/>
 							<var name="o_val_open_R_FB" type="BOOL"/>
@@ -259,6 +265,7 @@ washing_timer(IN := onWash and q_start_ats_FB^, PT := ep_time_wash_FB^);
 							<var name="o_val_open_fall_FB" type="BOOL"/>
 							<var name="o_val_close_fall_FB" type="BOOL"/>
 							<var name="start_check" type="BOOL"/>
+							<var name="ep_time_move_val_FB" type="UDINT"/>
 						</inoutVars>
 						<outputVars>
 							<var name="check_timer" type="TON">
@@ -290,7 +297,7 @@ END_VAR
 VAR_IN_OUT
 	di_val_open_state_fall_FB : INT;
 	di_val_close_state_fall_FB : INT;
-	di_val_open_state_R_FB : INT;
+	di_val_open_state_R_FB : Bool;
 	di_val_close_state_R_FB : BOOL;
 	Alarm_Val_FB : WORD;
 	o_val_open_R_FB : BOOL;
@@ -298,6 +305,7 @@ VAR_IN_OUT
 	o_val_open_fall_FB : BOOL;
 	o_val_close_fall_FB : BOOL;
 	start_check : BOOL;
+	ep_time_move_val_FB :UDINT;
 END_VAR
 
 ]]>
@@ -313,7 +321,18 @@ IF check_timer.IN THEN
 END_IF;
 
 if start_check then
-check_timer(IN := true, PT := 10000);
+check_timer(IN := true, PT := ep_time_move_val_FB^);
+end_if;
+
+
+if o_val_open_R_FB^ = di_val_open_state_R_FB^ AND
+o_val_close_R_FB^ = di_val_close_state_R_FB^ AND
+o_val_open_fall_FB^ = di_val_open_state_fall_FB^ AND
+o_val_close_fall_FB^ = di_val_close_state_fall_FB^ then
+
+check_timer.IN:=false;
+//check_timer.Q:=true;
+is_check_done := TRUE;
 end_if;
 
 // Коли таймер закінчився — робимо перевірку
@@ -346,6 +365,12 @@ IF check_timer.Q THEN
 END_IF;
 
 check_timer();
+(*  Alarm_Val
+		b0 - аварія відкриття едектрозасувки резервуара
+		b1 - аварія закриття едектрозасувки резервуара 
+		b2 - аварія відкриття едектрозасувки скида 
+		b3 - аварія закриття едектрозасувки скида
+	*)
 ]]>
 					</sourceCode>
 				</functionBlock>
@@ -475,17 +500,36 @@ Pressure := to_int(to_real(i_adc_pressure )/10);
 ]]>
 					</sourceCode>
 				</program>
-				<program name="sr_counters" version="1.0.0" creationDate="1677932954" lastModifiedDate="1749027864">
+				<program name="sr_counters" version="1.0.0" creationDate="1677932954" lastModifiedDate="1758174424">
 					<vars>
 						<localVars>
-							<var name="kw_trig" type="R_TRIG"/>
-							<var name="q_trig" type="R_TRIG"/>
 							<var name="kw_pulses_per_acs" type="UINT"/>
 							<var name="q_pulses_per_acs" type="UINT"/>
-							<var name="test_freq" type="UDINT"/>
+							<var name="ms_timer" type="TON"/>
+							<var name="last_tick_time" type="UDINT">
+								<initValue>0</initValue>
+							</var>
+							<var name="time_between" type="UDINT">
+								<descr>Різниця між двома тиками, у мс</descr>
+								<initValue>0</initValue>
+							</var>
 						</localVars>
 					</vars>
-					<iecDeclaration active="FALSE"/>
+					<iecDeclaration active="TRUE" valid="TRUE">
+						<![CDATA[PROGRAM sr_counters
+
+VAR
+	kw_pulses_per_acs : UINT;
+	q_pulses_per_acs : UINT;
+
+    ms_timer       : TON;
+    //ms_counter     : UDINT := 0;       // Умовний час у мілісекундах
+    last_tick_time : UDINT := 0;
+    time_between   : UDINT := 0;       // Різниця між двома тиками, у мс
+END_VAR
+
+]]>
+					</iecDeclaration>
 					<sourceCode type="ST">
 						<![CDATA[// init
 	kw_pulses_per_acs 	:= 8000;	// кількість імпульсів на 1 кВт/год
@@ -499,27 +543,49 @@ Pressure := to_int(to_real(i_adc_pressure )/10);
 	
 	// 1 .. 2000 гц		100 імп./сек = 100 гц. = 100 * 3600 = 360000 імп/год = 360000 / 8000 = 45 квт/Год	
 //	kw_value := to_int((3600 * to_real(fdi_kw_freq)) / (to_real(kw_pulses_per_acs) / 10));
-	
+	 
+	 // Постійний тік кожні 100 мс
+   ms_timer(IN := q_start_ats, PT := 100);
+
+   IF ms_timer.Q THEN
+   ms_counter := ms_counter + 100;     // Додаємо 100 мс
+   ms_timer(IN := FALSE);              // Скидаємо таймер
+   END_IF;
+
+   // Запускаємо його знову
+   IF NOT ms_timer.IN THEN
+   ms_timer(IN := q_start_ats);
+   END_IF;	
 // flow
 	if fdi_q_cnt >= q_pulses_per_acs Then
+	    time_between := ms_counter - last_tick_time; // Різниця між подіями
+        last_tick_time := ms_counter;
 		q_counter := q_counter + 1;
 		fdi_q_reset := true;
 	End_if;
 	
-	q_value := to_int((3600 * to_real(fdi_q_freq)) / (to_real(q_pulses_per_acs) / 1));
+
+    q_value := to_int(3600000/time_between*q_pulses_per_acs);
+
+    if not q_start_ats then
+    q_value:=0;
+    end_if;
 ]]>
 					</sourceCode>
 				</program>
-				<program name="sr_init_counters" version="1.0.0" creationDate="1677939767" lastModifiedDate="1677940774">
+				<program name="sr_init_counters" version="1.0.0" creationDate="1677939767" lastModifiedDate="1752230910">
 					<vars/>
 					<iecDeclaration active="FALSE"/>
 					<sourceCode type="ST">
 						<![CDATA[kw_counter 	:= epprom_kw_cnt;
 q_counter	:= epprom_q_cnt;
+sv_washing:=ep_sv_washing;
+wash_time_minutes :=(ep_time_wash/60);
+//di_val_open_state_fall:=0;
 ]]>
 					</sourceCode>
 				</program>
-				<program name="sr_save_counters" version="1.0.0" creationDate="1677940551" lastModifiedDate="1706353185">
+				<program name="sr_save_counters" version="1.0.0" creationDate="1677940551" lastModifiedDate="1752061873">
 					<vars>
 						<localVars>
 							<var name="power_err" type="R_TRIG"/>
@@ -533,55 +599,60 @@ q_counter	:= epprom_q_cnt;
 						<![CDATA[ton_start_up(IN:= true, PT:= 5000);
 power_err(clk:= ton_start_up.Q And i_rnpp);
 If power_err.q then
-    If epprom_q_cnt <> q_counter Then res_q := sysWriteParUINT(ADR(epprom_q_cnt), q_counter);	End_if;
-	If epprom_kw_cnt <> kw_counter Then res_kw := sysWriteParUINT(ADR(epprom_kw_cnt), kw_counter);	End_if;
+    If epprom_q_cnt <> q_counter Then res_q := sysWriteParDWORD(ADR(epprom_q_cnt), q_counter);	End_if;
+	If epprom_kw_cnt <> kw_counter Then res_kw := sysWriteParDWORD(ADR(epprom_kw_cnt), kw_counter);	End_if;
 end_if;
 
 ]]>
 					</sourceCode>
 				</program>
-				<program name="sr_ATS_Ctrl" version="1.0.0" creationDate="1678181378" lastModifiedDate="1750420552">
+				<program name="sr_ATS_Ctrl" version="1.0.0" creationDate="1678181378" lastModifiedDate="1752653629">
 					<vars>
 						<localVars>
-							<var name="TON_StartUp_1" type="TON"/>
-							<var name="TON_StartUp_2" type="TON"/>
 							<var name="stopping_timer" type="TON"/>
 							<var name="downtimeIN" type="BOOL"/>
 							<var name="washing_timer" type="TON"/>
 							<var name="checkWashAndStart" type="CheckWashAndStart"/>
-							<var name="isRunningWash" type="BOOL"/>
-							<var name="onWash" type="BOOL">
-								<initValue>false</initValue>
-							</var>
-							<var name="time_sec" type="INT">
-								<initValue>4000</initValue>
-							</var>
 							<var name="prev_wash_time_minutes" type="INT"/>
+							<var name="checkAlarmVal" type="CheckAlarmVal"/>
+							<var name="valve_rising" type="BOOL"/>
+							<var name="prev_val_open_fall" type="BOOL"/>
+							<var name="prev_val_close_fall" type="BOOL"/>
+							<var name="prev_val_open_R" type="BOOL"/>
+							<var name="prev_val_close_R" type="BOOL"/>
 						</localVars>
 					</vars>
 					<iecDeclaration active="TRUE" valid="TRUE">
 						<![CDATA[PROGRAM sr_ATS_Ctrl
 
 VAR
-	TON_StartUp_1 : TON;
-	TON_StartUp_2 : TON;
+	//TON_StartUp_1 : TON;
+	//TON_StartUp_2 : TON;
 	stopping_timer : TON;
 	downtimeIN : BOOL;
 	washing_timer : TON;
 	checkWashAndStart : CheckWashAndStart;
-	isRunningWash : BOOL;
-	onWash : BOOl:=false;
-	time_sec : int := 4000;
+	//isRunningWash : BOOL;
+	//onWash : BOOl:=false;
+	//time_sec : int := 4000;
 	prev_wash_time_minutes :INT;
 	//wash_time_in_second :INT;
+	checkAlarmVal : CheckAlarmVal;
+	valve_rising :BOOL;
+	prev_val_open_fall : BOOL;
+	prev_val_close_fall : BOOL;
+	prev_val_open_R : BOOL;
+	prev_val_close_R : BOOL;
 END_VAR
 
 ]]>
 					</iecDeclaration>
 					<sourceCode type="ST">
-						<![CDATA[//if CMD.0 and
+						<![CDATA[if sv_washing<>ep_sv_washing then 
+sysWriteParBOOL(ADR(ep_sv_washing), sv_washing);
+end_if;
+
 if i_pb_rem = 1 And
-Not Alarms.0 And 
 Not Alarms.3 And 
 Not Alarms.4 And 
 Not Alarms.5 And 
@@ -595,16 +666,49 @@ checkWashAndStart(
     o_val_open_R_FB := o_val_open_R,
     sv_washing_FB:=sv_washing,
     q_start_ats_FB:=q_start_ats,
-    ep_time_wash_FB:=time_sec,
+    ep_time_wash_FB:=ep_time_wash,
     i_val_state_FB := i_val_state,
     di_val_open_state_fall_FB :=di_val_open_state_fall,
 	di_val_close_state_fall_FB := di_val_close_state_fall,
 	di_val_open_state_R_FB :=di_val_open_state_R,
 	di_val_close_state_R_FB :=di_val_close_state_R,
-	Alarm_Val_FB := Alarms_Val
+	Alarm_Val_FB := Alarms_Val,
+	ep_allow_val_FB :=ep_allow_val,
+	ep_time_move_val_FBW :=ep_time_move_val
 );
 Else	
     q_start_ats := False; //False;
+    
+    if ep_allow_val then
+    prev_val_open_fall:=o_val_open_fall;
+    prev_val_close_fall:=o_val_close_fall;
+    prev_val_open_R:=o_val_open_R;
+    prev_val_close_R:=o_val_close_R;
+    
+    o_val_close_fall:=true;
+	o_val_close_R:=true;
+	o_val_open_fall:=false;
+	o_val_open_R:=false;
+    
+    valve_rising :=
+    (o_val_open_fall AND NOT prev_val_open_fall) OR
+	(o_val_close_fall AND NOT prev_val_close_fall) OR
+	(o_val_open_R AND NOT prev_val_open_R) OR
+	(o_val_close_R AND NOT prev_val_close_R);
+	
+	checkAlarmVal(di_val_open_state_fall_FB :=di_val_open_state_fall,
+	di_val_close_state_fall_FB := di_val_close_state_fall,
+	di_val_open_state_R_FB := di_val_open_state_R,
+	di_val_close_state_R_FB := di_val_close_state_R,
+	Alarm_Val_FB := Alarms_Val,
+	o_val_open_R_FB := o_val_open_R,
+	o_val_close_R_FB := o_val_close_R,
+	o_val_open_fall_FB := o_val_open_fall,
+	o_val_close_fall_FB := o_val_close_fall,
+	start_check:=valve_rising,
+	ep_time_move_val_FB:=ep_time_move_val);
+	
+	end_if;
 			
 End_If;
 Else
@@ -612,32 +716,10 @@ Else
 	q_start_ats := False;
 end_if;
 
-
-(*if not i_run_ats and i_pb_rem = 1 then
-	o_val_close_fall:=true;
-	o_val_close_R:=true;
-	o_val_open_fall:=false;
-	o_val_open_R:=false;
-end_if;*)
-
-
-
-// Аварія по тиску при запуску
-	(*TON_StartUp_1(IN := q_start_ats, PT := 20000);
-	TON_StartUp_2(IN := TON_StartUp_1.Q, PT := 1000);
-	
-	If q_start_ats Then
-		If NOt i_sns_pressure And TON_StartUp_1.Q Then
-			Alarms.0 := True;
-		End_if;	
-		If NOt i_sns_pressure And TON_StartUp_2.Q Then
-			Alarms.1 := True;
-		End_if;	
-	End_if;*)
 	
 	if wash_time_minutes <> prev_wash_time_minutes then
 	//wash_time_in_second:=wash_time_minutes*60;
-	sysWriteParINT(ADR(ep_time_wash),(wash_time_minutes*60));
+	sysWriteParUDINT(ADR(ep_time_wash),(wash_time_minutes*60));
 	prev_wash_time_minutes:=wash_time_minutes;
 	end_if;
 	
@@ -649,7 +731,7 @@ end_if;*)
 	end_if;
 	
 //stopping_timer(IN := downtimeIN, PT := ep_time_wash);	
-stopping_timer(IN := downtimeIN, PT := 50000);
+stopping_timer(IN := downtimeIN, PT := ep_stopping_ats_time);
 
 if stopping_timer.Q then
    sv_washing :=true;
@@ -662,13 +744,13 @@ end_if;
 	Alarms.3 := i_rnpp;
 	
 // QF
-//	Alarms.4 :=  Not i_qf_ats;
+	Alarms.4 :=  Not i_qf_ats;
 	
 // реле аварія ПП	
 	Alarms.5 := i_no_alm_ats;
 	
 // сухий хід
-//	Alarms.7 := i_sns_dry = 1;
+	Alarms.7 := i_sns_dry = 1;
 
 	
 	
@@ -684,24 +766,9 @@ end_if;
 	*)
 	If CMD.1 Then
 		Alarms := 0;
+		Alarms_Val:=0;
 		CMD.1 := False;
 	End_If;	
-]]>
-					</sourceCode>
-				</program>
-				<program name="init_val" version="1.0.0" creationDate="1749546132" lastModifiedDate="1749550745">
-					<vars/>
-					<iecDeclaration active="FALSE"/>
-					<sourceCode type="ST">
-						<![CDATA[if not di_val_close_state_R then
-o_val_close_R:=true;
-o_val_open_R:=false;
-end_if;
-
-if di_val_close_state_fall = 0 then
-o_val_close_fall:=true;
-o_val_open_fall:=false;
-end_if;
 ]]>
 					</sourceCode>
 				</program>
@@ -76865,11 +76932,17 @@ AXPUmYQGQFdzyadpc1HyqbttBxw=]]>
 		{G:"EEPROM_Parameters"}
 	epprom_q_cnt AT %MW101.0 : DWORD;
 		{G:"EEPROM_Parameters"}
-	ep_time_wash AT %MW101.2 : INT;
+	ep_time_wash AT %MW101.2 : UDINT;
 		{G:"EEPROM_Parameters"}
 	epprom_kw_cnt AT %MW101.4 : DWORD;
 		{G:"EEPROM_Parameters"}
-	ep_stopping_ats_time AT %MW101.6 : INT;
+	ep_stopping_ats_time AT %MW101.6 : UDINT;
+		{G:"EEPROM_Parameters"}
+	ep_sv_washing AT %MW101.8 : BOOL;
+		{G:"EEPROM_Parameters"}
+	ep_allow_val AT %MW101.9 : BOOL;
+		{G:"EEPROM_Parameters"}
+	ep_time_move_val AT %MW101.10 : UDINT;
 		{G:"Status_variables"}
 	Pressure AT %MW110.0 : INT;  {DE:"тиск (56 = 5,6 бар)"}
 		{G:"Status_variables"}
@@ -76908,6 +76981,8 @@ AXPUmYQGQFdzyadpc1HyqbttBxw=]]>
 	Alarms_Val AT %MW110.20 : WORD := 0;  {DE:"Аварії електрозасувок"}
 		{G:"Status_variables"}
 	wash_time_minutes AT %MW110.21 : INT := 0;
+		{G:"Status_variables"}
+	ms_counter AT %MW110.22 : UDINT := 0;
 		{G:"IO_Mapping"}
 	i_adc_pressure AT %IW1.0 : INT;  {DE:"AIL1 analogue input"}
 		{G:"IO_Mapping"}
@@ -76917,7 +76992,7 @@ AXPUmYQGQFdzyadpc1HyqbttBxw=]]>
 		{G:"IO_Mapping"}
 	di_val_close_state_fall AT %IW1.4 : INT;  {DE:"AIL5 analogue input"}
 		{G:"IO_Mapping"}
-	di_val_open_state_R AT %IW1.5 : INT;  {DE:"AIL6 analogue input"}
+	i_sns_dry AT %IW1.5 : INT;  {DE:"AIL6 analogue input"}
 		{G:"IO_Mapping"}
 	i_pb_loc AT %IW1.6 : INT;  {DE:"AIL7 analogue input"}
 		{G:"IO_Mapping"}
@@ -76925,7 +77000,7 @@ AXPUmYQGQFdzyadpc1HyqbttBxw=]]>
 		{G:"IO_Mapping"}
 	di_val_close_state_R AT %IX0.0 : BOOL;  {DE:"DIL1 digital input"}
 		{G:"IO_Mapping"}
-	i_sns_pressure AT %IX0.2 : BOOL;  {DE:"DIL3 digital input"}
+	di_val_open_state_R AT %IX0.2 : BOOL;  {DE:"DIL3 digital input"}
 		{G:"IO_Mapping"}
 	i_sns_door AT %IX0.3 : BOOL;  {DE:"DIL4 digital input"}
 		{G:"IO_Mapping"}
@@ -76959,8 +77034,8 @@ AXPUmYQGQFdzyadpc1HyqbttBxw=]]>
 				<![CDATA[(* Automatically generated, do not edit! *)
 
 VAR_GLOBAL CONSTANT
-$$ParDB : ARRAY[ 0..827 ] OF USINT; { HIDDEN:ON } { INIT:"sw37.PLK+0" }
-$$ParDBLength  : DWORD := 23; { HIDDEN:ON }
+$$ParDB : ARRAY[ 0..971 ] OF USINT; { HIDDEN:ON } { INIT:"sw37.PLK+0" }
+$$ParDBLength  : DWORD := 27; { HIDDEN:ON }
 END_VAR
 
 PROGRAM InitParDB WITH Serv;
@@ -76973,7 +77048,7 @@ PROGRAM InitParDB
 		dummyCrc32: UDINT;
 	END_VAR
 
-	dummyCrc32 := 3949969151;
+	dummyCrc32 := 1975075794;
 
 	warningsKiller := sysDBase_SetExtTable( ADR( $$ParDB ), $$ParDBLength );
 
@@ -77004,7 +77079,7 @@ END_PROGRAM
 			</src>
 		</aux>
 		<workspace>
-			<root name="sw37" nextID="3206">
+			<root name="sw37" nextID="4522">
 				<folder name="VAR" id="372">
 					<GlobalVars name="GVL" id="11"/>
 				</folder>
@@ -77020,7 +77095,6 @@ END_PROGRAM
 					<Pou name="sr_ATS_Ctrl" id="599"/>
 				</folder>
 				<Pou name="CheckWashAndStart" id="2225"/>
-				<Pou name="init_val" id="2421"/>
 				<Pou name="CheckAlarmVal" id="2494"/>
 			</root>
 		</workspace>
@@ -77107,9 +77181,9 @@ END_PROGRAM
 								<ipa>2</ipa>
 								<address>16388</address>
 								<name>ep_time_wash</name>
-								<typepar>2</typepar>
-								<typetarg>INT</typetarg>
-								<value>2</value>
+								<typepar>3</typepar>
+								<typetarg>UDINT</typetarg>
+								<value>900000</value>
 								<min/>
 								<max/>
 								<ipamin/>
@@ -77154,7 +77228,7 @@ END_PROGRAM
 							</param>
 							<param>
 								<ipa>0</ipa>
-								<address>16384</address>
+								<address>16390</address>
 								<name>epprom_kw_cnt</name>
 								<typepar>3</typepar>
 								<typetarg>DWORD</typetarg>
@@ -77203,11 +77277,11 @@ END_PROGRAM
 							</param>
 							<param>
 								<ipa>3</ipa>
-								<address>16389</address>
+								<address>16392</address>
 								<name>ep_stopping_ats_time</name>
-								<typepar>2</typepar>
-								<typetarg>INT</typetarg>
-								<value>5</value>
+								<typepar>3</typepar>
+								<typetarg>UDINT</typetarg>
+								<value>86400000</value>
 								<min/>
 								<max/>
 								<ipamin/>
@@ -77223,6 +77297,153 @@ END_PROGRAM
 								<shortname/>
 								<size>31</size>
 								<dataBlock>MW101.6</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+								<descriptioncode>CUS40000</descriptioncode>
+								<descriptioncode_language/>
+								<progressive/>
+								<category>1</category>
+								<groups/>
+								<groups_language/>
+								<complemented>1</complemented>
+								<measurementunit>num</measurementunit>
+								<measurementunit_language>en-GB</measurementunit_language>
+								<existence>FIX(1)</existence>
+								<type>0</type>
+								<writesequence/>
+								<softscope>0</softscope>
+								<iotype/>
+								<iolabel/>
+								<wizard/>
+								<wizardgroup/>
+								<installeraccesslevel>0</installeraccesslevel>
+								<autogeneratedfrombusconfig>0</autogeneratedfrombusconfig>
+								<groupscode/>
+								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
+								<TelevisIdentificationPar>0</TelevisIdentificationPar>
+							</param>
+							<param>
+								<ipa>4</ipa>
+								<address>16394</address>
+								<name>ep_sv_washing</name>
+								<typepar>5</typepar>
+								<typetarg>BOOL</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW101.8</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+								<descriptioncode>CUS40000</descriptioncode>
+								<descriptioncode_language/>
+								<progressive/>
+								<category>1</category>
+								<groups/>
+								<groups_language/>
+								<complemented>1</complemented>
+								<measurementunit>num</measurementunit>
+								<measurementunit_language>en-GB</measurementunit_language>
+								<existence>FIX(1)</existence>
+								<type>0</type>
+								<writesequence/>
+								<softscope>0</softscope>
+								<iotype/>
+								<iolabel/>
+								<wizard/>
+								<wizardgroup/>
+								<installeraccesslevel>0</installeraccesslevel>
+								<autogeneratedfrombusconfig>0</autogeneratedfrombusconfig>
+								<groupscode/>
+								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
+								<TelevisIdentificationPar>0</TelevisIdentificationPar>
+							</param>
+							<param>
+								<ipa>5</ipa>
+								<address>16395</address>
+								<name>ep_allow_val</name>
+								<typepar>5</typepar>
+								<typetarg>BOOL</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW101.9</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+								<descriptioncode>CUS40000</descriptioncode>
+								<descriptioncode_language/>
+								<progressive/>
+								<category>1</category>
+								<groups/>
+								<groups_language/>
+								<complemented>1</complemented>
+								<measurementunit>num</measurementunit>
+								<measurementunit_language>en-GB</measurementunit_language>
+								<existence>FIX(1)</existence>
+								<type>0</type>
+								<writesequence/>
+								<softscope>0</softscope>
+								<iotype/>
+								<iolabel/>
+								<wizard/>
+								<wizardgroup/>
+								<installeraccesslevel>0</installeraccesslevel>
+								<autogeneratedfrombusconfig>0</autogeneratedfrombusconfig>
+								<groupscode/>
+								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
+								<TelevisIdentificationPar>0</TelevisIdentificationPar>
+							</param>
+							<param>
+								<ipa>6</ipa>
+								<address>16396</address>
+								<name>ep_time_move_val</name>
+								<typepar>3</typepar>
+								<typetarg>UDINT</typetarg>
+								<value>90000</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW101.10</dataBlock>
 								<label/>
 								<translation/>
 								<visibility>0</visibility>
@@ -78183,6 +78404,55 @@ END_PROGRAM
 								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
 								<TelevisIdentificationPar>0</TelevisIdentificationPar>
 							</param>
+							<param>
+								<ipa>5018</ipa>
+								<address>8982</address>
+								<name>ms_counter</name>
+								<typepar>3</typepar>
+								<typetarg>UDINT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.22</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+								<descriptioncode>CUS40000</descriptioncode>
+								<descriptioncode_language/>
+								<progressive/>
+								<category>1</category>
+								<groups/>
+								<groups_language/>
+								<complemented>1</complemented>
+								<measurementunit>num</measurementunit>
+								<measurementunit_language>en-GB</measurementunit_language>
+								<existence>FIX(1)</existence>
+								<type>0</type>
+								<writesequence/>
+								<softscope>0</softscope>
+								<iotype/>
+								<iolabel/>
+								<wizard/>
+								<wizardgroup/>
+								<installeraccesslevel>0</installeraccesslevel>
+								<autogeneratedfrombusconfig>0</autogeneratedfrombusconfig>
+								<groupscode/>
+								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
+								<TelevisIdentificationPar>0</TelevisIdentificationPar>
+							</param>
 						</paramsRO>
 						<enums nextID="1"/>
 						<menus>
@@ -78245,7 +78515,7 @@ END_PROGRAM
 								<ioMapping inout="in" idx="5">
 									<name>AIL6</name>
 									<description>AIL6 analogue input</description>
-									<variable>di_val_open_state_R</variable>
+									<variable>i_sns_dry</variable>
 									<type>INT</type>
 								</ioMapping>
 								<ioMapping inout="in" idx="6">
@@ -78299,7 +78569,7 @@ END_PROGRAM
 								<ioMapping inout="in" idx="2">
 									<name>DIL3</name>
 									<description>DIL3 digital input</description>
-									<variable>i_sns_pressure</variable>
+									<variable>di_val_open_state_R</variable>
 									<type>BOOL</type>
 								</ioMapping>
 								<ioMapping inout="in" idx="3">
@@ -79225,6 +79495,9 @@ END_PROGRAM
 								<value ipa="2" subidx="0">2</value>
 								<value ipa="0" subidx="0">0</value>
 								<value ipa="3" subidx="0">5</value>
+								<value ipa="4" subidx="0">0</value>
+								<value ipa="5" subidx="0">0</value>
+								<value ipa="6" subidx="0">0</value>
 								<value ipa="5000" subidx="0">0</value>
 								<value ipa="5001" subidx="0">0</value>
 								<value ipa="5002" subidx="0">0</value>
@@ -79244,6 +79517,7 @@ END_PROGRAM
 								<value ipa="5016" subidx="0">0</value>
 								<value ipa="5017" subidx="0">0</value>
 								<value ipa="5019" subidx="0">0</value>
+								<value ipa="5018" subidx="0">0</value>
 							</values>
 							<commDisabled>0</commDisabled>
 							<downloadVolume>0</downloadVolume>

@@ -7,9 +7,12 @@
         VAR_GLOBAL
 	{G:"EEPROM_Parameters"}
 epprom_q_cnt AT %MW101.0 : DWORD;
-ep_time_wash AT %MW101.2 : INT;
+ep_time_wash AT %MW101.2 : UDINT;
 epprom_kw_cnt AT %MW101.4 : DWORD;
-ep_stopping_ats_time AT %MW101.6 : INT;
+ep_stopping_ats_time AT %MW101.6 : UDINT;
+ep_sv_washing AT %MW101.8 : BOOL;
+ep_allow_val AT %MW101.9 : BOOL;
+ep_time_move_val AT %MW101.10 : UDINT;
 	{G:"Status_variables"}
 Pressure AT %MW110.0 : INT;	{ DE:"тиск (56 = 5,6 бар)" }
 kw_counter AT %MW110.2 : DWORD;	{ DE:"лічильник електроенергії" }
@@ -30,16 +33,17 @@ ATS_Voltage AT %MW110.18 : INT := 0;	{ DE:"Напруга ПП" }
 sv_washing AT %MW110.19 : BOOL := 0;	{ DE:"Прапорець промивки" }
 Alarms_Val AT %MW110.20 : WORD := 0;	{ DE:"Аварії електрозасувок" }
 wash_time_minutes AT %MW110.21 : INT := 0;
+ms_counter AT %MW110.22 : UDINT := 0;
 	{G:"IO_Mapping"}
 i_adc_pressure AT %IW1.0 : INT;	{ DE:"AIL1 analogue input" }
 i_val_state AT %IW1.2 : INT;	{ DE:"AIL3 analogue input" }
 di_val_open_state_fall AT %IW1.3 : INT;	{ DE:"AIL4 analogue input" }
 di_val_close_state_fall AT %IW1.4 : INT;	{ DE:"AIL5 analogue input" }
-di_val_open_state_R AT %IW1.5 : INT;	{ DE:"AIL6 analogue input" }
+i_sns_dry AT %IW1.5 : INT;	{ DE:"AIL6 analogue input" }
 i_pb_loc AT %IW1.6 : INT;	{ DE:"AIL7 analogue input" }
 i_pb_rem AT %IW1.7 : INT;	{ DE:"AIL8 analogue input" }
 di_val_close_state_R AT %IX0.0 : BOOL;	{ DE:"DIL1 digital input" }
-i_sns_pressure AT %IX0.2 : BOOL;	{ DE:"DIL3 digital input" }
+di_val_open_state_R AT %IX0.2 : BOOL;	{ DE:"DIL3 digital input" }
 i_sns_door AT %IX0.3 : BOOL;	{ DE:"DIL4 digital input" }
 i_rnpp AT %IX0.4 : BOOL;	{ DE:"DIL5 digital input" }
 i_qf_ats AT %IX0.5 : BOOL;	{ DE:"DIL6 digital input" }
