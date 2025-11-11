@@ -32,8 +32,21 @@ CMD AT %MW110.17 : WORD := 0;	{ DE:"Слово-команда від скади 
 ATS_Voltage AT %MW110.18 : INT := 0;	{ DE:"Напруга ПП" }
 sv_washing AT %MW110.19 : BOOL := 0;	{ DE:"Прапорець промивки" }
 Alarms_Val AT %MW110.20 : WORD := 0;	{ DE:"Аварії електрозасувок" }
-wash_time_minutes AT %MW110.21 : INT := 0;
-ms_counter AT %MW110.22 : UDINT := 0;
+wash_time_minutes AT %MW110.21 : INT := 0;	{ DE:"Час промивки свердловини" }
+ms_counter AT %MW110.22 : UDINT := 0;	{ DE:"Час роботи свердловини в мс" }
+StateWORD AT %MW110.24 : WORD := 0;
+ATS_Current AT %MW110.25 : UINT := 0;	{ DE:"Струм загальний" }
+ATS_RunTime_Hours AT %MW110.26 : UDINT := 0;	{ DE:"К-сть відпрацьованих годин" }
+ATS_CMD AT %MW110.28 : WORD := 0;
+ATS_Last_Fault_Code AT %MW110.29 : WORD := 0;	{ DE:"Код останньої аварії ПП" }
+ATS_Now_Fault_Code AT %MW110.30 : WORD := 0;	{ DE:"Код аварії діючий" }
+ATS_State_BIT AT %MW110.31 : WORD := 0;	{ DE:"Слово стану ПП" }
+ATS_Voltage_L1 AT %MW110.32 : INT := 0;	{ DE:"Напруга Ф1" }
+ATS_Voltage_L2 AT %MW110.33 : INT := 0;	{ DE:"Напруга Ф2" }
+ATS_Voltage_L3 AT %MW110.34 : INT := 0;	{ DE:"Напруга Ф3" }
+motor_run_time AT %MW110.36 : UDINT := 0;	{ DE:"К-сть відпрацьованих двигуном годин " }
+Num_m_starts AT %MW110.38 : UDINT := 0;	{ DE:"К-сть пусків двигуна" }
+En_consum_motor AT %MW110.40 : INT := 0;	{ DE:"К-сть спожитої енергії, kWh" }
 	{G:"IO_Mapping"}
 i_adc_pressure AT %IW1.0 : INT;	{ DE:"AIL1 analogue input" }
 i_val_state AT %IW1.2 : INT;	{ DE:"AIL3 analogue input" }
@@ -42,6 +55,7 @@ di_val_close_state_fall AT %IW1.4 : INT;	{ DE:"AIL5 analogue input" }
 i_sns_dry AT %IW1.5 : INT;	{ DE:"AIL6 analogue input" }
 i_pb_loc AT %IW1.6 : INT;	{ DE:"AIL7 analogue input" }
 i_pb_rem AT %IW1.7 : INT;	{ DE:"AIL8 analogue input" }
+i_val_state_local AT %IW1.8 : INT;	{ DE:"AI9 analogue input" }
 di_val_close_state_R AT %IX0.0 : BOOL;	{ DE:"DIL1 digital input" }
 di_val_open_state_R AT %IX0.2 : BOOL;	{ DE:"DIL3 digital input" }
 i_sns_door AT %IX0.3 : BOOL;	{ DE:"DIL4 digital input" }
@@ -49,10 +63,15 @@ i_rnpp AT %IX0.4 : BOOL;	{ DE:"DIL5 digital input" }
 i_qf_ats AT %IX0.5 : BOOL;	{ DE:"DIL6 digital input" }
 i_no_alm_ats AT %IX0.6 : BOOL;	{ DE:"DIL7 digital input" }
 i_run_ats AT %IX0.7 : BOOL;	{ DE:"DIL8 digital input" }
+i_qf_direct AT %IX0.8 : BOOL;	{ DE:"DIL9 digital input" }
+i_km_ats AT %IX0.9 : BOOL;	{ DE:"DIL10 digital input" }
+i_km_direct AT %IX0.10 : BOOL;	{ DE:"DIL11 digital input" }
+i_sns_pressure AT %IX0.11 : BOOL;	{ DE:"DIL12 digital input" }
 o_val_open_fall AT %QX1.0 : BOOL;	{ DE:"DOL1 digital output" }
 o_val_close_fall AT %QX1.1 : BOOL;	{ DE:"DOL2 digital output" }
 o_val_open_R AT %QX1.2 : BOOL;	{ DE:"DOL3 digital output" }
 o_val_close_R AT %QX1.3 : BOOL;	{ DE:"DOL4 digital output" }
+q_start_direct AT %QX1.4 : BOOL;	{ DE:"DOL5 digital output" }
 q_start_ats AT %QX1.7 : BOOL;	{ DE:"DOL8 digital output" }
 fdi_q_cnt AT %MB500.0 : UDINT;	{ DE:"FDI2 Input counter" }
 fdi_q_freq AT %MB500.1 : UDINT;	{ DE:"FDI2 Input frequency" }

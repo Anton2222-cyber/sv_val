@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <plcProject caseSensitive="false" extendedIdNames="false" useCustomWorkspace="true" debugMode="false" extcheck="true" SFCControl="false" strictPointerCheck="false" strictInitValuesCheck="false" verboseWarningMode="false" iecTypeConversionRules="false" PNContactsOnEachNetwork="false" LocalVarsFBAccess="false" strictEnumsCheck="false" copyWarningThreshold="0" version="2.11" useLD2="true" useXPLCFiles="false" useFBMethods="false" customSortOfProjectTree="false" autoDerefPointers="false">
 	<image>sw37.imgx</image>
-	<commSettings>Modbus:1,1000,M6#COM:3,38400,N,8,1,H</commSettings>
+	<commSettings>Modbus:1,1000,M6#COM:4,38400,N,8,1,H</commSettings>
 	<sources>
 		<main>
 			<resources>
@@ -42,7 +42,7 @@
 			</iecVarsDeclaration>
 			<functions/>
 			<functionBlocks>
-				<functionBlock name="CheckWashAndStart" version="1.0.0" creationDate="1749036398" lastModifiedDate="1752230195">
+				<functionBlock name="CheckWashAndStart" version="1.0.0" creationDate="1749036398" lastModifiedDate="1758612799">
 					<vars>
 						<inoutVars>
 							<var name="sv_washing_FB" type="BOOL"/>
@@ -51,6 +51,7 @@
 							<var name="o_val_open_fall_FB" type="BOOL"/>
 							<var name="o_val_close_fall_FB" type="BOOL"/>
 							<var name="q_start_ats_FB" type="BOOL"/>
+							<var name="q_start_direct_FB" type="BOOL"/>
 							<var name="ep_time_wash_FB" type="UDINT"/>
 							<var name="i_val_state_FB" type="INT"/>
 							<var name="di_val_open_state_fall_FB" type="INT"/>
@@ -78,45 +79,7 @@
 							<var name="finish_val_rising" type="BOOL"/>
 						</localVars>
 					</vars>
-					<iecDeclaration active="TRUE" valid="TRUE">
-						<![CDATA[FUNCTION_BLOCK CheckWashAndStart
-
-VAR
-	washing_timer : TON;	(* локальний FB таймера *)
-	onWash : BOOL;
-	checkAlarmVal : CheckAlarmVal;
-	valve_rising :BOOL;
-    prev_val_open_fall : BOOL;
-	prev_val_close_fall : BOOL;
-	prev_val_open_R : BOOL;
-	prev_val_close_R : BOOL;
-	finish_val_rising:BOOL;
-END_VAR
-
-VAR_OUTPUT
-	is_running_wash : BOOL;
-END_VAR
-
-VAR_IN_OUT
-	sv_washing_FB : BOOL;
-	o_val_open_R_FB : BOOL;
-	o_val_close_R_FB : BOOL;
-	o_val_open_fall_FB : BOOL;
-	o_val_close_fall_FB : BOOL;
-	q_start_ats_FB : BOOL;
-	ep_time_wash_FB : UDINT;
-	i_val_state_FB : INT;
-	di_val_open_state_fall_FB : INT;
-	di_val_close_state_fall_FB : INT;
-	di_val_open_state_R_FB : BOOL;
-	di_val_close_state_R_FB : BOOL;
-	Alarm_Val_FB : WORD;
-	ep_allow_val_FB :BOOL;
-	ep_time_move_val_FBW :UDINT;
-END_VAR
-
-]]>
-					</iecDeclaration>
+					<iecDeclaration active="FALSE"/>
 					<interfaces/>
 					<methods/>
 					<sourceCode type="ST">
@@ -166,15 +129,18 @@ checkAlarmVal(di_val_open_state_fall_FB :=di_val_open_state_fall_FB,
     // по стану задвіжки + if
     if checkAlarmVal.is_check_done and checkAlarmVal.isOK then
     q_start_ats_FB^:=true;
+    q_start_direct_FB^:=true;
     //checkAlarmVal.is_check_done:=false;
     else
     q_start_ats_FB^:=false;
+    q_start_direct_FB^:=false;
     end_if;
      
      
      //q_start_ats_FB^:=true;
 else
 q_start_ats_FB^:=true;
+q_start_direct_FB^:=true;
 end_if;
 
 
@@ -244,7 +210,7 @@ if finish_val_rising then
 finish_val_rising:=false;
 end_if;
 
-washing_timer(IN := onWash and q_start_ats_FB^, PT := ep_time_wash_FB^);
+washing_timer(IN := onWash and (q_start_ats_FB^ or q_start_direct_FB^), PT := ep_time_wash_FB^);
 
 end_if;
 
@@ -376,7 +342,7 @@ check_timer();
 				</functionBlock>
 			</functionBlocks>
 			<programs>
-				<program name="ATS_mdb" version="0.0.1" creationDate="0" lastModifiedDate="1689746844">
+				<program name="ATS_mdb" version="0.0.1" creationDate="0" lastModifiedDate="1758817277">
 					<vars>
 						<localVars>
 							<var name="res_eta_lcr" type="UINT"/>
@@ -429,7 +395,7 @@ check_timer();
 	
 	
 	// 63 = 200%
-	ATS22_DUT.EtaCurrent := to_byte(SHR(resp_eta_lcr[0] AND 16#3F00, 16#08) * 200 / 63);
+(*	ATS22_DUT.EtaCurrent := to_byte(SHR(resp_eta_lcr[0] AND 16#3F00, 16#08) * 200 / 63);
 	ATS_Current_prsnt	 := ATS22_DUT.EtaCurrent;
 	
 	ATS22_DUT.Local 	:= to_bool(resp_eta_lcr[0] And 16#4000);
@@ -439,35 +405,35 @@ check_timer();
 	ATS22_DUT.Lcr2 := resp_eta_lcr[2]; 	
 	ATS22_DUT.Lcr3 := resp_eta_lcr[3]; 	
 	
-	ATS_Current_L1 := ATS22_DUT.Lcr1;	
-	ATS_Current_L2 := ATS22_DUT.Lcr2;	
-	ATS_Current_L3 := ATS22_DUT.Lcr3;
+//	ATS_Current_L1 := ATS22_DUT.Lcr1;	
+//	ATS_Current_L2 := ATS22_DUT.Lcr2;	
+//	ATS_Current_L3 := ATS22_DUT.Lcr3;
 //Лінійна напруга	
-	res := sysMbMRTU_FC03(	addr := 1, 
-									base := 261, // 260
-									no := 1, 
-									object := ADR(resp_eta_lcr), 
-									timeout := 200);
-	
-	ATS22_DUT.LcrVoltage	:= resp_eta_lcr[0];
-	ATS_Voltage := ATS22_DUT.LcrVoltage;
+//	res := sysMbMRTU_FC03(	addr := 1, 
+//									base := 261, // 260
+//									no := 1, 
+//									object := ADR(resp_eta_lcr), 
+//									timeout := 200);
+//	
+//	ATS22_DUT.LcrVoltage	:= resp_eta_lcr[0];
+//	ATS_Voltage := ATS22_DUT.LcrVoltage;
 //Лінійна напруга кінець	
 	
 	
-	res := sysMbMRTU_FC03(	addr := 1, 
-									base := 280, // 279
-									no := 1, 
-									object := ADR(resp_eta_lcr), 
-									timeout := 200);
+//	res := sysMbMRTU_FC03(	addr := 1, 
+//									base := 280, // 279
+//									no := 1, 
+//									object := ADR(resp_eta_lcr), 
+//									timeout := 200);
+//	
+//	ATS22_DUT.LastFLT 	:= resp_eta_lcr[0];
+//	ATS_Last_FaultCode := ATS22_DUT.LastFLT;
+//	
 	
-	ATS22_DUT.LastFLT 	:= resp_eta_lcr[0];
-	ATS_Last_FaultCode := ATS22_DUT.LastFLT;
-	
-	
-	res := sysMbMRTU_FC03(	addr := 1, 
-									base := 274, // 273
-									no := 3, 
-									object := ADR(resp_eta_lcr), 
+//	res := sysMbMRTU_FC03(	addr := 1, 
+//									base := 274, // 273
+//									no := 3, 
+(*									object := ADR(resp_eta_lcr), 
 									timeout := 200);
 									
 	if res <> 0 Then Alarms.6 := true; End_if;									
@@ -478,6 +444,7 @@ check_timer();
 	
 	ATS_RunTime_Hors	:= to_word(ATS22_DUT.MotRunTime);
 	ATS_OnTimes_Cnt		:= to_word(ATS22_DUT.MotStartCnt);
+*)
 ]]>
 					</sourceCode>
 				</program>
@@ -500,7 +467,7 @@ Pressure := to_int(to_real(i_adc_pressure )/10);
 ]]>
 					</sourceCode>
 				</program>
-				<program name="sr_counters" version="1.0.0" creationDate="1677932954" lastModifiedDate="1758174424">
+				<program name="sr_counters" version="1.0.0" creationDate="1677932954" lastModifiedDate="1761745055">
 					<vars>
 						<localVars>
 							<var name="kw_pulses_per_acs" type="UINT"/>
@@ -545,7 +512,7 @@ END_VAR
 //	kw_value := to_int((3600 * to_real(fdi_kw_freq)) / (to_real(kw_pulses_per_acs) / 10));
 	 
 	 // Постійний тік кожні 100 мс
-   ms_timer(IN := q_start_ats, PT := 100);
+   ms_timer(IN := ATS_State_BIT.2 or q_start_direct, PT := 100);
 
    IF ms_timer.Q THEN
    ms_counter := ms_counter + 100;     // Додаємо 100 мс
@@ -554,7 +521,7 @@ END_VAR
 
    // Запускаємо його знову
    IF NOT ms_timer.IN THEN
-   ms_timer(IN := q_start_ats);
+   ms_timer(IN := ATS_State_BIT.2 or q_start_direct);
    END_IF;	
 // flow
 	if fdi_q_cnt >= q_pulses_per_acs Then
@@ -567,7 +534,7 @@ END_VAR
 
     q_value := to_int(3600000/time_between*q_pulses_per_acs);
 
-    if not q_start_ats then
+    if not ATS_State_BIT.2 and not q_start_direct then
     q_value:=0;
     end_if;
 ]]>
@@ -606,7 +573,7 @@ end_if;
 ]]>
 					</sourceCode>
 				</program>
-				<program name="sr_ATS_Ctrl" version="1.0.0" creationDate="1678181378" lastModifiedDate="1752653629">
+				<program name="sr_ATS_Ctrl" version="1.0.0" creationDate="1678181378" lastModifiedDate="1759397094">
 					<vars>
 						<localVars>
 							<var name="stopping_timer" type="TON"/>
@@ -620,39 +587,34 @@ end_if;
 							<var name="prev_val_close_fall" type="BOOL"/>
 							<var name="prev_val_open_R" type="BOOL"/>
 							<var name="prev_val_close_R" type="BOOL"/>
+							<var name="TON_StartUp_1" type="TON"/>
+							<var name="TON_StartUp_2" type="TON"/>
 						</localVars>
 					</vars>
-					<iecDeclaration active="TRUE" valid="TRUE">
-						<![CDATA[PROGRAM sr_ATS_Ctrl
-
-VAR
-	//TON_StartUp_1 : TON;
-	//TON_StartUp_2 : TON;
-	stopping_timer : TON;
-	downtimeIN : BOOL;
-	washing_timer : TON;
-	checkWashAndStart : CheckWashAndStart;
-	//isRunningWash : BOOL;
-	//onWash : BOOl:=false;
-	//time_sec : int := 4000;
-	prev_wash_time_minutes :INT;
-	//wash_time_in_second :INT;
-	checkAlarmVal : CheckAlarmVal;
-	valve_rising :BOOL;
-	prev_val_open_fall : BOOL;
-	prev_val_close_fall : BOOL;
-	prev_val_open_R : BOOL;
-	prev_val_close_R : BOOL;
-END_VAR
-
-]]>
-					</iecDeclaration>
+					<iecDeclaration active="FALSE"/>
 					<sourceCode type="ST">
-						<![CDATA[if sv_washing<>ep_sv_washing then 
+						<![CDATA[// Аварія по тиску при запуску
+	TON_StartUp_1(IN := q_start_ats or q_start_direct, PT := 20000);
+	TON_StartUp_2(IN := TON_StartUp_1.Q, PT := 1000);
+	
+(*	If q_start_ats Then
+		If NOt i_sns_pressure And TON_StartUp_1.Q Then
+			Alarms.0 := True;
+		End_if;	
+		If NOt i_sns_pressure And TON_StartUp_2.Q Then
+			Alarms.1 := True;
+		End_if;	
+	End_if;
+*)	
+	
+
+if sv_washing<>ep_sv_washing then 
 sysWriteParBOOL(ADR(ep_sv_washing), sv_washing);
 end_if;
 
 if i_pb_rem = 1 And
+Not Alarms.0 And
+Not Alarms.1 And
 Not Alarms.3 And 
 Not Alarms.4 And 
 Not Alarms.5 And 
@@ -674,10 +636,12 @@ checkWashAndStart(
 	di_val_close_state_R_FB :=di_val_close_state_R,
 	Alarm_Val_FB := Alarms_Val,
 	ep_allow_val_FB :=ep_allow_val,
-	ep_time_move_val_FBW :=ep_time_move_val
+	ep_time_move_val_FBW :=ep_time_move_val,
+	q_start_direct_FB := q_start_direct
 );
 Else	
     q_start_ats := False; //False;
+    q_start_direct:=false;
     
     if ep_allow_val then
     prev_val_open_fall:=o_val_open_fall;
@@ -714,6 +678,7 @@ End_If;
 Else
 	CMD.0 := False;
 	q_start_ats := False;
+	q_start_direct:=false;
 end_if;
 
 	
@@ -744,13 +709,15 @@ end_if;
 	Alarms.3 := i_rnpp;
 	
 // QF
-	Alarms.4 :=  Not i_qf_ats;
+	Alarms.4 :=  i_qf_ats;
 	
 // реле аварія ПП	
 	Alarms.5 := i_no_alm_ats;
 	
 // сухий хід
 	Alarms.7 := i_sns_dry = 1;
+	
+	
 
 	
 	
@@ -769,6 +736,10 @@ end_if;
 		Alarms_Val:=0;
 		CMD.1 := False;
 	End_If;	
+
+StateWORD.0 :=i_qf_direct;
+StateWORD.1 :=i_km_ats;
+StateWORD.2 :=i_km_direct;
 ]]>
 					</sourceCode>
 				</program>
@@ -76980,9 +76951,35 @@ AXPUmYQGQFdzyadpc1HyqbttBxw=]]>
 		{G:"Status_variables"}
 	Alarms_Val AT %MW110.20 : WORD := 0;  {DE:"Аварії електрозасувок"}
 		{G:"Status_variables"}
-	wash_time_minutes AT %MW110.21 : INT := 0;
+	wash_time_minutes AT %MW110.21 : INT := 0;  {DE:"Час промивки свердловини"}
 		{G:"Status_variables"}
-	ms_counter AT %MW110.22 : UDINT := 0;
+	ms_counter AT %MW110.22 : UDINT := 0;  {DE:"Час роботи свердловини в мс"}
+		{G:"Status_variables"}
+	StateWORD AT %MW110.24 : WORD := 0;
+		{G:"Status_variables"}
+	ATS_Current AT %MW110.25 : UINT := 0;  {DE:"Струм загальний"}
+		{G:"Status_variables"}
+	ATS_RunTime_Hours AT %MW110.26 : UDINT := 0;  {DE:"К-сть відпрацьованих годин"}
+		{G:"Status_variables"}
+	ATS_CMD AT %MW110.28 : WORD := 0;
+		{G:"Status_variables"}
+	ATS_Last_Fault_Code AT %MW110.29 : WORD := 0;  {DE:"Код останньої аварії ПП"}
+		{G:"Status_variables"}
+	ATS_Now_Fault_Code AT %MW110.30 : WORD := 0;  {DE:"Код аварії діючий"}
+		{G:"Status_variables"}
+	ATS_State_BIT AT %MW110.31 : WORD := 0;  {DE:"Слово стану ПП"}
+		{G:"Status_variables"}
+	ATS_Voltage_L1 AT %MW110.32 : INT := 0;  {DE:"Напруга Ф1"}
+		{G:"Status_variables"}
+	ATS_Voltage_L2 AT %MW110.33 : INT := 0;  {DE:"Напруга Ф2"}
+		{G:"Status_variables"}
+	ATS_Voltage_L3 AT %MW110.34 : INT := 0;  {DE:"Напруга Ф3"}
+		{G:"Status_variables"}
+	motor_run_time AT %MW110.36 : UDINT := 0;  {DE:"К-сть відпрацьованих двигуном годин "}
+		{G:"Status_variables"}
+	Num_m_starts AT %MW110.38 : UDINT := 0;  {DE:"К-сть пусків двигуна"}
+		{G:"Status_variables"}
+	En_consum_motor AT %MW110.40 : INT := 0;  {DE:"К-сть спожитої енергії, kWh"}
 		{G:"IO_Mapping"}
 	i_adc_pressure AT %IW1.0 : INT;  {DE:"AIL1 analogue input"}
 		{G:"IO_Mapping"}
@@ -76998,6 +76995,8 @@ AXPUmYQGQFdzyadpc1HyqbttBxw=]]>
 		{G:"IO_Mapping"}
 	i_pb_rem AT %IW1.7 : INT;  {DE:"AIL8 analogue input"}
 		{G:"IO_Mapping"}
+	i_val_state_local AT %IW1.8 : INT;  {DE:"AI9 analogue input"}
+		{G:"IO_Mapping"}
 	di_val_close_state_R AT %IX0.0 : BOOL;  {DE:"DIL1 digital input"}
 		{G:"IO_Mapping"}
 	di_val_open_state_R AT %IX0.2 : BOOL;  {DE:"DIL3 digital input"}
@@ -77012,6 +77011,14 @@ AXPUmYQGQFdzyadpc1HyqbttBxw=]]>
 		{G:"IO_Mapping"}
 	i_run_ats AT %IX0.7 : BOOL;  {DE:"DIL8 digital input"}
 		{G:"IO_Mapping"}
+	i_qf_direct AT %IX0.8 : BOOL;  {DE:"DIL9 digital input"}
+		{G:"IO_Mapping"}
+	i_km_ats AT %IX0.9 : BOOL;  {DE:"DIL10 digital input"}
+		{G:"IO_Mapping"}
+	i_km_direct AT %IX0.10 : BOOL;  {DE:"DIL11 digital input"}
+		{G:"IO_Mapping"}
+	i_sns_pressure AT %IX0.11 : BOOL;  {DE:"DIL12 digital input"}
+		{G:"IO_Mapping"}
 	o_val_open_fall AT %QX1.0 : BOOL;  {DE:"DOL1 digital output"}
 		{G:"IO_Mapping"}
 	o_val_close_fall AT %QX1.1 : BOOL;  {DE:"DOL2 digital output"}
@@ -77019,6 +77026,8 @@ AXPUmYQGQFdzyadpc1HyqbttBxw=]]>
 	o_val_open_R AT %QX1.2 : BOOL;  {DE:"DOL3 digital output"}
 		{G:"IO_Mapping"}
 	o_val_close_R AT %QX1.3 : BOOL;  {DE:"DOL4 digital output"}
+		{G:"IO_Mapping"}
+	q_start_direct AT %QX1.4 : BOOL;  {DE:"DOL5 digital output"}
 		{G:"IO_Mapping"}
 	q_start_ats AT %QX1.7 : BOOL;  {DE:"DOL8 digital output"}
 		{G:"IO_Mapping"}
@@ -77034,8 +77043,8 @@ AXPUmYQGQFdzyadpc1HyqbttBxw=]]>
 				<![CDATA[(* Automatically generated, do not edit! *)
 
 VAR_GLOBAL CONSTANT
-$$ParDB : ARRAY[ 0..971 ] OF USINT; { HIDDEN:ON } { INIT:"sw37.PLK+0" }
-$$ParDBLength  : DWORD := 27; { HIDDEN:ON }
+$$ParDB : ARRAY[ 0..1439 ] OF USINT; { HIDDEN:ON } { INIT:"sw37.PLK+0" }
+$$ParDBLength  : DWORD := 40; { HIDDEN:ON }
 END_VAR
 
 PROGRAM InitParDB WITH Serv;
@@ -77048,7 +77057,7 @@ PROGRAM InitParDB
 		dummyCrc32: UDINT;
 	END_VAR
 
-	dummyCrc32 := 1975075794;
+	dummyCrc32 := 1631137637;
 
 	warningsKiller := sysDBase_SetExtTable( ADR( $$ParDB ), $$ParDBLength );
 
@@ -77079,7 +77088,7 @@ END_PROGRAM
 			</src>
 		</aux>
 		<workspace>
-			<root name="sw37" nextID="4522">
+			<root name="sw37" nextID="5085">
 				<folder name="VAR" id="372">
 					<GlobalVars name="GVL" id="11"/>
 				</folder>
@@ -77121,7 +77130,7 @@ END_PROGRAM
 	<resources>
 		<configuration template="EWApplication.pct" version="8">
 			<data>
-				<project_config nextID="24">
+				<project_config nextID="45">
 					<datacomment/>
 					<persistentVariables/>
 				</project_config>
@@ -78369,7 +78378,7 @@ END_PROGRAM
 								<scale>1</scale>
 								<offs>0</offs>
 								<um/>
-								<description/>
+								<description>Час промивки свердловини</description>
 								<note/>
 								<form/>
 								<accesslevel>3</accesslevel>
@@ -78418,7 +78427,7 @@ END_PROGRAM
 								<scale>1</scale>
 								<offs>0</offs>
 								<um/>
-								<description/>
+								<description>Час роботи свердловини в мс</description>
 								<note/>
 								<form/>
 								<accesslevel>3</accesslevel>
@@ -78426,6 +78435,643 @@ END_PROGRAM
 								<shortname/>
 								<size>31</size>
 								<dataBlock>MW110.22</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+								<descriptioncode>CUS40000</descriptioncode>
+								<descriptioncode_language/>
+								<progressive/>
+								<category>1</category>
+								<groups/>
+								<groups_language/>
+								<complemented>1</complemented>
+								<measurementunit>num</measurementunit>
+								<measurementunit_language>en-GB</measurementunit_language>
+								<existence>FIX(1)</existence>
+								<type>0</type>
+								<writesequence/>
+								<softscope>0</softscope>
+								<iotype/>
+								<iolabel/>
+								<wizard/>
+								<wizardgroup/>
+								<installeraccesslevel>0</installeraccesslevel>
+								<autogeneratedfrombusconfig>0</autogeneratedfrombusconfig>
+								<groupscode/>
+								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
+								<TelevisIdentificationPar>0</TelevisIdentificationPar>
+							</param>
+							<param>
+								<ipa>5022</ipa>
+								<address>8985</address>
+								<name>StateWORD</name>
+								<typepar>2</typepar>
+								<typetarg>WORD</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.24</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+								<descriptioncode>CUS40000</descriptioncode>
+								<descriptioncode_language/>
+								<progressive/>
+								<category>1</category>
+								<groups/>
+								<groups_language/>
+								<complemented>1</complemented>
+								<measurementunit>num</measurementunit>
+								<measurementunit_language>en-GB</measurementunit_language>
+								<existence>FIX(1)</existence>
+								<type>0</type>
+								<writesequence/>
+								<softscope>0</softscope>
+								<iotype/>
+								<iolabel/>
+								<wizard/>
+								<wizardgroup/>
+								<installeraccesslevel>0</installeraccesslevel>
+								<autogeneratedfrombusconfig>0</autogeneratedfrombusconfig>
+								<groupscode/>
+								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
+								<TelevisIdentificationPar>0</TelevisIdentificationPar>
+							</param>
+							<param>
+								<ipa>5020</ipa>
+								<address>8986</address>
+								<name>ATS_Current</name>
+								<typepar>2</typepar>
+								<typetarg>UINT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description>Струм загальний</description>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.25</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+								<descriptioncode>CUS40000</descriptioncode>
+								<descriptioncode_language/>
+								<progressive/>
+								<category>1</category>
+								<groups/>
+								<groups_language/>
+								<complemented>1</complemented>
+								<measurementunit>num</measurementunit>
+								<measurementunit_language>en-GB</measurementunit_language>
+								<existence>FIX(1)</existence>
+								<type>0</type>
+								<writesequence/>
+								<softscope>0</softscope>
+								<iotype/>
+								<iolabel/>
+								<wizard/>
+								<wizardgroup/>
+								<installeraccesslevel>0</installeraccesslevel>
+								<autogeneratedfrombusconfig>0</autogeneratedfrombusconfig>
+								<groupscode/>
+								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
+								<TelevisIdentificationPar>0</TelevisIdentificationPar>
+							</param>
+							<param>
+								<ipa>5021</ipa>
+								<address>8987</address>
+								<name>ATS_RunTime_Hours</name>
+								<typepar>3</typepar>
+								<typetarg>UDINT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description>К-сть відпрацьованих годин</description>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.26</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+								<descriptioncode>CUS40000</descriptioncode>
+								<descriptioncode_language/>
+								<progressive/>
+								<category>1</category>
+								<groups/>
+								<groups_language/>
+								<complemented>1</complemented>
+								<measurementunit>num</measurementunit>
+								<measurementunit_language>en-GB</measurementunit_language>
+								<existence>FIX(1)</existence>
+								<type>0</type>
+								<writesequence/>
+								<softscope>0</softscope>
+								<iotype/>
+								<iolabel/>
+								<wizard/>
+								<wizardgroup/>
+								<installeraccesslevel>0</installeraccesslevel>
+								<autogeneratedfrombusconfig>0</autogeneratedfrombusconfig>
+								<groupscode/>
+								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
+								<TelevisIdentificationPar>0</TelevisIdentificationPar>
+							</param>
+							<param>
+								<ipa>5023</ipa>
+								<address>8980</address>
+								<name>ATS_CMD</name>
+								<typepar>2</typepar>
+								<typetarg>WORD</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.28</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+								<descriptioncode>CUS40000</descriptioncode>
+								<descriptioncode_language/>
+								<progressive/>
+								<category>1</category>
+								<groups/>
+								<groups_language/>
+								<complemented>1</complemented>
+								<measurementunit>num</measurementunit>
+								<measurementunit_language>en-GB</measurementunit_language>
+								<existence>FIX(1)</existence>
+								<type>0</type>
+								<writesequence/>
+								<softscope>0</softscope>
+								<iotype/>
+								<iolabel/>
+								<wizard/>
+								<wizardgroup/>
+								<installeraccesslevel>0</installeraccesslevel>
+								<autogeneratedfrombusconfig>0</autogeneratedfrombusconfig>
+								<groupscode/>
+								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
+								<TelevisIdentificationPar>0</TelevisIdentificationPar>
+							</param>
+							<param>
+								<ipa>5024</ipa>
+								<address>8984</address>
+								<name>ATS_Last_Fault_Code</name>
+								<typepar>2</typepar>
+								<typetarg>WORD</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description>Код останньої аварії ПП</description>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.29</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+								<descriptioncode>CUS40000</descriptioncode>
+								<descriptioncode_language/>
+								<progressive/>
+								<category>1</category>
+								<groups/>
+								<groups_language/>
+								<complemented>1</complemented>
+								<measurementunit>num</measurementunit>
+								<measurementunit_language>en-GB</measurementunit_language>
+								<existence>FIX(1)</existence>
+								<type>0</type>
+								<writesequence/>
+								<softscope>0</softscope>
+								<iotype/>
+								<iolabel/>
+								<wizard/>
+								<wizardgroup/>
+								<installeraccesslevel>0</installeraccesslevel>
+								<autogeneratedfrombusconfig>0</autogeneratedfrombusconfig>
+								<groupscode/>
+								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
+								<TelevisIdentificationPar>0</TelevisIdentificationPar>
+							</param>
+							<param>
+								<ipa>5025</ipa>
+								<address>8989</address>
+								<name>ATS_Now_Fault_Code</name>
+								<typepar>2</typepar>
+								<typetarg>WORD</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description>Код аварії діючий</description>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.30</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+								<descriptioncode>CUS40000</descriptioncode>
+								<descriptioncode_language/>
+								<progressive/>
+								<category>1</category>
+								<groups/>
+								<groups_language/>
+								<complemented>1</complemented>
+								<measurementunit>num</measurementunit>
+								<measurementunit_language>en-GB</measurementunit_language>
+								<existence>FIX(1)</existence>
+								<type>0</type>
+								<writesequence/>
+								<softscope>0</softscope>
+								<iotype/>
+								<iolabel/>
+								<wizard/>
+								<wizardgroup/>
+								<installeraccesslevel>0</installeraccesslevel>
+								<autogeneratedfrombusconfig>0</autogeneratedfrombusconfig>
+								<groupscode/>
+								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
+								<TelevisIdentificationPar>0</TelevisIdentificationPar>
+							</param>
+							<param>
+								<ipa>5026</ipa>
+								<address>8990</address>
+								<name>ATS_State_BIT</name>
+								<typepar>2</typepar>
+								<typetarg>WORD</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description>Слово стану ПП</description>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.31</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+								<descriptioncode>CUS40000</descriptioncode>
+								<descriptioncode_language/>
+								<progressive/>
+								<category>1</category>
+								<groups/>
+								<groups_language/>
+								<complemented>1</complemented>
+								<measurementunit>num</measurementunit>
+								<measurementunit_language>en-GB</measurementunit_language>
+								<existence>FIX(1)</existence>
+								<type>0</type>
+								<writesequence/>
+								<softscope>0</softscope>
+								<iotype/>
+								<iolabel/>
+								<wizard/>
+								<wizardgroup/>
+								<installeraccesslevel>0</installeraccesslevel>
+								<autogeneratedfrombusconfig>0</autogeneratedfrombusconfig>
+								<groupscode/>
+								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
+								<TelevisIdentificationPar>0</TelevisIdentificationPar>
+							</param>
+							<param>
+								<ipa>5027</ipa>
+								<address>8991</address>
+								<name>ATS_Voltage_L1</name>
+								<typepar>2</typepar>
+								<typetarg>INT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description>Напруга Ф1</description>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.32</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+								<descriptioncode>CUS40000</descriptioncode>
+								<descriptioncode_language/>
+								<progressive/>
+								<category>1</category>
+								<groups/>
+								<groups_language/>
+								<complemented>1</complemented>
+								<measurementunit>num</measurementunit>
+								<measurementunit_language>en-GB</measurementunit_language>
+								<existence>FIX(1)</existence>
+								<type>0</type>
+								<writesequence/>
+								<softscope>0</softscope>
+								<iotype/>
+								<iolabel/>
+								<wizard/>
+								<wizardgroup/>
+								<installeraccesslevel>0</installeraccesslevel>
+								<autogeneratedfrombusconfig>0</autogeneratedfrombusconfig>
+								<groupscode/>
+								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
+								<TelevisIdentificationPar>0</TelevisIdentificationPar>
+							</param>
+							<param>
+								<ipa>5028</ipa>
+								<address>8992</address>
+								<name>ATS_Voltage_L2</name>
+								<typepar>2</typepar>
+								<typetarg>INT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description>Напруга Ф2</description>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.33</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+								<descriptioncode>CUS40000</descriptioncode>
+								<descriptioncode_language/>
+								<progressive/>
+								<category>1</category>
+								<groups/>
+								<groups_language/>
+								<complemented>1</complemented>
+								<measurementunit>num</measurementunit>
+								<measurementunit_language>en-GB</measurementunit_language>
+								<existence>FIX(1)</existence>
+								<type>0</type>
+								<writesequence/>
+								<softscope>0</softscope>
+								<iotype/>
+								<iolabel/>
+								<wizard/>
+								<wizardgroup/>
+								<installeraccesslevel>0</installeraccesslevel>
+								<autogeneratedfrombusconfig>0</autogeneratedfrombusconfig>
+								<groupscode/>
+								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
+								<TelevisIdentificationPar>0</TelevisIdentificationPar>
+							</param>
+							<param>
+								<ipa>5029</ipa>
+								<address>8993</address>
+								<name>ATS_Voltage_L3</name>
+								<typepar>2</typepar>
+								<typetarg>INT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description>Напруга Ф3</description>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.34</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+								<descriptioncode>CUS40000</descriptioncode>
+								<descriptioncode_language/>
+								<progressive/>
+								<category>1</category>
+								<groups/>
+								<groups_language/>
+								<complemented>1</complemented>
+								<measurementunit>num</measurementunit>
+								<measurementunit_language>en-GB</measurementunit_language>
+								<existence>FIX(1)</existence>
+								<type>0</type>
+								<writesequence/>
+								<softscope>0</softscope>
+								<iotype/>
+								<iolabel/>
+								<wizard/>
+								<wizardgroup/>
+								<installeraccesslevel>0</installeraccesslevel>
+								<autogeneratedfrombusconfig>0</autogeneratedfrombusconfig>
+								<groupscode/>
+								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
+								<TelevisIdentificationPar>0</TelevisIdentificationPar>
+							</param>
+							<param>
+								<ipa>5030</ipa>
+								<address>8994</address>
+								<name>motor_run_time</name>
+								<typepar>3</typepar>
+								<typetarg>UDINT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description>К-сть відпрацьованих двигуном годин </description>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.36</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+								<descriptioncode>CUS40000</descriptioncode>
+								<descriptioncode_language/>
+								<progressive/>
+								<category>1</category>
+								<groups/>
+								<groups_language/>
+								<complemented>1</complemented>
+								<measurementunit>num</measurementunit>
+								<measurementunit_language>en-GB</measurementunit_language>
+								<existence>FIX(1)</existence>
+								<type>0</type>
+								<writesequence/>
+								<softscope>0</softscope>
+								<iotype/>
+								<iolabel/>
+								<wizard/>
+								<wizardgroup/>
+								<installeraccesslevel>0</installeraccesslevel>
+								<autogeneratedfrombusconfig>0</autogeneratedfrombusconfig>
+								<groupscode/>
+								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
+								<TelevisIdentificationPar>0</TelevisIdentificationPar>
+							</param>
+							<param>
+								<ipa>5031</ipa>
+								<address>8996</address>
+								<name>Num_m_starts</name>
+								<typepar>3</typepar>
+								<typetarg>UDINT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description>К-сть пусків двигуна</description>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.38</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+								<descriptioncode>CUS40000</descriptioncode>
+								<descriptioncode_language/>
+								<progressive/>
+								<category>1</category>
+								<groups/>
+								<groups_language/>
+								<complemented>1</complemented>
+								<measurementunit>num</measurementunit>
+								<measurementunit_language>en-GB</measurementunit_language>
+								<existence>FIX(1)</existence>
+								<type>0</type>
+								<writesequence/>
+								<softscope>0</softscope>
+								<iotype/>
+								<iolabel/>
+								<wizard/>
+								<wizardgroup/>
+								<installeraccesslevel>0</installeraccesslevel>
+								<autogeneratedfrombusconfig>0</autogeneratedfrombusconfig>
+								<groupscode/>
+								<measurementunitcode>FIX(VMU00020)</measurementunitcode>
+								<TelevisIdentificationPar>0</TelevisIdentificationPar>
+							</param>
+							<param>
+								<ipa>5032</ipa>
+								<address>8998</address>
+								<name>En_consum_motor</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description>К-сть спожитої енергії, kWh</description>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.40</dataBlock>
 								<label/>
 								<translation/>
 								<visibility>0</visibility>
@@ -78466,6 +79112,21 @@ END_PROGRAM
 									</menuItem>
 									<menuItem>
 										<ipa>5002</ipa>
+									</menuItem>
+									<menuItem>
+										<ipa>3</ipa>
+									</menuItem>
+									<menuItem>
+										<ipa>4</ipa>
+									</menuItem>
+									<menuItem>
+										<ipa>4</ipa>
+									</menuItem>
+									<menuItem>
+										<ipa>6</ipa>
+									</menuItem>
+									<menuItem>
+										<ipa>-1</ipa>
 									</menuItem>
 								</menuItems>
 							</menu>
@@ -78533,7 +79194,7 @@ END_PROGRAM
 								<ioMapping inout="in" idx="8">
 									<name>AIL9</name>
 									<description>AI9 analogue input</description>
-									<variable/>
+									<variable>i_val_state_local</variable>
 									<type>INT</type>
 								</ioMapping>
 								<ioMapping inout="in" idx="9">
@@ -78605,25 +79266,25 @@ END_PROGRAM
 								<ioMapping inout="in" idx="8">
 									<name>DIL9</name>
 									<description>DIL9 digital input</description>
-									<variable/>
+									<variable>i_qf_direct</variable>
 									<type>BOOL</type>
 								</ioMapping>
 								<ioMapping inout="in" idx="9">
 									<name>DIL10</name>
 									<description>DIL10 digital input</description>
-									<variable/>
+									<variable>i_km_ats</variable>
 									<type>BOOL</type>
 								</ioMapping>
 								<ioMapping inout="in" idx="10">
 									<name>DIL11</name>
 									<description>DIL11 digital input</description>
-									<variable/>
+									<variable>i_km_direct</variable>
 									<type>BOOL</type>
 								</ioMapping>
 								<ioMapping inout="in" idx="11">
 									<name>DIL12</name>
 									<description>DIL12 digital input</description>
-									<variable/>
+									<variable>i_sns_pressure</variable>
 									<type>BOOL</type>
 								</ioMapping>
 								<ioMapping inout="out" idx="0">
@@ -78653,7 +79314,7 @@ END_PROGRAM
 								<ioMapping inout="out" idx="4">
 									<name>DOL5</name>
 									<description>DOL5 digital output</description>
-									<variable/>
+									<variable>q_start_direct</variable>
 									<type>BOOL</type>
 								</ioMapping>
 								<ioMapping inout="out" idx="5">
@@ -78942,6 +79603,16 @@ END_PROGRAM
 								<defval/>
 								<addToTelevis>0</addToTelevis>
 							</biosParam>
+							<biosParam>
+								<ipa>10356</ipa>
+								<defval>1</defval>
+								<addToTelevis>0</addToTelevis>
+							</biosParam>
+							<biosParam>
+								<ipa>10357</ipa>
+								<defval>1</defval>
+								<addToTelevis>0</addToTelevis>
+							</biosParam>
 						</biosParams>
 						<executionTime custom="0">20</executionTime>
 						<webmenus>
@@ -79028,16 +79699,468 @@ END_PROGRAM
 						<wizards/>
 						<wizardgroups/>
 					</devConfig>
-					<CANopen_OnBoard protocol="" mode="0" nodeID="127" baudRate="2" hbTime="0" syncCOBID="128" syncCycle="0" slavePresenceByPar="false"/>
-					<RS485_OnBoard protocol="FreeAdvance_ModbusRTU_master" mode="1" baudRate="9600" serialMode="7" masterDisableByPar="0"/>
+					<CANopen_OnBoard protocol="FreeAdvance_CANopen_master" mode="1" nodeID="125" baudRate="2" hbTime="0" syncCOBID="128" syncCycle="0" slavePresenceByPar="false">
+						<CANcustom_FreeEvolutionExp_640p3 template="TM172E\TM172E_CAN_640_3.pct" version="1" uniqueID="24" caption="M172 Expansion 12&amp;28 I/Os_1" name="M172 Expansion 12&amp;28 I/Os" CFNuniqueID="1">
+							<CANcustom_config>
+								<nodeNumber>1</nodeNumber>
+								<nodeGuardPeriod>200</nodeGuardPeriod>
+								<lifeTimeFactor>3</lifeTimeFactor>
+								<SDOsetList/>
+								<PDOTxTransmission>-1</PDOTxTransmission>
+								<PDOTxCyclicTime>0</PDOTxCyclicTime>
+								<PDORxTransmission>-1</PDORxTransmission>
+								<BootTime>2000</BootTime>
+								<NodeHbPTime>0</NodeHbPTime>
+								<NodeHbCTime>0</NodeHbCTime>
+								<MasterHbCTime>0</MasterHbCTime>
+								<identityObjectCheck>0</identityObjectCheck>
+							</CANcustom_config>
+							<TM172E_config ExpandedIOs="0">
+								<DigitalInputs>
+									<DI id="0">
+										<label/>
+										<dataBlock/>
+									</DI>
+									<DI id="1">
+										<label/>
+										<dataBlock/>
+									</DI>
+									<DI id="2">
+										<label/>
+										<dataBlock/>
+									</DI>
+									<DI id="3">
+										<label/>
+										<dataBlock/>
+									</DI>
+									<DI id="4">
+										<label/>
+										<dataBlock/>
+									</DI>
+									<DI id="5">
+										<label/>
+										<dataBlock/>
+									</DI>
+								</DigitalInputs>
+								<DigitalOutputs>
+									<DO id="0">
+										<label/>
+										<dataBlock/>
+									</DO>
+									<DO id="1">
+										<label/>
+										<dataBlock/>
+									</DO>
+									<DO id="2">
+										<label/>
+										<dataBlock/>
+									</DO>
+									<DO id="3">
+										<label/>
+										<dataBlock/>
+									</DO>
+									<DO id="4">
+										<label/>
+										<dataBlock/>
+									</DO>
+									<DO id="5">
+										<label/>
+										<dataBlock/>
+									</DO>
+									<DO id="6">
+										<label/>
+										<dataBlock/>
+									</DO>
+									<DO id="7">
+										<label/>
+										<dataBlock/>
+									</DO>
+									<DO id="8">
+										<label/>
+										<dataBlock/>
+									</DO>
+									<DO id="9">
+										<label/>
+										<dataBlock/>
+									</DO>
+								</DigitalOutputs>
+								<AnalogInputs Temp_UM="0">
+									<AI id="0">
+										<label/>
+										<dataBlock/>
+										<Cfg>-1</Cfg>
+										<FullScaleMin>0</FullScaleMin>
+										<FullScaleMax>1000</FullScaleMax>
+										<Calibration>0</Calibration>
+										<SubCfg>3</SubCfg>
+									</AI>
+									<AI id="1">
+										<label/>
+										<dataBlock/>
+										<Cfg>-1</Cfg>
+										<FullScaleMin>0</FullScaleMin>
+										<FullScaleMax>1000</FullScaleMax>
+										<Calibration>0</Calibration>
+										<SubCfg>3</SubCfg>
+									</AI>
+									<AI id="2">
+										<label/>
+										<dataBlock/>
+										<Cfg>-1</Cfg>
+										<FullScaleMin>0</FullScaleMin>
+										<FullScaleMax>1000</FullScaleMax>
+										<Calibration>0</Calibration>
+										<SubCfg>3</SubCfg>
+									</AI>
+									<AI id="3">
+										<label/>
+										<dataBlock/>
+										<Cfg>-1</Cfg>
+										<FullScaleMin>0</FullScaleMin>
+										<FullScaleMax>1000</FullScaleMax>
+										<Calibration>0</Calibration>
+										<SubCfg>3</SubCfg>
+									</AI>
+									<AI id="4">
+										<label/>
+										<dataBlock/>
+										<Cfg>-1</Cfg>
+										<FullScaleMin>0</FullScaleMin>
+										<FullScaleMax>1000</FullScaleMax>
+										<Calibration>0</Calibration>
+										<SubCfg>3</SubCfg>
+									</AI>
+									<AI id="5">
+										<label/>
+										<dataBlock/>
+										<Cfg>-1</Cfg>
+										<FullScaleMin>0</FullScaleMin>
+										<FullScaleMax>1000</FullScaleMax>
+										<Calibration>0</Calibration>
+										<SubCfg>3</SubCfg>
+									</AI>
+									<AI id="6">
+										<label/>
+										<dataBlock/>
+										<Cfg>-1</Cfg>
+										<FullScaleMin>0</FullScaleMin>
+										<FullScaleMax>1000</FullScaleMax>
+										<Calibration>0</Calibration>
+										<SubCfg>3</SubCfg>
+									</AI>
+									<AI id="7">
+										<label/>
+										<dataBlock/>
+										<Cfg>-1</Cfg>
+										<FullScaleMin>0</FullScaleMin>
+										<FullScaleMax>1000</FullScaleMax>
+										<Calibration>0</Calibration>
+										<SubCfg>3</SubCfg>
+									</AI>
+									<AI id="8">
+										<label/>
+										<dataBlock/>
+										<Cfg>-1</Cfg>
+										<FullScaleMin>0</FullScaleMin>
+										<FullScaleMax>1000</FullScaleMax>
+										<Calibration>0</Calibration>
+										<SubCfg>3</SubCfg>
+									</AI>
+									<AI id="9">
+										<label/>
+										<dataBlock/>
+										<Cfg>-1</Cfg>
+										<FullScaleMin>0</FullScaleMin>
+										<FullScaleMax>1000</FullScaleMax>
+										<Calibration>0</Calibration>
+										<SubCfg>3</SubCfg>
+									</AI>
+								</AnalogInputs>
+								<AnalogInputsConfig>
+									<AI id="0">
+										<count_label/>
+										<count_dataBlock/>
+										<freq_label/>
+										<freq_dataBlock/>
+									</AI>
+									<AI id="1">
+										<count_label/>
+										<count_dataBlock/>
+										<freq_label/>
+										<freq_dataBlock/>
+									</AI>
+								</AnalogInputsConfig>
+								<AnalogOutputs>
+									<AO id="0">
+										<label/>
+										<dataBlock/>
+									</AO>
+									<AO id="1">
+										<label/>
+										<dataBlock/>
+									</AO>
+								</AnalogOutputs>
+							</TM172E_config>
+						</CANcustom_FreeEvolutionExp_640p3>
+					</CANopen_OnBoard>
+					<RS485_OnBoard protocol="FreeAdvance_ModbusRTU_master" mode="1" baudRate="9600" serialMode="7" masterDisableByPar="0">
+						<GenericRTU template="ModbusGeneric\GenericNode\GenericRTU.pct" version="4" uniqueID="26" caption="ATS430" name="Generic Modbus">
+							<GenericRTU_config>
+								<modbusAddress>1</modbusAddress>
+								<nodeNumber>0</nodeNumber>
+								<ip/>
+								<nodeID>1</nodeID>
+								<minPollTime>10</minPollTime>
+								<sendParams/>
+								<wordsOrder>0</wordsOrder>
+								<addressType>modbus</addressType>
+							</GenericRTU_config>
+							<FC03 template="ModbusGeneric\Messages\FC03.pct" version="2" uniqueID="27" caption="Modbus FC-03_1" name="Modbus FC-03">
+								<FC_config>
+									<block>input</block>
+									<funcode>3</funcode>
+									<type>word</type>
+									<startAddress>3202</startAddress>
+									<pollTime>0</pollTime>
+									<tmo>1000</tmo>
+									<FC_images_in>
+										<FC_image>
+											<label>ATS_State_BIT</label>
+											<type>WORD</type>
+											<description/>
+											<dataBlock>MW110.31</dataBlock>
+											<ioObject name="Register" subindex="0" objtype="WORD" inout="in" modbusAddress="3202"/>
+										</FC_image>
+									</FC_images_in>
+									<turnAround>10</turnAround>
+								</FC_config>
+							</FC03>
+							<FC03 template="ModbusGeneric\Messages\FC03.pct" version="2" uniqueID="29" caption="Current_L123" name="Modbus FC-03">
+								<FC_config>
+									<block>input</block>
+									<funcode>3</funcode>
+									<type>word</type>
+									<startAddress>4902</startAddress>
+									<pollTime>0</pollTime>
+									<tmo>1000</tmo>
+									<FC_images_in>
+										<FC_image>
+											<label>ATS_Current_L1</label>
+											<type>INT</type>
+											<description>Струм в Амперах L1</description>
+											<dataBlock>MW110.10</dataBlock>
+											<ioObject name="Register" subindex="0" objtype="WORD" inout="in" modbusAddress="4902"/>
+										</FC_image>
+										<FC_image>
+											<label>ATS_Current_L2</label>
+											<type>INT</type>
+											<description>Струм в Амперах L2</description>
+											<dataBlock>MW110.11</dataBlock>
+											<ioObject name="Register" subindex="0" objtype="WORD" inout="in" modbusAddress="4903"/>
+										</FC_image>
+										<FC_image>
+											<label>ATS_Current_L3</label>
+											<type>INT</type>
+											<description>Струм в Амперах L3</description>
+											<dataBlock>MW110.12</dataBlock>
+											<ioObject name="Register" subindex="0" objtype="WORD" inout="in" modbusAddress="4904"/>
+										</FC_image>
+									</FC_images_in>
+									<turnAround>10</turnAround>
+								</FC_config>
+							</FC03>
+							<FC03 template="ModbusGeneric\Messages\FC03.pct" version="2" uniqueID="32" caption="ATS_CMD FC-03_4" name="Modbus FC-03">
+								<FC_config>
+									<block>input</block>
+									<funcode>3</funcode>
+									<type>word</type>
+									<startAddress>8501</startAddress>
+									<pollTime>0</pollTime>
+									<tmo>1000</tmo>
+									<FC_images_in>
+										<FC_image>
+											<label>ATS_CMD</label>
+											<type>WORD</type>
+											<description/>
+											<dataBlock>MW110.28</dataBlock>
+											<ioObject name="Register" subindex="0" objtype="WORD" inout="in" modbusAddress="8501"/>
+										</FC_image>
+									</FC_images_in>
+									<turnAround>10</turnAround>
+								</FC_config>
+							</FC03>
+							<FC03 template="ModbusGeneric\Messages\FC03.pct" version="2" uniqueID="34" caption="Now_fault_code FC-03_6" name="Modbus FC-03">
+								<FC_config>
+									<block>input</block>
+									<funcode>3</funcode>
+									<type>word</type>
+									<startAddress>8606</startAddress>
+									<pollTime>0</pollTime>
+									<tmo>1000</tmo>
+									<FC_images_in>
+										<FC_image>
+											<label>ATS_Now_Fault_Code</label>
+											<type>WORD</type>
+											<description/>
+											<dataBlock>MW110.30</dataBlock>
+											<ioObject name="Register" subindex="0" objtype="WORD" inout="in" modbusAddress="8606"/>
+										</FC_image>
+									</FC_images_in>
+									<turnAround>10</turnAround>
+								</FC_config>
+							</FC03>
+							<FC03 template="ModbusGeneric\Messages\FC03.pct" version="2" uniqueID="35" caption="Last_fault_code FC-03_6" name="Modbus FC-03">
+								<FC_config>
+									<block>input</block>
+									<funcode>3</funcode>
+									<type>word</type>
+									<startAddress>7200</startAddress>
+									<pollTime>0</pollTime>
+									<tmo>1000</tmo>
+									<FC_images_in>
+										<FC_image>
+											<label>ATS_Last_Fault_Code</label>
+											<type>WORD</type>
+											<description/>
+											<dataBlock>MW110.29</dataBlock>
+											<ioObject name="Register" subindex="0" objtype="WORD" inout="in" modbusAddress="7200"/>
+										</FC_image>
+									</FC_images_in>
+									<turnAround>10</turnAround>
+								</FC_config>
+							</FC03>
+							<FC03 template="ModbusGeneric\Messages\FC03.pct" version="2" uniqueID="37" caption="VoltageL123 FC-03_7" name="Modbus FC-03">
+								<FC_config>
+									<block>input</block>
+									<funcode>3</funcode>
+									<type>word</type>
+									<startAddress>13748</startAddress>
+									<pollTime>0</pollTime>
+									<tmo>1000</tmo>
+									<FC_images_in>
+										<FC_image>
+											<label>ATS_Voltage_L1</label>
+											<type>INT</type>
+											<description/>
+											<dataBlock>MW110.32</dataBlock>
+											<ioObject name="Register" subindex="0" objtype="WORD" inout="in" modbusAddress="13748"/>
+										</FC_image>
+										<FC_image>
+											<label>ATS_Voltage_L2</label>
+											<type>INT</type>
+											<description/>
+											<dataBlock>MW110.33</dataBlock>
+											<ioObject name="Register" subindex="0" objtype="WORD" inout="in" modbusAddress="13749"/>
+										</FC_image>
+										<FC_image>
+											<label>ATS_Voltage_L3</label>
+											<type>INT</type>
+											<description/>
+											<dataBlock>MW110.34</dataBlock>
+											<ioObject name="Register" subindex="0" objtype="WORD" inout="in" modbusAddress="13750"/>
+										</FC_image>
+									</FC_images_in>
+									<turnAround>10</turnAround>
+								</FC_config>
+							</FC03>
+							<FC03 template="ModbusGeneric\Messages\FC03.pct" version="2" uniqueID="39" caption="Run_time_run_motor-03_8" name="Modbus FC-03">
+								<FC_config>
+									<block>input</block>
+									<funcode>3</funcode>
+									<type>word</type>
+									<startAddress>3275</startAddress>
+									<pollTime>0</pollTime>
+									<tmo>1000</tmo>
+									<FC_images_in>
+										<FC_image>
+											<label>motor_run_time</label>
+											<type>UDINT</type>
+											<description/>
+											<dataBlock>MW110.36</dataBlock>
+											<ioObject name="Register" subindex="0" objtype="WORD" inout="in" modbusAddress="3275"/>
+										</FC_image>
+										<FC_image>
+											<label/>
+											<type/>
+											<description/>
+											<dataBlock/>
+											<ioObject name="Register" subindex="0" objtype="WORD" inout="in" modbusAddress="3276"/>
+										</FC_image>
+										<FC_image>
+											<label>ATS_RunTime_Hours</label>
+											<type>UDINT</type>
+											<description/>
+											<dataBlock>MW110.26</dataBlock>
+											<ioObject name="Register" subindex="0" objtype="WORD" inout="in" modbusAddress="3277"/>
+										</FC_image>
+										<FC_image>
+											<label/>
+											<type/>
+											<description/>
+											<dataBlock/>
+											<ioObject name="Register" subindex="0" objtype="WORD" inout="in" modbusAddress="3278"/>
+										</FC_image>
+									</FC_images_in>
+									<turnAround>10</turnAround>
+								</FC_config>
+							</FC03>
+							<FC03 template="ModbusGeneric\Messages\FC03.pct" version="2" uniqueID="41" caption="Num_motor_starts FC-03_2" name="Modbus FC-03">
+								<FC_config>
+									<block>input</block>
+									<funcode>3</funcode>
+									<type>word</type>
+									<startAddress>3261</startAddress>
+									<pollTime>0</pollTime>
+									<tmo>1000</tmo>
+									<FC_images_in>
+										<FC_image>
+											<label>Num_m_starts</label>
+											<type>UDINT</type>
+											<description/>
+											<dataBlock>MW110.38</dataBlock>
+											<ioObject name="Register" subindex="0" objtype="WORD" inout="in" modbusAddress="3261"/>
+										</FC_image>
+										<FC_image>
+											<label/>
+											<type/>
+											<description/>
+											<dataBlock/>
+											<ioObject name="Register" subindex="0" objtype="WORD" inout="in" modbusAddress="3262"/>
+										</FC_image>
+									</FC_images_in>
+									<turnAround>10</turnAround>
+								</FC_config>
+							</FC03>
+							<FC03 template="ModbusGeneric\Messages\FC03.pct" version="2" uniqueID="43" caption="Energy_by_motor_KWh FC-03_2" name="Modbus FC-03">
+								<FC_config>
+									<block>input</block>
+									<funcode>3</funcode>
+									<type>word</type>
+									<startAddress>10608</startAddress>
+									<pollTime>0</pollTime>
+									<tmo>1000</tmo>
+									<FC_images_in>
+										<FC_image>
+											<label>En_consum_motor</label>
+											<type>INT</type>
+											<description/>
+											<dataBlock>MW110.40</dataBlock>
+											<ioObject name="Register" subindex="0" objtype="WORD" inout="in" modbusAddress="10608"/>
+										</FC_image>
+									</FC_images_in>
+									<turnAround>10</turnAround>
+								</FC_config>
+							</FC03>
+						</GenericRTU>
+					</RS485_OnBoard>
 					<Ethernet_OnBoard protocol="" enableMaster="0" additionalSockets="3"/>
 					<Plugins/>
 					<cfgConfig>
 						<config>
-							<commstring>Modbus:1,1000,M6#COM:3,38400,N,8,1,H</commstring>
+							<commstring>Modbus:1,1000,M6#COM:4,38400,N,8,1,H</commstring>
 							<values stopNodeParsing="true">
 								<value ipa="10000" subidx="0">0</value>
-								<value ipa="10001" subidx="0">2053</value>
+								<value ipa="10001" subidx="0">2051</value>
 								<value ipa="10002" subidx="0">1</value>
 								<value ipa="10003" subidx="0">0</value>
 								<value ipa="10004" subidx="0">3</value>
@@ -79392,8 +80515,8 @@ END_PROGRAM
 								<value ipa="10351" subidx="0">0</value>
 								<value ipa="10352" subidx="0">1000</value>
 								<value ipa="10353" subidx="0">1</value>
-								<value ipa="10356" subidx="0">2</value>
-								<value ipa="10357" subidx="0">2</value>
+								<value ipa="10356" subidx="0">1</value>
+								<value ipa="10357" subidx="0">1</value>
 								<value ipa="10358" subidx="0">2</value>
 								<value ipa="10359" subidx="0">1</value>
 								<value ipa="10364" subidx="0">0</value>
@@ -79492,12 +80615,12 @@ END_PROGRAM
 								<value ipa="50003" subidx="0">0</value>
 								<value ipa="50004" subidx="0">0</value>
 								<value ipa="1" subidx="0">0</value>
-								<value ipa="2" subidx="0">2</value>
+								<value ipa="2" subidx="0">900000</value>
 								<value ipa="0" subidx="0">0</value>
-								<value ipa="3" subidx="0">5</value>
+								<value ipa="3" subidx="0">86400000</value>
 								<value ipa="4" subidx="0">0</value>
 								<value ipa="5" subidx="0">0</value>
-								<value ipa="6" subidx="0">0</value>
+								<value ipa="6" subidx="0">90000</value>
 								<value ipa="5000" subidx="0">0</value>
 								<value ipa="5001" subidx="0">0</value>
 								<value ipa="5002" subidx="0">0</value>
@@ -79518,13 +80641,26 @@ END_PROGRAM
 								<value ipa="5017" subidx="0">0</value>
 								<value ipa="5019" subidx="0">0</value>
 								<value ipa="5018" subidx="0">0</value>
+								<value ipa="5022" subidx="0">0</value>
+								<value ipa="5020" subidx="0">0</value>
+								<value ipa="5021" subidx="0">0</value>
+								<value ipa="5023" subidx="0">0</value>
+								<value ipa="5024" subidx="0">0</value>
+								<value ipa="5025" subidx="0">0</value>
+								<value ipa="5026" subidx="0">0</value>
+								<value ipa="5027" subidx="0">0</value>
+								<value ipa="5028" subidx="0">0</value>
+								<value ipa="5029" subidx="0">0</value>
+								<value ipa="5030" subidx="0">0</value>
+								<value ipa="5031" subidx="0">0</value>
+								<value ipa="5032" subidx="0">0</value>
 							</values>
 							<commDisabled>0</commDisabled>
 							<downloadVolume>0</downloadVolume>
 							<alignTargetRTC>0</alignTargetRTC>
 						</config>
 						<application>
-							<sw37 template="%PCNPATH%\sw37.PCT" version="1" uniqueID="23"/>
+							<sw37 template="%PCNPATH%\sw37.PCT" version="1" uniqueID="44"/>
 						</application>
 						<recipes/>
 					</cfgConfig>
